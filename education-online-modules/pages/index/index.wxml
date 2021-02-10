@@ -1,0 +1,98 @@
+<!--index.wxml-->
+<view class="contain"> 
+ 
+
+<!--轮播图-->
+<swiper class="swiper" indicator-dots="true"
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for-items="{{imgUrls}}" wx:key="item.id">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+
+
+        <!--标题分类-->
+    <view class="nav">
+
+    <view class="boxView"> 
+      <navigator url='/pages/teach/index'>
+      <image src="../../image/home_entity.png"/>
+      </navigator>
+      <navigator url='/pages/teach/index'>
+      <text>资源浏览</text>
+      </navigator>
+    </view>
+
+    <view class="boxView"> 
+      <navigator url='/pages/study/index'>
+      <image src="../../image/home_play.png"/>
+      </navigator>
+      <navigator url='/pages/study/index'>
+      <text>专项学习</text>
+      </navigator>
+    </view>
+
+    <view class="boxView"> 
+      <navigator url='/pages/explore/index'>
+      <image src="../../image/home_door.png"/>
+      </navigator>
+      <navigator url='/pages/explore/index'>
+      <text>拓展学习</text>
+      </navigator>
+    </view>
+
+    </view>
+
+<!--推荐课程-->
+    <view class="recommendCourseView">
+   <text class="courseText">课程学习</text> 
+   <text class="desText">通过一节课来查漏补缺</text> 
+    </view>
+
+    <!--课程-->
+     <view class="item" >
+
+<!--图片-->
+      <view  class="item-left"> 
+      <navigator url='/pages/preview/index' style="margin-top: 10px;">
+       <image class="courseImage" src="../../image/Introduce.png"/>
+       </navigator>
+       <navigator url='/pages/explore/index' style="margin-top: 10px;">
+       <image class="courseImage" src="../../image/Explore.png"/>
+       </navigator>
+       <navigator url='/pages/preview/index' style="margin-top: 10px;">
+       <image class="courseImage" src="../../image/video.png"/>
+       </navigator>
+       <navigator url='/pages/msg/index' style="margin-top: 10px;">
+       <image class="courseImage" src="../../image/discuss.png"/>
+       </navigator>
+       <navigator url='/pages/evaluation/index?type=question' style="margin-top: 10px;">
+       <image class="courseImage" src="../../image/Evaluation.png"/>
+       </navigator>
+      </view>
+
+<!--文字-->
+      <view class="item-right">
+     <navigator url='/pages/preview/index'>
+     <view class="titleView"> <text class="titleText">课前预习 | 引入</text> </view>
+     <view class="timeView"> <text class="subtitleText">俗话说一日之计在于晨，那么一课之计就在于预习，同学们快来预习一下吧！</text> </view></navigator>
+     <navigator url='/pages/explore/index'>
+     <view class="titleView"> <text class="titleText">发现问题 | 探究</text>   </view>
+     <view class="timeView"> <text class="subtitleText">预习完毕之后你有发现什么问题呢？现在老师提出一个问题，同学们自己先学习一下吧！</text>  </view></navigator>
+     <navigator url='/pages/preview/index'>
+     <view class="titleView"> <text class="titleText">视频学习 | 解释</text>   </view>
+     <view class="timeView"> <text class="subtitleText">不知道同学们自学效果怎么样，同学们继续通过视频学习一下吧！</text>  </view></navigator>
+     <navigator url='/pages/msg/index'>
+     <view class="titleView"> <text class="titleText">在线讨论 | 阐述</text>   </view>
+     <view class="timeView"> <text class="subtitleText">同学们前边的知识都理解了吗？来这里和同学们讨论一下吧！解释一下为什么？</text>  </view></navigator>
+     <navigator url='/pages/evaluation/index?type=question'>
+     <view class="titleView"> <text class="titleText">课后反馈 | 评估</text>   </view>
+     <view class="timeView"> <text class="subtitleText">这节课的学习效果怎么样呢？同学们请通过课后作业来测试一下吧！</text>  </view></navigator>
+       </view> 
+    
+     </view>
+
+
+</view>

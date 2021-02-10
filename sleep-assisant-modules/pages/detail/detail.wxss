@@ -1,0 +1,150 @@
+/* pages/coursesCon/coursesCon.wxss */
+.audio{
+  width:100%;
+  height:480rpx;
+}
+.tit{
+  width:100%;
+  height:110rpx;
+  font-size:40rpx;
+  line-height:110rpx;
+  text-align:center;
+  font-family:'苹方-港 中粗体';
+  font-weight:600;
+  margin-top:48rpx;
+}
+.back{
+  position: fixed;
+  left: 30rpx;
+  top: 70rpx;
+  display: flex;
+  width: 17.5rpx;
+  height:17.5rpx;
+  border-left: 4rpx solid white;
+  border-top: 4rpx solid white;
+  transform: rotate(-45deg);
+  z-index: 999;
+}
+.description{
+  width:90%;
+  padding-left:6%;
+  padding-right:4%;
+  font-size:30rpx;
+  margin-bottom:20rpx;
+  font-family:'苹方-港 常规体';
+}
+.content{
+  width:90%;
+  padding-left:6%;
+  padding-right:4%;
+  font-size:32rpx;
+}
+.content .ximg{
+  width:646rpx;
+  height:213rpx;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+}
+.content .txt{
+  padding-left:5%;
+  margin-top:25rpx;
+  margin-bottom:25rpx;
+  position:relative;
+  line-height:50rpx;
+}
+.content .xyd{
+  width:15rpx;
+  height:15rpx;
+  position:absolute;
+  top:20rpx;
+  left:0rpx;
+  background:#ededed;
+  border-radius:50%;
+}
+.wanc{
+  width:287rpx;
+  height:84rpx;
+  text-align:center;
+  line-height:84rpx;
+  color:white;
+  font-size:36rpx;
+  margin:20rpx auto;
+  margin-bottom:50rpx;
+  background:linear-gradient(180deg,rgba(60,138,249,1) 0%,rgba(28,82,240,1) 100%);
+  box-shadow:0px 2px 4px 3px rgba(47,116,245,0.52);
+  border-radius:42px;
+  letter-spacing:1;
+}
+.video{
+  width:750rpx;
+  height:611rpx;
+  position:relative;
+}
+.video .bf{
+  width:122rpx;
+  height:122rpx;
+  position:absolute;
+  left:314rpx;
+  top:297rpx;
+}
+.bf_time{
+  width:100%;
+  height:60rpx;
+  position:absolute;
+  bottom:-60rpx;
+  left:0;
+  font-size:22rpx;
+  line-height:60rpx;
+  color:#999;
+}
+.bf_time_left{
+  float:left;
+  margin-left:18rpx;
+}
+.bf_time_right{
+  margin-right:18rpx;
+  float:right;
+}
+.jdt{
+  width:100%;
+  height:4rpx;
+  position:absolute;
+  bottom:0rpx;
+  left:0;
+}
+.jdt .bj{
+  width:100%;
+  height:4rpx;
+  background:#ccc;
+  position:absolute;
+  top:0rpx;
+  left:0rpx;
+}
+.jdt .jd{
+  height:4rpx;
+  background:#1c52f0;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.jdt .jd_yd{
+  width:24rpx;
+  height:24rpx;
+  border-radius:50%;
+  background:#1c52f0;
+  box-shadow:0px 0px 6px 3px #1c52f0;
+  position:absolute;
+  right:-12rpx;
+  top:-10rpx;
+}
+
+.bluel{
+  width:8rpx;
+  height:35rpx;
+  background:blue;
+  border-radius:4px;
+  display:inline-block;
+  position:absolute;
+  top:38.5rpx;
+  left:28rpx;
+}

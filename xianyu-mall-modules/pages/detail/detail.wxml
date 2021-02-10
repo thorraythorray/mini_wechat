@@ -1,0 +1,14 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view class="part-group">
+    <view wx:for="{{cate}}" style="width:100%">
+      <navigator class="view_tupian_wenzi" url="../item/item?cateId={{cateId}}&itemId={{item.item_id}}">
+      <image class="images" src="{{item.src}}"/>
+      <view class="view_wenzi2 text_small">
+        <text class="title">{{item.name}}</text>
+        <text wx:for="{{item.info}}">{{item}}</text>
+      </view>
+    </navigator>
+    </view>
+  </view>
+</view>

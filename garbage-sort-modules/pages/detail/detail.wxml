@@ -1,0 +1,19 @@
+<view class="container">
+  <view class='content'>
+    <view class='titles'>{{searec_name}}</view>
+    <view class='title'><text>{{content.name}}属于</text>{{content.categoryName}}</view>
+    <image class="c_image" src='{{content.category.imageUrl}}' mode="widthFix"></image>
+    <text class='sm_title'>投放指导</text>
+    <text class='desc'>{{content.category.contains}}</text>
+    <!-- <text class='sm_remark' wx:for='{{content.category.contains}}' wx:key="{{item}}">{{item}}</text> -->
+  </view>
+  <view class='tips' wx:if="{{content.category.definition}}">
+    <icon type="warn" size="15" color='red' />
+    <text class='tips_txt'>{{content.category.definition}}</text>
+  </view>
+</view>
+<view class='share_btn'>
+  <image src='../../images/yes.png' mode="widthFix"></image>
+  <text>收藏</text>
+</view>
+<button size="small" bindtap="collect_it" class='share_btyn' data-id="{{content.id}}"></button>

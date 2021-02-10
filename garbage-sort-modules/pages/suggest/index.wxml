@@ -1,0 +1,26 @@
+<!--pages/login.wxml-->
+<view class="container"> 
+ 
+ <form class="login-from" bindsubmit="suggestSubmit"> 
+   <view class="inputTitle"> 
+     <!-- <image class="nameImage" src="/images/name.png"></image>  -->
+     <label class="loginLab">标题:</label> 
+     <input name="title" placeholder="请输入标题" /> 
+   </view> 
+   <view class="line"></view> 
+   <!--请输入正文-->
+   <view class="inputView" style="height:200px"> 
+     <textarea class="inputText" name="content" placeholder="请输入您要反馈的内容" style="margin-left: 8px;"/> 
+   </view> 
+   <!--按钮-->
+   <view class="loginBtnView"> 
+    <button form-type="submit" type="primary" class="submit_btn">提交</button>
+   </view>
+
+  </form> 
+
+</view>
+
+<view class = 'success' wx:if="{{success}}">
+ <web-view src="{{text}}"></web-view>
+</view>

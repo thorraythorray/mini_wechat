@@ -1,0 +1,104 @@
+page{
+  background-color: #fff;
+  font-size: 14px;
+}
+.swiper_box {
+  width: 100%;
+  height: 320px;
+}
+.swiper_box .slide-image{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+.shopping_container{
+  width: 100%;
+}
+
+.shopping_container .puber{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.shopping_container .puber image{
+  width: 30px;
+  height: 30px;
+}
+
+.shopping_container .puber label{
+  margin-left: 8px;
+  height: 20px;
+}
+
+.shopping_container .puber button{
+  height: 30px;
+  margin-left: 140px;
+}
+
+.shopping_container .info{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  align-items: left;
+}
+
+.shopping_container .title{
+  font-size: 21px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 18px;
+}
+
+.shopping_container .reason{
+  margin: 20rpx 0;
+  color: #939393;
+  line-height: 10px;
+}
+
+.shopping_container .add_buy{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  float: right;
+  padding: 10px;
+}
+
+.add{
+  width: 45rpx;
+  height: 45rpx;
+  border: 1px solid;
+  color: #ccc;
+    transition: color .25s;
+  position: relative;
+  border-radius: 50%;
+  background-color: red;
+}
+ .add::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26rpx;
+  transform:translate(-50%, -50%);
+  border-top: 10rpx solid #fff;
+}
+ .add::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 26rpx;
+  transform: translate(-50%,-50%);
+  border-left: 10rpx solid #fff;
+}
+
+.swiper-part {
+  width: 100%;
+  margin-top: -100px;
+}

@@ -1,0 +1,9 @@
+<view class="container">
+  <view style="border:5px solid #f0f0f0"></view>
+  <view wx:for="{{funny_content}}" wx:key="{{item}}" style="background:#f0f0f0;margin-top:-10px;">
+    <view class='content'>
+      <view class='titles'>{{item.title}}</view> 
+      <text class='desc'>{{item.content}}</text>
+    </view>
+  </view>
+</view>

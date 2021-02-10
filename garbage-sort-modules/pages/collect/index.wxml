@@ -1,0 +1,22 @@
+<view class="container">
+  <view wx:if="{{empty_collect == 0}}" class='content'>
+    <view wx:for="{{collects}}" wx:key="{{item}}" >
+      <view >
+        <view class='titles'>{{searec_name}}</view>
+        <view class='title'><text>{{item.name}}属于</text>{{item.categoryName}}</view>
+        <image class="c_image" src='{{item.categoryUrl}}' mode="widthFix"></image>
+        <!-- <text class='sm_title'>投放指导</text>
+        <text class='desc'>{{item.contains}}</text> -->
+        <!-- <text class='sm_remark' wx:for='{{content.contains}}' wx:key="{{item}}">{{item}}</text> -->
+      </view>
+      <view class="line"></view> 
+      <!-- <view class='tips' wx:if="{{item.definition}}">
+        <icon type="warn" size="15" color='red' />
+        <text class='tips_txt'>{{item.definition}}</text>
+      </view> -->
+    </view>
+  </view>
+  <view wx:else class="none_collect">
+    <view>暂无收藏！</view>
+  </view>
+</view>

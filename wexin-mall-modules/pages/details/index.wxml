@@ -1,0 +1,29 @@
+<view class="container">
+    
+    <view>
+        <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <!-- <block wx:for="{{prodInfo}}"> -->
+                <swiper-item>
+                    <image src="{{prodInfo.imageUrl}}" class="slide-image"/>
+                </swiper-item>
+            <!-- </block> -->
+        </swiper>
+    </view>
+
+    <view class="shopping_container">
+        <view class="title">{{prodInfo.name}}</view>
+        <view class="add_buy">
+            <view class="price">￥{{prodInfo.price}}</view>
+            <view>
+                <button class="mini-btn" type="warn" size="mini" bindtap="add_cart" data-id="{{prodInfo.id}}">加入购物车</button>
+            </view>
+        </view>
+        <view class="reason">{{prodInfo.description}}</view>
+    </view>
+
+    <view>
+        <view></view>
+    </view>
+
+</view>

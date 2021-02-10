@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="section" style="display: flex; justify-items: center; align-items: center;">
+    <input class="search_ipt" style="width:100%" bindinput="bindReplaceInput"  placeholder="请输入您的问题" value="{{keywords}}"/>
+  </view> 
+  <view wx:if="{{!is_show}}">
+    <view wx:for="{{questions}}" wx:key="item" style="margin-top:10rpx" class="tr">
+        <training-cont  title="{{item.title}}" cont="{{item.content}}" id="{{item.id}}" img="/images/more/ren.png" />
+    </view>
+  </view> 
+
+  <view class='search_list' wx:if="{{is_show}}">
+    <view class='search_item' wx:for="{{detail}}" wx:key="{{item}}" data-id="{{item.id}}" bindtap='bindNameDeatail' data-seah_name='{{seah_name}}'>
+        <view class='ser_name'>{{item.title}}</view>
+        <!-- <view class='ser_name_detail'>{{item.name_details}}</view> -->
+    </view>
+  </view>
+</view>
+

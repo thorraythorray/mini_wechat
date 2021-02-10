@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/news/index",
+    "pages/msg/index",
+    "pages/me/index",
+    "pages/teach/index",
+    "pages/study/index",
+    "pages/detail/index",
+    "pages/explore/index",
+    "pages/preview/index",
+    "pages/evaluation/index",
+    "pages/favarite/index",
+    "pages/notes/index",
+    "pages/noteinfo/index",
+    "pages/notify/index",
+    "pages/profile/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "英语在线",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#fbf9fe",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "gray",
+    "selectedColor": "red",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/0225chooseD.png",
+        "selectedIconPath": "image/0225chooseS.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/notify/index",
+        "iconPath": "image/0226courseD.png",
+        "selectedIconPath": "image/0226courseS.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "iconPath": "image/0225mineD.png",
+        "selectedIconPath": "image/0225mineS.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap13.json"
+}

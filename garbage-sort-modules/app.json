@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/funny/index",
+    "pages/collect/index",
+    "pages/notify/index",
+    "pages/my/index",
+    "pages/login/index",
+    "pages/profile/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    
+    "navigationBarTitleText": "垃圾分类引导指南",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于垃圾分类城市区分"
+    }
+  },
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "指南",
+        "iconPath": "/images/icon/guide.png",
+        "selectedIconPath": "/images/icon/guide_tag.png"
+      },
+      {
+        "pagePath": "pages/notify/index",
+        "text": "公告",
+        "iconPath": "/images/icon/special.png",
+        "selectedIconPath": "/images/icon/special_tag.png"
+      },
+      {
+        "pagePath": "pages/funny/index",
+        "text": "趣事",
+        "iconPath": "/images/icon/test.png",
+        "selectedIconPath": "/images/icon/test_tag.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "/images/icon/more.png",
+        "selectedIconPath": "/images/icon/more_tag.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/indexauth/index",
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/item/item",
+    "pages/my/my",
+    "pages/pub/pub",
+
+    "pages/second/second",
+    "pages/wofabude/wofabude",
+    "pages/wohuandaode/wohuandaode",
+    "pages/wodexiaoxi/wodexiaoxi"
+  ],
+  "window": {
+    "navigationBarTitleText": "师小淘",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "selectedColor": "#btsbts",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/shouye.jpg",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/second/second",
+        "text": "搜索",
+        "iconPath": "images/find.png",
+        "selectedIconPath": "images/find_active.png"
+      },
+      {
+        "pagePath": "pages/pub/pub",
+        "text": "发布",
+        "iconPath": "images/pub.png",
+        "selectedIconPath": "images/pub_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_acitve.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap89.json"
+}

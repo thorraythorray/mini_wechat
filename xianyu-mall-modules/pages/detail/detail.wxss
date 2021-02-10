@@ -1,0 +1,45 @@
+/* pages/shuji/shuji.wxss */
+
+.container .part-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -100px;
+  width: 100%;
+}
+
+.view_tupian_wenzi {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.view_tupian_wenzi image{
+  width: 43%;
+  height: 200px;
+  margin-right: 2%;
+}
+
+.view_wenzi2 {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.text_small{
+   font-size: 30rpx;
+   word-break:break-all;
+   color: #7a7878
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: large;
+  color: #000;
+}
+
+.text_small text{
+  padding: 2px;
+}

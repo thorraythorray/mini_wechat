@@ -1,0 +1,29 @@
+<view wx:if="{{cartList}}">
+	<view class="cart-item" >
+ 
+		<!-- 商品列表部分布局 -->
+ 
+		<view class="cart-item" wx:for="{{cartList}}" wx:for-item="goods"> 
+			<view class="item-box item-goods"> 
+				<view class="goods-info">
+					<view wx:for="{{goods.products}}" wx:for-item="item" wx:for-index="ids"> 
+						<view wx:if="{{ids < 2}}">
+							<image wx:if="{{item.product.imageUrl}}" src="{{item.product.imageUrl}}" class="good_image" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+				<view class="add_buy">
+					<label class="price">￥{{goods.priceSum}}</label>
+				</view>
+				<view>
+							<image src="../../images/yes.png" class="cj_icon" alt=""></image>
+				</view>
+			</view>
+			</view>
+		
+		
+	</view>
+
+	<view style="height:120rpx"></view>
+ 
+</view>

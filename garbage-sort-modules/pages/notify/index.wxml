@@ -1,0 +1,14 @@
+<view class="container">
+  <view wx:for="{{funny_content}}" wx:key="{{item}}">
+    <view class='content'>
+      <view class='titles'>{{item.title}}</view> 
+      <view class="auther">发布者：{{item.publisher}}</view> 
+      <text class='desc'>{{item.content}}</text>
+      <!-- <text class='sm_remark' wx:for='{{content.category.contains}}' wx:key="{{item}}">{{item}}</text> -->
+    </view>
+  </view>
+  <!-- <view class='tips' wx:if="{{content.category.definition}}">
+    <icon type="warn" size="15" color='red' />
+    <text class='tips_txt'>{{content.category.definition}}</text>
+  </view> -->
+</view>

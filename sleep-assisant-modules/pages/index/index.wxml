@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class='top'>
+    <view class='weather'>
+      <image class='weather-img' mode='aspectFit' src="{{icon}}"></image>
+      <view class='weather-text'>{{city}}</view>
+      <view class='weather-text'>{{temperature}}°C</view>
+      <view class='weather-text'>{{skycon}}</view>
+    </view>
+    <image class='weather-img' bindtap='toSetTime' mode='aspectFit' src="../../images/icon/naozhong.png"></image>
+  </view> -->
+  <view class='other'>
+    <!-- <view class='time'>{{hours}}:{{minutes}}</view> -->
+
+    <view class="page-section">
+      <view class="page-section-title">
+        <view class="label_icon"></view>
+        <view style="color:#fff;font-size: 16px;">高效助眠曲推荐</view>
+      </view>
+      <view class="page-section-spacing">
+        <view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
+          <view wx:for="{{sleep_sounds}}" class="scroll-view-item_H" bindtap="audioSelect" data-id="{{item.id}}">
+            <image wx:if="{{item.id == audioSelect}}" class='audio_img_select' mode='aspectFit' src="{{item.pic}}"></image>
+            <image wx:else class='audio_img' mode='aspectFit' src="{{item.pic}}"></image>
+            <view class="song_desc">
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="audio_set"> 
+        <view class="section_title">助眠音乐关闭</view>
+        <picker class="time_picker" bindchange="bindPickerChange" value="{{index}}" range="{{alarm_duration}}">
+          <view class="picker">
+            <view wx:if="{{music_web_sleep_duration}}">
+              {{music_web_sleep_duration}}
+            </view>
+
+            <view wx:else>
+              请选择
+            </view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="page-section">
+      <view class="page-section-title">
+        <view class="label_icon"></view>
+        <view style="color:#fff;font-size: 16px;">最符合您入睡的状态</view>
+      </view>
+      <view class="page-section-spacing">
+        <view class="scroll-view_H" scroll-x="true" bindscroll="scroll">
+          <view wx:for="{{mood_choice}}" class="{{item.class}}" bindtap="choose_mood" data-value="{{item.value}}">
+            <view class="mod">{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{!sleepAna}}" style="display:flex; flex-direction: column;align-items: center;">
+      <view class='start' wx:if="{{!isStart}}" bindtap="startTiming">
+        <view class='start-text'>开 始</view>
+        <image class='start-img' src='../../images/icon/start.png' mode="aspectFit"></image>
+      </view>
+      <view class='end' wx:if="{{isStart}}" bindlongpress="endTiming">
+        <view class='end-text'>长按结束</view>
+      </view>
+      <view wx:if="{{!isStart}}" style="font-size:30rpx;margin:20rpx;color:#fff;">睡眠监测前请选择睡前状态再点击开始</view>
+      <view wx:if="{{isStart}}" style="font-size:30rpx;margin:20rpx;color:#fff;">睡眠少于10分钟不生成睡眠日志</view>
+    </view>
+
+    <view wx:if="{{sleepAna}}" class="page-section">
+      <view class="page-section-title">
+        <view class="label_icon"></view>
+        <view style="color:#fff;font-size: 16px;">请选择您刚刚的睡眠质量</view>
+      </view>
+      <view class="sleep_feedback">
+        <view wx:for="{{feedback_list}}" class="feedback_item" data-id="{{item.id}}" bindtap="sleepEndFeedback">
+          <image src="{{item.icon}}"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

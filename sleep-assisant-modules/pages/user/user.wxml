@@ -1,0 +1,22 @@
+<!--pages/user/user.wxml-->
+<view class='container'>
+  <view class='user-info'>
+    <image src='{{userAva}}'></image>
+    <view>{{userNick}}</view>
+  </view>
+  <view style='width: 680rpx;height: 3rpx;background:#62c4d9;'></view>
+  <view style='width: 680rpx;height: 3rpx;background:#62c4d9;'></view>
+  <view class='list'>
+    <image src='../../images/icon/grxx.png'></image>
+    <view style="color: #fff;">个人信息</view>
+    <view class="content" bindtap="UpdateProfile">修改</view>
+    <image src='../../images/icon/arrow.png'></image>
+  </view>
+  <view style='width: 680rpx;height: 3rpx;background:#62c4d9;'></view>
+  <view class='list'>
+    <image src='../../images/icon/bz.png'></image>
+    <view class='title'>帮助</view>
+    <image src='../../images/icon/arrow.png'></image>
+  </view>
+  <view style='width: 680rpx;height: 3rpx;background:#62c4d9;'></view>
+</view>

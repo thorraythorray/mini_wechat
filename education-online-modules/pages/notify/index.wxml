@@ -1,0 +1,12 @@
+<view class="container" style="background: ghostwhite; height: {{windowHeight}}">
+    <view style="border: 1px solid ghostwhite;"></view>
+    <view wx:for="{{contents}}" wx:key="{{item}}" style="background: ghostwhite;">
+        <view class='content' style="background: #fff">
+        <view class='titles'>{{item.title}}</view> 
+        <view class="auther">{{item.date}}</view> 
+        <text class='desc'>{{item.content}}</text>
+        <!-- <text class='sm_remark' wx:for='{{content.category.contains}}' wx:key="{{item}}">{{item}}</text> -->
+        </view>
+        <view style="border: 2px solid ghostwhite;"></view>
+    </view>
+</view>

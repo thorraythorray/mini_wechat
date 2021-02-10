@@ -1,0 +1,80 @@
+.mod-item{
+  width:46%;
+  float: left;
+  margin-left:20rpx;
+  margin-top:40rpx;
+  position: relative;
+ }
+ .mod-signup{
+   position: absolute;
+ }
+ .mod-signup image{
+   width:76rpx;
+   height:42rpx;
+ }
+ .mod-img{
+   width:100%;
+   height:180rpx;
+ } 
+ .mod-image{
+   width: 100%;
+   height:190rpx;
+ }
+ .mod-title{
+   font-family: '微软雅黑';
+   display:flex;
+   font-size: 14px;
+   margin-top:12rpx;
+   flex-direction:column;
+   justify-content: center;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+   margin-top:5px;
+ }
+ .mod-info{
+   display: flex;
+   flex-direction: column;
+   height:40rpx;
+ }
+ .mod-icon{
+   display: flex;
+   flex-direction: row;
+   width: 40rpx;
+   height: 40rpx;
+ }
+ .icon{
+   width: 40rpx;
+   height: 40rpx;
+ }
+ .moinfont{
+   font-size: 28rpx;
+   text-indent: 60rpx;
+   font-family: '微软雅黑';
+   color:#bfbfbf;
+ }
+ 
+ .more-info{
+   display: flex;
+   flex-direction: column;
+   font-size:32rpx;
+   font-family: '微软雅黑';
+   line-height: 98rpx;
+   text-indent: 30rpx;
+   color:#586C94;
+ }
+
+ .module_title{
+   background-color: #4ec4c8;
+   font-size: 15px;
+   padding:10px;
+   color:white;
+ }
+
+ .appointment {
+  height: 342px;
+  background: ghostwhite;
+  margin-bottom: 10px;
+}
+
+ 

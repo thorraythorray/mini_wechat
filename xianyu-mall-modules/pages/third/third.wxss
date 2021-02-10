@@ -1,0 +1,22 @@
+/* pages/forth/forth.wxss */
+.user{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.usergetimage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar{
+  border-radius: 128rpx;
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 10rpx;
+}
+.userinfo-nickname {
+  margin-top: 40rpx;
+  font-size: 38rpx;
+}

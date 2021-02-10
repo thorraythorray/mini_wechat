@@ -1,0 +1,48 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="section" style="display: flex; justify-items: center; align-items: center; padding: 5px; font-size:small;">
+        <input class="search_ipt" style="width:100%;background: gainsboro;" bindinput="bindReplaceInput"  placeholder="请输入查找的正确名称" value="{{keywords}}"/>
+        <!-- <button size="small" type="primary" style="width:15%; height:70%;margin-top: 0px;font-size: 27rpx;">find</button> -->
+    </view>
+    <view class='search_list' wx:if="{{is_show == true}}">
+        <view class='search_item' wx:for="{{detail}}" wx:key="{{item}}" data-rid="{{item.id}}" bindtap='bindNameDeatail' data-se_name="{{item.name}}" data-seah_name='{{seah_name}}'>
+            <view class='ser_name'>{{item.name}}</view>
+            <view class='ser_name_detail'>{{item.name_details}}</view>
+        </view>
+    </view>
+    <view wx:else>
+        <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+            <block wx:for="{{images}}" wx:for-item="item">
+                <swiper-item>
+                    <image src="{{item.picurl}}" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class="text">
+        <view class="line_flag"></view>
+        <text>为您推荐</text>
+    </view>
+    
+    <view class="venues_box">
+        <view class="venues_list">
+            <block wx:for="{{prodItems}}" wx:for-item="item">
+                <view class="venues_item" >
+                    <view>
+                        <navigator url="../details/index?id={{item.id}}">
+                            <image src="{{item.imageUrl}}"/>
+                        </navigator>
+                    </view>
+                    <view style="font-size: small;text-align: center; overflow:hidden;text-overflow:ellipsis;">{{item.name}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
+
+    <loading hidden="{{loadingHidden}}">
+        加载中...
+    </loading>
+
+</view>

@@ -1,0 +1,83 @@
+<view wx:if="{{emptycart == 0}}">
+	<view class="cart-item" >
+ 
+		<!-- 商品列表部分布局 -->
+ 
+		<view class="item-box item-goods" wx:for="{{cartList}}" wx:for-index="idx" wx:for-item="goods"> 		
+				<view class="goods-info">
+				<!-- <navigator url="../details/index?id={{goods.product.id}}"> -->
+				<view>
+					<image wx:if="{{goods.product.imageUrl}}" src="{{goods.product.imageUrl}}" class="good_image" mode="widthFix"></image>
+				</view>
+				<!-- </navigator> -->
+
+				<!-- 商品信息部分布局 -->
+				<view class="goods-info-details">
+ 
+					<view>
+						<view class="good_name">{{goods.product.name}}</view>
+	
+							<!-- <view style="margin-top:10rpx;">
+								<text class="goods-desc">静音自动摇头上下<text class="down"/></text>
+							</view> -->
+						</view>
+	
+						<!-- 商品价格、数量布局 -->
+						<view class="goods-price-quantity">
+							<view>
+								<text>￥{{goods.product.price}}</text>
+							</view>
+	
+							<view class="goods-quantity-switch-box">
+	
+								<view class="goods-quantity-show" bind:tap="showUpdateQuantityDialog">
+									<view class="goods-quantity-boder goods-quantity-update">
+										<text class="quantity-minus-box" bindtap="minus"  data-goodsid="{{goods.product.id}}" >-</text>
+										<text class="quantity_update-box">{{goods.productCount}}</text>
+										<text class="quantity-pluse-box" bindtap="pluse" data-goodsid="{{goods.product.id}}" >+</text>
+									</view>
+									<icon style="margin-left:10rpx;" type="cancel" color="red" data-goodsid="{{goods.product.id}}" data-ids="{{ids}}" bind:tap="hideUpdateQuantity"></icon>
+								</view>
+	
+							</view>
+	
+						</view>
+	
+					</view>
+	
+				</view>
+			
+			<!-- </view> -->
+ 
+		</view>
+ 
+	</view>
+ 
+	<view style="height:120rpx"></view>
+ 
+	<view class="cart-footer">
+		<view style="height:1rpx;background-color:#f5f5f5"></view>
+		<view class="cart-footer-box">
+			<view>
+				<icon wx:if="{{hasAllSelected}}" type="success" color="red" class="total-select" bindtap="selectAll" />
+				<icon wx:else type="circle" color="gray" class="total-select" bindtap="selectAll" />
+			</view>
+			<view>
+				<text class="total-text">合计:<text class="cart-toatl-price">￥{{totalPrice}}</text></text>
+				<text class="settlement-text" bind:tap="goToOrderSubmit">结算</text>
+			</view>
+		</view>
+ 
+	</view>
+ 
+ 
+ 
+</view>
+ 
+<block wx:else>
+	<view class="catnone">
+		<image src="../../images/cart-null.png" mode="widthFix"></image>
+		<view class="catnone-text">您的购物车还是空的，快去买买买吧!</view>
+	</view>
+
+</block>

@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#dddcff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar",
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  }
+}

@@ -1,0 +1,55 @@
+<view class ='contain'> 
+
+  <!--item上部分-->
+  <view class="item-top">
+    <view class="teachTitleView">{{teachTitle}}</view>
+  </view>
+
+  <!--必修一菜单部分-->
+  <view class="container">
+    <view class="page_bd">
+
+      <view wx:for="{{cell}}">
+        <view class="body_head">
+          <view class="textBgView"><text class="titleText">{{item.title}}</text></view>
+          <view class="textView"><text class="subtitleText">{{item.subtitle}}</text></view>
+          <view style="display:flex; margin-top:8px;">
+            <button style="width:30%" data-url="../../ppt/unit1.ppt" data-type="ppt" data-name="{{item.title}}" catchtap='watchppt' data-id="{{item.id}}">课件</button>
+            <button style="width:30%" data-url="../../video/unit1.mp4" data-type="video" data-name="{{item.title}}" catchtap='watchvideo'>微课</button>
+            <button style="width:30%" data-url="../../audio/unit1.mp3" data-type="audio" data-name="{{item.title}}" catchtap='listenaudio'>阅读</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <modal hidden="{{hidden}}" title="{{resource_name}}" confirm-text="关闭" bindconfirm="clsoeModal" no-cancel="true">
+    <view wx:if="{{resource_type == 'video'}}" style="display:flex;justify-content: center;">
+      <video src="{{video_url}}"></video>
+    </view>
+    <view wx:else>
+      <!-- audio.wxml -->
+      <view class='audiosBox' style="justify-content: center;">
+        <view class="audioOpen1" bindtap="listenerButtonPlay" wx:if="{{!isOpen}}">
+          <image class='image2' src="../../image/play.png" style="width: 42px;height: 42px;"/>
+        </view>
+        <view class="audioOpen1" bindtap="listenerButtonPause" wx:if="{{isOpen}}">
+          <image src="../../image/pauses.png" style="width: 42px;height: 42px;"/>
+        </view>
+        <!-- <view class='slid'>
+          <slider bindchange="sliderChange"  block-size="12px" step="2" value="{{offset}}" max="{{max}}" selected-color="#4c9dee" />
+          <view>
+            <text class='times'>{{starttime}}</text> 
+          
+            <text class='times'>{{duration}}</text>  
+          </view>
+        </view> -->
+      </view>
+    <!-- <audio  src="{{audio_url}}" id="myAudio" ></audio>
+    <view style="dispaly:flex; ">
+      <button type="primary" bindtap="audioPlay" size="small" style="font-size:small">播放</button>
+      <button type="primary" bindtap="audioPause" style="font-size:small">暂停</button>
+      <button type="primary" bindtap="audio14" style="font-size:small">设置当前播放时间为14秒</button>
+    </view> -->
+    </view>
+  </modal>
+</view>

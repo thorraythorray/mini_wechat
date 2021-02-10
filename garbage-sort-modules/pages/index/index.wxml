@@ -1,0 +1,38 @@
+<view class='nav-wrap' style='height: {{height*2 + 30}}px;'>
+  <view class='nav-title' style='line-height: {{height*2 + 44}}px;'>垃圾分类引导指南</view>
+  <view style='display: flex; justify-content: space-around;flex-direction: column'>
+    <view class='nav-capsule' style='height: {{height*2 + 44}}px;'>
+      <!-- <view bindtap='bindLocation' style="display: flex;flex-direction: row;align-items: center;">
+        <text style="font-size: 30rpx;">{{name}}</text>
+        <image src='../../images/location.png' mode='aspectFill' class='back-pre'></image>
+      </view> -->
+    </view>
+  </view>
+</view>
+<view class="container" style='margin-top: {{height*2+30}}px'>
+  <view class="section" style="display: flex; justify-items: center; align-items: center;">
+    <input class="search_ipt" style="width:100%" bindinput="bindReplaceInput"  placeholder="请输入查找的正确名称" value="{{keywords}}"/>
+    <!-- <button size="small" type="primary" style="width:15%; height:70%;margin-top: 0px;font-size: 27rpx;">find</button> -->
+  </view> 
+
+  <view class='contents' wx:if="{{is_show == false}}">
+    <text class='title'>热门搜索</text>
+    <view class='hot_list'>
+      <text wx:for="{{hot_list}}" wx:key="{{item}}" data-rid='{{item.rid}}' bindtap='bindNameDeatail' data-se_name="{{item.name}}" data-seah_name='{{item.name}}'>{{item.name}}</text>
+    </view>
+  </view>
+  <view class='search_list' wx:if="{{is_show == true}}">
+    <view class='search_item' wx:for="{{detail}}" wx:key="{{item}}" data-rid="{{item.id}}" bindtap='bindNameDeatail' data-se_name="{{item.name}}" data-seah_name='{{seah_name}}'>
+        <view class='ser_name'>{{item.name}}</view>
+        <view class='ser_name_detail'>{{item.name_details}}</view>
+    </view>
+  </view>
+  <view class="content"  wx:if="{{is_show == false}}">
+    <view class='rubbish' wx:for="{{rubbish_list}}" wx:for-index="idx" wx:key="{{item}}">
+      <image src='../../images/{{item.name_sx}}.png' bindtap="changeDetail" data-rid="{{idx+1}}" mode="widthFix" data-id="{{item.id}}"></image>
+    </view>
+    <view class='desc'>
+      垃圾分类问题，请输入关键词在上方检索！
+    </view>
+  </view>
+</view>

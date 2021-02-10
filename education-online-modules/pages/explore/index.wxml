@@ -1,0 +1,28 @@
+<view class ='contain'> 
+
+<!--item上部分-->
+<view class="item-top">
+  <view class="teachTitleView">{{teachTitle}}</view>
+</view>
+
+  <!--教学资源cell-->
+  <block wx:for-items="{{cell}}" wx:key="item.id"> 
+
+ <!--列表背景View-->
+ <view class="item">
+   <navigator url="../detail/index" class="item">
+    <!--item左部分-->
+    <view  class="item-left"> 
+      <image class="teachImage" src="{{item.image}}"/>
+    </view>
+  <!--item右部分-->
+    <view class="item-right">
+      <view class="textBgView"><text class="titleText">{{item.title}}</text> </view>
+      <view class="textView"> <text class="subtitleText">{{item.subtitle}}</text></view>
+    </view>
+  </navigator>
+ </view>
+
+ </block>
+ 
+  </view>

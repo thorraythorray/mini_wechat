@@ -1,0 +1,35 @@
+<view wx:if="{{act_type == 'create'}}" style="height:100%">
+    <form bindsubmit="onSubmit">
+        <view class="container">
+            <view class='title'><input name="title" placeholder-class="placeholder" placeholder="在此输入标题" value="" /></view>
+            <view class='row' catchtap="onFocus">
+                <textarea class='text' maxlength="5000" auto-height="true" placeholder-class="placeholder"  name="content" focus="{{focus}}" auto-focus="true" value="" placeholder="点击添加文本" />
+            </view>
+            <view class='bottom'>
+                <button formType="submit" class='btn success'>保存</button>
+            </view>
+        </view>
+    </form>
+</view>
+<view wx:else style="height:100%">
+    <form bindsubmit="onEditSubmit" bindreset="">
+        <view class="container">
+            <input name="key" value="{{note.id}}" style="display:none"></input>
+            <view class='title'>
+                <input name="title" placeholder-class="placeholder" placeholder="在此输入标题" value="{{note.title}}" />
+            </view>
+            <view class='row' catchtap="onFocus">
+                <textarea  class='text' value="{{note.content}}" maxlength="5000" auto-height="true"
+                placeholder-class="placeholder"
+                name="content" focus="{{focus}}" auto-focus="true"  placeholder="点击添加文本"   />
+            </view>
+            <view class='date placeholder'>
+                {{ item.update_date }}
+            </view>
+            <view class='bottom'>
+                <button formType="submit" class='btn success'>保存</button>
+                <button class='btn del' bindtap="onDelete" data-key="{{note.id}}">删除</button>
+            </view>
+        </view>
+    </form>
+</view>

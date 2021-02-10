@@ -1,0 +1,34 @@
+<!--pages/login.wxml-->
+<view class="container"> 
+ 
+ <form class="login-from" bindsubmit="profileSubmit" style="width:100%"> 
+   <view class="loginLab"> 
+     <!-- <image class="nameImage" src="/images/name.png"></image>  -->
+     <label class="usernmae">新用户名:</label> 
+     <input name="usernmae" placeholder="不修改请不要填写" /> 
+   </view> 
+   <view class="line"></view> 
+   <view class="loginLab"> 
+     <!-- <image class="nameImage" src="/images/name.png"></image>  -->
+     <label class="location">新地址:</label> 
+     <input name="location" placeholder="不修改请不要填写" /> 
+   </view> 
+   <view class="line"></view> 
+   <view class="loginLab"> 
+     <!-- <image class="nameImage" src="/images/name.png"></image>  -->
+     <label class="passwd">新密码:</label> 
+     <input name="passwd" type="password" placeholder="不修改请不要填写" /> 
+   </view> 
+   <view class="line"></view> 
+   <!--按钮-->
+   <view class="loginBtnView"> 
+    <button form-type="submit" type="primary" class="submit_btn">确认修改</button>
+   </view>
+
+  </form> 
+
+</view>
+
+<view class = 'success' wx:if="{{success}}">
+ <web-view src="{{text}}"></web-view>
+</view>
