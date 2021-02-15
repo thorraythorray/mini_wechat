@@ -28,8 +28,8 @@
   <view class='title'>
     <view class='title_text'>
       <text>商品类别:</text>
-      <picker name="category" mode="selector" range="{{category}}" range-key="title" value="{{categoryInd}}" bindchange="category">
-        <input data-id='{{category[categoryInd].categoryID}}' name="category" type='text' value='{{category[categoryInd].title}}' disabled='true'></input>
+      <picker name="category" mode="selector" range="{{category}}" range-key="title" value="{{index}}" bindchange="categoryyyyy">
+        <input data-id='{{categoryInd}}' name="category" type='text' value='{{categoryTitle}}' disabled='true'></input>
       </picker>
        <span class='icon iconfont icon-weibiaoti34'></span>
     </view>
@@ -60,31 +60,29 @@
   <!--上传图片-->
   <view class='upImv'>
  
-    <view class='upImv_text'>轮播图片上传</view>
+    <!-- <view class='upImv_text'>轮播图片上传</view>
     <view class="addImv">
-      <!--这个是已经选好的图片-->
       <view wx:for="{{banner}}" wx:key="key" class="upFile" bindtap="showImageBanner" style="border-radius: 5px" data-id="{{index}}">
         <image class="itemImv" src="{{item}}"></image>
-        <image class="closeImv" src="../../resources/images/delect.png" mode="scaleToFill" catchtap="deleteImvBanner" data-id="{{index}}"></image>
+        <image class="closeImv" src="../../images/delete.png" mode="scaleToFill" catchtap="deleteImvBanner" data-id="{{index}}"></image>
       </view>
  
-      <!--这个是选择图片-->
       <view class="chooseView" bindtap="chooseBanner" style="border-radius: 5px" wx:if="{{chooseViewShowBanner}}">
-        <image class="chooseImv" src="../../resources/images/add.png"></image>
+        <image class="chooseImv" src="../../images/add.png"></image>
       </view>
-    </view>
+    </view> -->
  
-    <view class='upImv_text'>详情图片上传</view>
+    <view class='upImv_text'>商品图片上传</view>
     <view class="addImv">
       <!--这个是已经选好的图片-->
       <view wx:for="{{detail}}" wx:key="key" class="upFile" bindtap="showImageDetail" style="border-radius: 5px" data-id="{{index}}">
         <image class="itemImv" src="{{item}}"></image>
-        <image class="closeImv" src="../../resources/images/delect.png" mode="scaleToFill" catchtap="deleteImvDetail" data-id="{{index}}"></image>
+        <image class="closeImv" src="../../images/delete.png" mode="scaleToFill" catchtap="deleteImvDetail" data-id="{{index}}"></image>
       </view>
  
       <!--这个是选择图片-->
       <view class="chooseView" bindtap="chooseDetail" wx:if="{{chooseViewShowDetail}}">
-        <image class="chooseImv" src="../../resources/images/add.png"></image>
+        <image class="chooseImv" src="../../images/add.png"></image>
       </view>
     </view>
  

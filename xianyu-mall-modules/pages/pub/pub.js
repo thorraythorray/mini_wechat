@@ -19,13 +19,50 @@ Page({
     }],
     state: [{
       name: "下架",
-      id: 0
+      id: 11
     }, {
       name: "上架",
-      id: 1
+      id: 99
     }],
     productID: 0,
-    category: [],
+    category: [
+      {
+        title: "书籍",
+        categoryID: 0
+      },
+      {
+        title: "文具",
+        categoryID: 1
+      },
+      {
+        title: "美妆",
+        categoryID: 2
+      },
+      {
+        title: "服装",
+        icategoryID: 3
+      },
+      {
+        title: "鞋包",
+        categoryID: 4
+      },
+      {
+        title: "饰品",
+        categoryID: 5
+      },
+      {
+        title: "智能设备",
+        categoryID: 6
+      },
+      {
+        title: "办公用品",
+        categoryID: 7
+      },
+      {
+        title: "百货海淘",
+        categoryID: 8
+      }
+    ],
     categoryInd: -1, //类别
     typeInd: 0, //类型
     stateInd: 1, //状态
@@ -45,15 +82,16 @@ Page({
       check: false,
     },
     dis: false,
+    choose_images: []
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      productID: options.productID
-    })
-    this.getCategory();
+    // this.setData({
+    //   productID: options.productID
+    // })
+    // this.getCategory();
   },
   /**
    * 获取标题
@@ -114,33 +152,16 @@ Page({
   /**
    * 商品类别
    */
-  category(e) {
-    this.setData({
-      categoryInd: e.detail.value
+  categoryyyyy(e) {
+    console.log("eeeeee",e)
+    var that = this;
+    var selectCate = parseInt(e.detail.value);
+    that.setData({
+      categoryInd: that.data.category[selectCate].categoryID,
+      categoryTitle: that.data.category[selectCate].title,
     })
   },
-  /**
-   * 获取商品类别
-   */
-  getCategory() {
-    let params = {}
-    app.getCategoryList(params).then(res => {
-      var good = []
-      var g_type = res.data.categories[0].children //从接口中获取商品类别
-      for (var i = 1; i < g_type.length; i++) { //从下标为1开始循环，不显示全部
-        good[i - 1] = g_type[i] //将循环出来的数组，循环放入good中
-      }
-      this.setData({
-        category: good
-      })
-      if (this.data.productID != 0) { //防止先调用详情方法而不显示类别
-        if (res.state === 1) {
-          this.getProductDetail();
-        }
-      }
-    })
-  },
- 
+
   /**获取商品详情 */
   getProductDetail() {
     let params = {
@@ -268,13 +289,13 @@ Page({
         duration: 1000,
         mask: true,
       })
-    } else if (that.data.banner.length === 0) {
-      wx.showToast({
-        title: '请选择轮播图片',
-        icon: "none",
-        duration: 1000,
-        mask: true,
-      })
+    // } else if (that.data.banner.length === 0) {
+    //   wx.showToast({
+    //     title: '请选择轮播图片',
+    //     icon: "none",
+    //     duration: 1000,
+    //     mask: true,
+    //   })
     } else if (that.data.detail.length === 0) {
       wx.showToast({
         title: '请选择详情图片',
@@ -283,33 +304,25 @@ Page({
         mask: true,
       })
     } else {
+      var pubList = wx.getStorageSync('pub_list');
+      var pub_cnt = pubList.length;
       let params = {
-        userID: app.globalData.userID,
-        productID: that.data.productID,
-        title: e.detail.value.title,
+        item_id: pub_cnt,
+        name: e.detail.value.title,
         price: e.detail.value.price,
-        info: e.detail.value.info,
-        point: e.detail.value.point,
-        categoryID: that.data.category[that.data.categoryInd].categoryID,
-        productType: that.data.type[that.data.typeInd].id,
-        state: that.data.state[that.data.stateInd].id
+        images: that.data.detailNew,
+        info: [e.detail.value.info],
+        categoryID: that.data.categoryInd,
+        state: that.data.stateInd
       }
-      wx.showModal({
-        title: '提示',
-        content: '确定发布商品',
-        success(res) {
-          if (res.confirm) {
-            if (that.data.productID != 0) {
-              that.sureEdit(params); //编辑
-            } else {
-              that.sureRelease(params); //发布
-            }
-            that.setData({
-              dis: true,
-            })
-          }
-        }
-      })
+      console.log("new pub info", params)
+      if (pub_cnt > 0){
+        var pubListSerial = JSON.parse(pubList);
+      }else{
+        var pubListSerial = []
+      }
+      pubListSerial.push(params)
+      wx.setStorageSync('pub_list', JSON.stringify(pubListSerial))
     }
   },
  
@@ -702,21 +715,6 @@ Page({
             checkUp: false
           })
           that.chooseViewShowDetail();
- 
-          if (that.data.productID != 0) {
-            let params = {
-              productID: that.data.productID,
-              isBanner: false,
-              index: -1,
-            }
-            app.deleteProductImage(params).then(res => {
-              //判断不为空防止将原有图片全删除后文件夹名返回空
-              if (res.data.fileContent !== "" && res.data.fileBanner !== "") {
-                that.data.params.contentFile = res.data.fileContent
-                that.data.params.bannerFile = res.data.fileBanner
-              }
-            })
-          }
         }
       })
     } else {
@@ -745,17 +743,6 @@ Page({
               checkUp: false
             })
             that.chooseViewShowDetail();
-            let params = {
-              productID: that.data.productID,
-              isBanner: false,
-              index: itemIndex,
-            }
-            app.deleteProductImage(params).then(res => {
-              if (res.data.fileContent !== "" && res.data.fileBanner !== "") {
-                that.data.params.contentFile = res.data.fileContent
-                that.data.params.bannerFile = res.data.fileBanner
-              }
-            })
           }
         }
       })

@@ -10,7 +10,7 @@
 
   <view class="cate">
     <view class="cate-item" wx:for="{{cateInfo}}">
-      <navigator url="/pages/detail/detail?id={{item.id}}" style="width:100%;">
+      <navigator url="/pages/detail/detail?id={{item.id}}&type=index" style="width:100%;">
         <view class="item-group">
           <image src="{{item.icon}}"> </image>
           <text>{{item.name}}</text>

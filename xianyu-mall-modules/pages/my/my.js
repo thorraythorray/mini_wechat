@@ -10,17 +10,17 @@ Page({
       items:[
         {
           text:'我的发布',
-          url: "../pub/pub"
+          url: "../pubInfo/detail"
         },
 
         {
           text:'我的收藏',
-          url: "../collect/collect"
+          url: "../collect/detail"
         },
 
         {
           text:'我的交易',
-          url: "../trade/trade"
+          url: "../trade/detail"
         },
         
         {
@@ -37,17 +37,5 @@ Page({
       userInfo: userInfo,
       wx_atuhorize: true
     })
-
-  },
-
-  logining(e) {
-    var that = this
-    console.log('click login------',e);
-    app.globalData.userInfo = e.detail.userInfo
-    that.setData({
-      userInfo: e.detail.userInfo,
-      wx_atuhorize: true
-    })
-
   }
 })

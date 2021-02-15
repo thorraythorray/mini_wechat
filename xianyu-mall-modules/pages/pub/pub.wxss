@@ -101,7 +101,7 @@ page {
 .addImv .upFile .itemImv {
   width: 180rpx;
   height: 180rpx;
-  padding: 0rpx 7rpx;
+  padding: -1rpx 7rpx;
 }
  
 .addImv .upFile .closeImv {

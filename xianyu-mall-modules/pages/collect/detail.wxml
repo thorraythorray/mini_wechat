@@ -1,6 +1,5 @@
 <!--pages/detail/detail.wxml-->
 <view class="container">
-  <!-- <view class="cate-title">分类列表</view> -->
   <view class="part-group">
     <view wx:for="{{cate}}" style="width:100%">
       <navigator class="view_tupian_wenzi" url="../item/item?itemId={{item.item_id}}">

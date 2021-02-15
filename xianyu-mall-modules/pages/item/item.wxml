@@ -3,8 +3,8 @@
         <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
                 autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
             <!-- <block wx:for="{{prodInfo}}"> -->
-                <swiper-item>
-                    <image src="../../images/baihuo2.jpg" class="slide-image"/>
+                <swiper-item wx:for="{{itemPics}}">
+                    <image src="{{item}}" class="slide-image"/>
                 </swiper-item>
             <!-- </block> -->
         </swiper>
@@ -15,7 +15,7 @@
             <image src="../../images/bq3.png"></image>
             <label for="" style="font-weight: 600;">咸德诞腾</label>
             <label for="" >发布</label>
-            <button class="mini-btn" type="info" size="mini" bindtap="contactBuy" data-id="{{prodInfo.id}}">联系商家</button>
+            <button class="mini-btn" type="warn" size="mini" bindtap="contactBuy" data-id="{{prodInfo.id}}">联系商家</button>
         </view>
         <view class="info">
             <view class="title">{{cateItemInfo.name}}</view>
@@ -23,9 +23,14 @@
                 <view class="reason">{{item}}</view>
             </view>
         </view>
-        <view class="add_buy">
+        <!-- <view class="add_buy">
             <button class="mini-btn" type="warn" size="mini" bindtap="addCollect" data-id="{{prodInfo.id}}">收藏</button>
+        </view> -->
+        <view class='share_btn'>
+            <image src='../../images/yes.png' mode="widthFix"></image>
+            <text>收藏</text>
         </view>
+        <button size="small" bindtap="collect_it" class='share_btyn' data-id="{{cateItemInfo.item_id}}"></button>
     </view>
     <view>
         <view></view>

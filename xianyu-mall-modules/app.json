@@ -5,7 +5,11 @@
     "pages/detail/detail",
     "pages/item/item",
     "pages/my/my",
+    "pages/collect/detail",
     "pages/pub/pub",
+    "pages/pubInfo/detail",
+    "pages/trade/detail",
+
 
     "pages/second/second",
     "pages/wofabude/wofabude",
