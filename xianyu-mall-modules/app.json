@@ -6,15 +6,12 @@
     "pages/item/item",
     "pages/my/my",
     "pages/collect/detail",
-    "pages/pub/pub",
     "pages/pubInfo/detail",
     "pages/trade/detail",
-
-
-    "pages/second/second",
-    "pages/wofabude/wofabude",
-    "pages/wohuandaode/wohuandaode",
-    "pages/wodexiaoxi/wodexiaoxi"
+    "pages/pub/pub",
+    "pages/search/search",
+    "pages/edit/pub",
+    "pages/message/message"
   ],
   "window": {
     "navigationBarTitleText": "师小淘",
@@ -36,7 +33,7 @@
         "selectedIconPath": "images/home.png"
       },
       {
-        "pagePath": "pages/second/second",
+        "pagePath": "pages/search/search",
         "text": "搜索",
         "iconPath": "images/find.png",
         "selectedIconPath": "images/find_active.png"

@@ -1,5 +1,6 @@
 // pages/item/item.js
 const app = getApp();
+const common = require("../../common.js")
 Page({
 
   /**
@@ -16,16 +17,19 @@ Page({
     console.log('options', options)
     var that = this;
     var itemId = options.itemId;
-    var targetCate = app.globalData.cateInfo;
-    for (var i in targetCate){
-      var targetItem = targetCate[i].items;
-      for (var j in targetItem){
-        if (targetItem[j].item_id == parseInt(itemId)){
-          that.setData({
-            cateItemInfo: targetItem[j],
-            itemPics: [targetItem[j].src]
-          })
+    var targetCate = common.allProds();
+    for (var j in targetCate){
+      console.log("targetCatetargetCatetargetCate", targetCate[j])
+      if (targetCate[j].item_id == parseInt(itemId)){
+        if (targetCate[j].images){
+          var itemPics = targetCate[j].images;
+        }else{
+          var itemPics = [targetCate[j].src];
         }
+        that.setData({
+          cateItemInfo: targetCate[j],
+          itemPics: itemPics
+        })
       }
     }
   },
@@ -64,6 +68,13 @@ Page({
       title: message,
       icon: 'none',
       duration: 2000
+    })
+  },
+
+  contactBuy: function(){
+    wx.showToast({
+      title: '已联系商家！',
+      icon:"success"
     })
   },
 

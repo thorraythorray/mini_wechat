@@ -1,0 +1,147 @@
+.nav_search{
+  width: 100vw;
+  padding: 10px 15px;
+  height: 56px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.nav_search .input_panel {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background: #F5F5F5;
+  border-radius: 20px;
+  height: 36px;
+  padding: 0 10px 0 20px;
+  color: #999;
+  width: 120%;
+}
+
+.nav_search .input_panel ns-input {
+  font-size: 13px;
+  padding-left: 10px;
+  flex-grow: 1;
+  color: #333;
+}
+
+.nav_search .search{
+  font-size: 14px;
+  color:skyblue;
+  padding-left: 15px;
+}
+
+
+.nav_search .cancle{
+  font-size: 14px;
+  color: #333333;
+  padding-left: 15px;
+}
+.nav_search .cancle:active{
+  opacity: 0.7
+}
+.search_history_lists{
+  position: fixed;
+  left: 0;
+  top: 56px;
+  width: 100%;
+  background-color:#fff;
+  padding: 0 15px;
+  box-sizing: border-box;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.search_history_lists .title{
+  height: 14px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bolder;
+  color: #333333;
+}
+
+.search_history_lists .searchRecord{
+
+  margin-top:22px; 
+  font-size: 14px;
+  color: #666666;
+  line-height: 14px;
+  background: #FFFFFF;
+  width: 100%;
+}
+
+.search_history_lists .clearHistory{
+  margin-top: 20px;
+  color: red;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+
+.search_list {
+  width: 100%;
+  padding-bottom: 30rpx;
+  font-size: 25rpx;
+  min-height: 850rpx;
+  margin-top: 50px;
+  position: fixed;
+  top: 1%;
+
+  /* background: #eee; */
+}
+
+.search_item {
+  width: 90%;
+  margin: 10rpx auto;
+  padding: 15rpx;
+  background: #fff;
+  display: block;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+
+.ser_name {
+  float: left;
+  width: 100%;
+}
+
+.ser_name_detail {
+  float: right;
+}
+
+
+.sliderView{
+  position: relative;
+  width: 93%;
+  margin: 0 15rpx
+}
+.left{
+  position: absolute;
+  width: 90%
+}
+.right{
+  position: absolute;
+  width: 90%
+}
+
+.sliderView1{
+  display: flex;
+  margin-top:10px;
+}
+
+.sliderView1 input{
+  border: 1px solid #eee;
+  width: 40%;
+}

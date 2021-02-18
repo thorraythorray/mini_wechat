@@ -20,7 +20,7 @@ Page({
     }],
     state: [{
       name: "下架",
-      id: 11
+      id: 0
     }, {
       name: "上架",
       id: 1
@@ -89,10 +89,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // this.setData({
-    //   productID: options.productID
-    // })
-    // this.getCategory();
+    var that = this;
+    var editItem = parseInt(options.itemId);
+    var allProds = common.allProds();
+    for (var i in allProds){
+      if(allProds[i].item_id == editItem){
+        var editProd = allProds[i];
+        if (editProd.state == 1){
+          var stateInd = 1
+        }else{
+          var stateInd = 0
+        }
+        that.setData({
+          item_id: editProd.item_id,
+          title: editProd.name,
+          price: editProd.price,
+          detail: editProd.images,
+          detailNew: editProd.images,
+          info: editProd.info[0],
+          categoryInd: that.data.category[editProd.categoryID].categoryID,
+          categoryTitle: that.data.category[editProd.categoryID].title,
+          stateInd: stateInd
+        })
+      }
+    }
   },
   /**
    * 获取标题
@@ -147,7 +167,7 @@ Page({
    */
   state(e) {
     if (e.detail.value == "0"){
-      var stateInd = 11;
+      var stateInd = 0;
     }else{
       var stateInd = 1;
     }
@@ -165,66 +185,6 @@ Page({
     that.setData({
       categoryInd: that.data.category[selectCate].categoryID,
       categoryTitle: that.data.category[selectCate].title,
-    })
-  },
-
-  /**获取商品详情 */
-  getProductDetail() {
-    let params = {
-      userID: app.globalData.userID,
-      productID: this.data.productID
-    }
-    app.getReleaseProductDetail(params).then(res => {
-      let product = res.data.productDetail[0]
-      if (product.state) {
-        this.setData({
-          stateInd: 1
-        })
-      } else {
-        this.setData({
-          stateInd: 0
-        })
-      }
- 
-      let categoryInd = -1;
-      for (var i = 0; i < this.data.category.length; i++) {
-        if (this.data.category[i].categoryID === product.categoryID) {
-          categoryInd = i
-          break;
-        } else {
-          categoryInd: -1;
-        }
-      }
- 
-      if (product.bannerImages.length >= 2) {
-        this.setData({
-          chooseViewShowBanner: false
-        })
-      } else {
-        this.setData({
-          chooseViewShowBanner: true
-        })
-      }
- 
-      if (product.detailImages.length >= 3) {
-        this.setData({
-          chooseViewShowDetail: false
-        })
-      } else {
-        this.setData({
-          chooseViewShowDetail: true
-        })
-      }
-      this.setData({
-        title: product.title,
-        info: product.info,
-        point: product.point,
-        typeInd: product.productType,
-        price: product.currentPrice,
-        banner: product.bannerImages,
-        detail: product.detailImages,
-        categoryInd: categoryInd
-      })
     })
   },
  
@@ -311,9 +271,8 @@ Page({
       })
     } else {
       var pubList = wx.getStorageSync('pub_list');
-      var pub_cnt = pubList.length;
       let params = {
-        item_id: pub_cnt + 99,
+        item_id: that.data.item_id, 
         name: e.detail.value.title,
         price: e.detail.value.price,
         images: that.data.detailNew,
@@ -322,10 +281,15 @@ Page({
         state: that.data.stateInd
       }
       console.log("new pub info", params)
-      if (pub_cnt > 0){
+      if (pubList.length > 0){
         var pubListSerial = JSON.parse(pubList);
       }else{
         var pubListSerial = []
+      }
+      for (var i in pubListSerial){
+        if (pubListSerial[i].item_id == params.item_id){
+          pubListSerial.splice(i, 1)
+        } 
       }
       pubListSerial.push(params)
       wx.setStorageSync('pub_list', JSON.stringify(pubListSerial))
@@ -333,7 +297,6 @@ Page({
         title: '发布成功！',
         icon: 'success'
       })
-
       setTimeout(function(){
         wx.navigateTo({
           url: '../pubInfo/detail',

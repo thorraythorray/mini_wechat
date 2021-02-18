@@ -42,7 +42,7 @@ swiper-item image {
 }
 
 .cate-item {
-  width: 32.8%;
+  width: 31.8%;
   height: 128px;
   border: 1px solid #eee;
   align-items: center;

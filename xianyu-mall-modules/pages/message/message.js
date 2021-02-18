@@ -1,14 +1,41 @@
-// pages/wohuandaode/wohuandaode.js
+// pages/message/message.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hasUserInfo: false,
-    // avatarUrl: '../../asset/image/pp.png',
-    // item:'未获取头像昵称'
+
+    news:[{
+ 
+      id:1,
+ 
+      title:'请问宝贝还在吗？',
+ 
+      imgurl:'../../images/bq3.png',
+ 
+      author:'我',
+ 
+      date:'2019-6-27 20:08'
+ 
+    }
+  ]
   },
+    // {
+ 
+    //   id: 2,
+ 
+    //   title: '第二条新闻',
+ 
+    //   imgurl:'../../images/bq3.png',
+ 
+    //   author: '李四',
+ 
+    //   date: '2019-6-25 10:10'
+ 
+    // }]
+ 
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -16,15 +43,7 @@ Page({
   onLoad: function (options) {
 
   },
-  //获取用户信息
-  getUserInfo(info) {
-    const userInfo = info.detail.userInfo
-    this.setData({
-      userInfo: info.detail.userInfo,
-      hasUserInfo: true,
-      // item:'已获取头像昵称'
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

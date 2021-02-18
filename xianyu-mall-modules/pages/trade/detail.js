@@ -1,4 +1,5 @@
 const app = getApp()
+const common = require("../../common.js")
 // pages/detail/detail.js
 Page({
 
@@ -14,13 +15,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var display_content = ""
-    var has_traded = wx.getStorageSync('trade_list')
-    if (has_traded){
-      display_content = JSON.parse(has_traded)
-    }
+    var has_pubbed = common.getOffSaleProducts()
     that.setData({
-      cate: display_content,
+      cate: has_pubbed,
     })
   },
 

@@ -7,6 +7,8 @@
       <image class="images" src="{{item.src}}"/>
       <view class="view_wenzi2 text_small">
         <text class="title">{{item.name}}</text>
+        <text class="title" style="color:#ff0f0f" wx:if="{{item.state == 0}}">已交易</text>
+        <text class="title" style="color:#169bb9" wx:else>上架中</text>
         <text wx:for="{{item.info}}">{{item}}</text>
       </view>
     </navigator>

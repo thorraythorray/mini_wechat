@@ -1,4 +1,5 @@
 const app = getApp()
+var common = require("../../common.js")
 // pages/detail/detail.js
 Page({
 
@@ -9,37 +10,6 @@ Page({
     
   },
 
-  disPlay: function(options){
-    var display_content = ""
-    var type = options.type;
-    if (type == "index"){
-      var id = options.id;
-      var targ_cate = app.globalData.cateInfo;
-      for (var i in targ_cate){
-        if (targ_cate[i].id == parseInt(id)){
-          display_content = targ_cate[i].items;
-          break
-        }
-      }
-    }else if (type == "pub"){
-      var has_pubbed = wx.getStorageSync('pub_list')
-      if (has_pubbed){
-        display_content = JSON.parse(has_pubbed)
-      }
-    }else if (type == "collect"){
-      var has_collect = wx.getStorageSync('collect_list')
-      if (has_collect){
-        display_content = JSON.parse(has_collect)
-      }
-    }else{
-      var has_traded = wx.getStorageSync('trade_list')
-      if (has_traded){
-        display_content = JSON.parse(has_traded)
-      }
-    }
-    return display_content;
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -47,13 +17,8 @@ Page({
     var that = this;
     var display_content = ""
     var id = options.id;
-    var targ_cate = app.globalData.cateInfo;
-    for (var i in targ_cate){
-      if (targ_cate[i].id == parseInt(id)){
-        display_content = targ_cate[i].items;
-        break
-      }
-    }
+    var id = options.id;
+    display_content = common.getCateProducts(id);
     that.setData({
       cate: display_content,
     })
