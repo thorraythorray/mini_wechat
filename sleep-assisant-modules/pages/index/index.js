@@ -149,6 +149,7 @@ Page({
       sleepFeedback: sleep_result,
     }
     var data_key = String(that.data.year) + String(that.data.month) + String(that.data.date);
+    data_key = String(parseInt(data_key) + 100)
     var all_data_string = wx.getStorageSync('sleep_data')
     if (all_data_string){
       var all_data = JSON.parse(all_data_string)
@@ -156,7 +157,7 @@ Page({
       if (today_data_list){
         today_data_list.push(new_data)
       }
-      all_data[data_key] = today_data_list
+      all_data[data_key] = [new_data]
     }else{
       var all_data = {}
       var li = []

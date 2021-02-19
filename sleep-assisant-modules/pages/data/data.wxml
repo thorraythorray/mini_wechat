@@ -5,17 +5,9 @@
   <view class='canvas'>
     <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}" class="canvas"></ec-canvas>
   </view>
-  <!-- <view class='echart'>
-      <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
-  </view> -->
+
   <view class='container'>
-    <!-- <view class='value' bindtap='toDataInfo'>
-      <view class='title'>点击查看睡眠分数</view>
-      <view class='num'>{{total1 + total2 + total3}}</view>
-      <view class='tag'>良好</view>
-    </view>
-    <view style='width:750rpx;height:30rpx;'></view> -->
-    <!-- <view style='color: #62c4d9;'>睡 眠 统 计</view> -->
+
     <view class='list'>
       <view>睡眠总次数</view>
       <view class="content" style='color:#fff;'>{{sleep_cnt}}次</view>

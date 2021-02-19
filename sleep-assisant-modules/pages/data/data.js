@@ -246,7 +246,9 @@ Page({
    */
   onShow: function(options) {
     var that = this;
+    console.log("that.data.month + 1", that.data.month + 1)
     var clickDate = String(that.data.year) + String(that.data.month) + String(that.data.date)
+    clickDate = String(parseInt(clickDate) + 100)
     that.getTargetData(clickDate)
     that.setData({
       clickDate: clickDate,
