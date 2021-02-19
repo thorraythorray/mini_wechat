@@ -42,8 +42,8 @@ function getOnSaleProducts(){
     for (var i in addProds){
       console.log("addProdsaddProdsaddProds", addProds[i])
       if (addProds[i].state == 1){
+        addProds[i].src = addProds[i].images[0]
         addCateProds.push(addProds[i])
-        addCateProds[i].src = addCateProds[i].images[0]
       }
     }
   }
@@ -57,8 +57,8 @@ function getOffSaleProducts(){
     addProds = JSON.parse(addProds)
     for (var i in addProds){
       if (addProds[i].state == 0){
+        addProds[i].src = addProds[i].images[0]
         addCateProds.push(addProds[i])
-        addCateProds[i].src = addCateProds[i].images[0]
       }
     }
   }

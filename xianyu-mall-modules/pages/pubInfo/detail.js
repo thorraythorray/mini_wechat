@@ -15,6 +15,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var has_pubbed = common.getOnSaleProducts()
+    console.log("has_pubbedhas_pubbed", has_pubbed)
     that.setData({
       cate: has_pubbed,
     })
