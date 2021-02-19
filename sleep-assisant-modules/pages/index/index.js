@@ -302,14 +302,34 @@ Page({
     for (var i in recover_mod){
       recover_mod[i].class = "mod-scroll"
     }
-    that.setData({
-      sleepAna: true,
-      isStart: false,
-      audioSelect: null,
-      music_web_sleep_duration: null,
-      music_sleep_duration: null,
-      mood_choice: recover_mod,
-      sleepAllTime: (timestamp - sleep_start_tm) / 1000
+    var _sleepAna = false;
+    wx.showModal({
+      // title: '提示',
+      content: '需要生成睡眠报告吗？',
+      success (res) {
+        if (res.confirm) {
+          that.setData({
+            sleepAna: true,
+            isStart: false,
+            audioSelect: null,
+            music_web_sleep_duration: null,
+            music_sleep_duration: null,
+            mood_choice: recover_mod,
+            sleepAllTime: (timestamp - sleep_start_tm) / 1000
+          })
+        } else if (res.cancel) {
+          that.setData({
+            sleepAna: false,
+            isStart: false,
+            audioSelect: null,
+            music_web_sleep_duration: null,
+            music_sleep_duration: null,
+            mood_choice: recover_mod,
+            // sleepAllTime: (timestamp - sleep_start_tm) / 1000
+          })
+          wx.removeStorageSync("sleep_setting_info")
+        }
+      }
     })
   },
   /**
@@ -317,7 +337,6 @@ Page({
    */
   sleepEndFeedback: function(options){
     var that = this;
-    console.log("ssssssssssssssssss", options)
     var feed_id = options.currentTarget.dataset.id;
     var feed_content = ""
     for (var i in that.data.feedback_list){
