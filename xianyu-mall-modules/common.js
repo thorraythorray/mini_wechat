@@ -14,11 +14,7 @@ function getAllProducts(){
 }
 
 function getCateProducts(cate_id){
-  var baseProds = [];
-  for (var i in app.globalData.cateInfo){
-    if (app.globalData.cateInfo[i].id == parseInt(cate_id))
-    baseProds = baseProds.concat(app.globalData.cateInfo[i].items)
-  }
+  
   var addProds = wx.getStorageSync('pub_list') || []
   var addCateProds = []
   if (addProds.length > 0){
@@ -30,7 +26,13 @@ function getCateProducts(cate_id){
       }
     }
   }
-  var allCateProds = baseProds.concat(addCateProds)
+
+  var baseProds = [];
+  for (var i in app.globalData.cateInfo){
+    if (app.globalData.cateInfo[i].id == parseInt(cate_id))
+    baseProds = baseProds.concat(app.globalData.cateInfo[i].items)
+  }
+  var allCateProds = addCateProds.concat(baseProds)
   return allCateProds
 }
 
@@ -65,9 +67,35 @@ function getOffSaleProducts(){
   return addCateProds
 }
 
+function delProd(itemId){
+  console.log("del prod", itemId)
+  var allProds = wx.getStorageSync('pub_list') || []
+  allProds = JSON.parse(allProds)
+  for (var i in allProds){
+    if (allProds[i].item_id == itemId){
+      allProds.splice(i, 1)
+      break
+    }
+  }
+  wx.setStorageSync('pub_list', JSON.stringify(allProds))
+
+  var collectProds = wx.getStorageSync('collect_list') || []
+  if (collectProds.length > 0){
+    collectProds = JSON.parse(collectProds)
+    for (var i in collectProds){
+      if (collectProds[i].item_id == itemId){
+        collectProds.splice(i, 1)
+        break
+      }
+    }
+    wx.setStorageSync('collect_list', JSON.stringify(collectProds))
+  }
+}
+
 module.exports = {
   allProds: getAllProducts,
   getCateProducts: getCateProducts,
   getOnSaleProducts: getOnSaleProducts,
-  getOffSaleProducts: getOffSaleProducts
+  getOffSaleProducts: getOffSaleProducts,
+  delProd: delProd
 }

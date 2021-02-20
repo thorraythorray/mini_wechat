@@ -17,9 +17,8 @@
 }
 
 .view_tupian_wenzi image{
-  width: 43%;
+  width: 100%;
   height: 200px;
-  margin-right: 2%;
 }
 
 .view_wenzi2 {
@@ -35,11 +34,17 @@
 }
 
 .title {
-  margin-bottom: 8px;
+  margin-bottom: 30px;
   font-size: large;
   color: #000;
 }
 
 .text_small text{
   padding: 2px;
+}
+
+.item-state {
+  display: flex;
+  margin-top:30px;
+  align-items: center;
 }

@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" style="height: {{screenHeigh}}px; overflow:hidden;">
   <view class="swiper-view">
     <swiper autoplay interval="2000" circular indicator-dots class="slides"> 
       <swiper-item wx:for="{{swiper_list}}">
@@ -9,7 +9,7 @@
   </view>
 
   <view class="cate">
-    <view class="cate-item" wx:for="{{cateInfo}}">
+    <view class="cate-item" wx:for="{{cateInfo}}" style="height:{{itemHeight}}px;">
       <navigator url="/pages/detail/detail?id={{item.id}}&type=index" style="width:100%;">
         <view class="item-group">
           <image src="{{item.icon}}"> </image>

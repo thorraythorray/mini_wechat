@@ -51,6 +51,12 @@ Page({
 
   },
 
+  turnToChat: function () {
+    wx. navigateTo({
+      url: 'pages/chat/chat',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */

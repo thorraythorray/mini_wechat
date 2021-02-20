@@ -21,6 +21,19 @@ Page({
     })
   },
 
+  delProd: function(e){
+    var itemIndex = parseInt(e.currentTarget.dataset.id);
+    common.delProd(itemIndex)
+    wx.showToast({
+      title: '删除成功！',
+      icon: 'success',
+      duration: 1200
+    })
+    
+    this.onLoad();
+  },
+
+
   onPullDownRefresh: function (e) {
     // wx.startPullDownRefresh()
     // wx.showNavigationBarLoading() //在标题栏中显示加载

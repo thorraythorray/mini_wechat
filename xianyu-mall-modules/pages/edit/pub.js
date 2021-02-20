@@ -83,7 +83,11 @@ Page({
       check: false,
     },
     dis: false,
-    choose_images: []
+    choose_images: [],
+    title: "",
+    price: "",
+    newLevel: "",
+    phone: ""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -109,7 +113,9 @@ Page({
           info: editProd.info[0],
           categoryInd: that.data.category[editProd.categoryID].categoryID,
           categoryTitle: that.data.category[editProd.categoryID].title,
-          stateInd: stateInd
+          stateInd: stateInd,
+          newLevel: editProd.newLevel,
+          phone: editProd.phone
         })
       }
     }
@@ -271,14 +277,17 @@ Page({
       })
     } else {
       var pubList = wx.getStorageSync('pub_list');
+      var pub_cnt = pubList.length;
       let params = {
-        item_id: that.data.item_id, 
+        item_id: that.data.item_id,
         name: e.detail.value.title,
         price: e.detail.value.price,
-        images: that.data.detailNew,
-        info: [e.detail.value.info],
+        images: that.data.detail,
+        info: ["新旧：" + e.detail.value.newLevel, "价格：" + e.detail.value.price, "联系电话: " + e.detail.value.phone],
         categoryID: that.data.categoryInd,
-        state: that.data.stateInd
+        state: that.data.stateInd,
+        newLevel: e.detail.value.newLevel,
+        phone: e.detail.value.phone
       }
       console.log("new pub info", params)
       if (pubList.length > 0){
@@ -294,13 +303,14 @@ Page({
       pubListSerial.push(params)
       wx.setStorageSync('pub_list', JSON.stringify(pubListSerial))
       wx.showToast({
-        title: '发布成功！',
+        title: '修改成功！',
         icon: 'success'
       })
       setTimeout(function(){
-        wx.navigateTo({
-          url: '../pubInfo/detail',
+        wx.switchTab({
+          url: '../my/my',
         })
+        that.onLoad();
       }, 1000)
     }
   },

@@ -1,14 +1,15 @@
 <view class='container' style="margin-top:-100px;">
 <block wx:for='{{news}}' wx:key='id'>
- <view class='newsitem'>
+ <navigator class='newsitem' url="../chat/chat">
    <image src='{{item.imgurl}}' class='img'></image>
+   <!-- <view class='news-text' bindtap="turnToChat"> -->
    <view class='news-text'>
      <text class='title'>{{item.title}}</text>
      <view class= 'bottext'>  
-     <text class='author'>{{item.author}}</text>  
-     <text class='date'>{{item.date}}</text>    
-     </view>
+      <text class='author'>{{item.author}}</text>  
+      <text class='date'>{{item.date}}</text>    
+    </view>
    </view>
- </view>
+ </navigator>
 </block>
 </view>

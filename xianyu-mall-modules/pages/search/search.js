@@ -29,7 +29,7 @@ Page({
       console.log("searchWord", searchWord)
       var allProds = common.allProds();
       for (var i in allProds){
-        if(allProds[i].name.indexOf(searchWord) > -1){
+        if(allProds[i].name.indexOf(searchWord) > -1 && allProds[i].state == 1){
           searchDetail.push(allProds[i])
         }
       }
@@ -61,7 +61,7 @@ Page({
     var allProds = common.allProds();
     var searchDetail = []
     for (var i in allProds){
-      if(allProds[i].name.indexOf(searchWord) > -1){
+      if(allProds[i].name.indexOf(searchWord) > -1 && allProds[i].state == 1){
         searchDetail.push(allProds[i])
       }
     }

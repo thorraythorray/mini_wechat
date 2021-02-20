@@ -6,7 +6,7 @@
 <!--头部-->
 <view class="headerView">
  <image class="picture" src="{{userInfo.avatarUrl}}"></image>
- <label class="name">{{userInfo.nickName}}</label>
+ <!-- <label class="name">{{userInfo.nickName}}</label> -->
 </view>
 
 <!--表格-->

@@ -83,17 +83,29 @@ Page({
       check: false,
     },
     dis: false,
-    choose_images: []
+    choose_images: [],
+    title: "",
+    price: "",
+    newLevel: "",
+    phone: ""
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // this.setData({
-    //   productID: options.productID
-    // })
-    // this.getCategory();
+    this.setData({
+        title: "",
+        info: "",
+        price: "",
+        detail: [],
+        categoryInd: -1,
+        bannerNew: [],
+        bannerAll: [],
+        newLevel: "",
+        phone: ""
+      })
   },
+
   /**
    * 获取标题
    */
@@ -167,71 +179,12 @@ Page({
       categoryTitle: that.data.category[selectCate].title,
     })
   },
-
-  /**获取商品详情 */
-  getProductDetail() {
-    let params = {
-      userID: app.globalData.userID,
-      productID: this.data.productID
-    }
-    app.getReleaseProductDetail(params).then(res => {
-      let product = res.data.productDetail[0]
-      if (product.state) {
-        this.setData({
-          stateInd: 1
-        })
-      } else {
-        this.setData({
-          stateInd: 0
-        })
-      }
- 
-      let categoryInd = -1;
-      for (var i = 0; i < this.data.category.length; i++) {
-        if (this.data.category[i].categoryID === product.categoryID) {
-          categoryInd = i
-          break;
-        } else {
-          categoryInd: -1;
-        }
-      }
- 
-      if (product.bannerImages.length >= 2) {
-        this.setData({
-          chooseViewShowBanner: false
-        })
-      } else {
-        this.setData({
-          chooseViewShowBanner: true
-        })
-      }
- 
-      if (product.detailImages.length >= 3) {
-        this.setData({
-          chooseViewShowDetail: false
-        })
-      } else {
-        this.setData({
-          chooseViewShowDetail: true
-        })
-      }
-      this.setData({
-        title: product.title,
-        info: product.info,
-        point: product.point,
-        typeInd: product.productType,
-        price: product.currentPrice,
-        banner: product.bannerImages,
-        detail: product.detailImages,
-        categoryInd: categoryInd
-      })
-    })
-  },
  
   /**发布提交 */
   formSubmit(e) {
     let that = this
     var priceTF = /^\d+(\.\d{1,2})?$/
+    console.log("form data", e)
     if (e.detail.value.title === "") {
       wx.showToast({
         title: '请输入商品名称',
@@ -316,10 +269,12 @@ Page({
         item_id: pub_cnt + 99,
         name: e.detail.value.title,
         price: e.detail.value.price,
-        images: that.data.detailNew,
-        info: [e.detail.value.info],
+        images: that.data.detail,
+        info: ["新旧：" + e.detail.value.newLevel, "价格：" + e.detail.value.price, "联系电话: " + e.detail.value.phone],
         categoryID: that.data.categoryInd,
-        state: that.data.stateInd
+        state: that.data.stateInd,
+        newLevel: e.detail.value.newLevel,
+        phone: e.detail.value.phone
       }
       console.log("new pub info", params)
       if (pub_cnt > 0){
@@ -335,9 +290,10 @@ Page({
       })
 
       setTimeout(function(){
-        wx.navigateTo({
-          url: '../pubInfo/detail',
+        wx.switchTab({
+          url: '../my/my',
         })
+        that.onLoad();
       }, 1000)
     }
   },

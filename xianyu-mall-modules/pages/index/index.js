@@ -22,10 +22,29 @@ Page({
   },
   onLoad() {
     var that = this;
+    var screenHeigh = "";
+    var itemHeight = "";
+    wx.getSystemInfo({
+      success (res) {
+        console.log(res.model)
+        console.log(res.pixelRatio)
+        console.log(res.windowWidth)
+        console.log(res.windowHeight)
+        console.log(res.language)
+        console.log(res.version)
+        console.log(res.platform)
+        screenHeigh = res.windowHeight
+        itemHeight = (res.windowHeight - 154) / 3 + 8;
+      }
+    })
+    
     that.setData({
-      cateInfo: app.globalData.cateInfo
+      cateInfo: app.globalData.cateInfo,
+      screenHeigh: screenHeigh,
+      itemHeight: itemHeight
     })
   },
+
   getUserInfo(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

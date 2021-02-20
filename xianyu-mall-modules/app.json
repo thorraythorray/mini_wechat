@@ -11,7 +11,8 @@
     "pages/pub/pub",
     "pages/search/search",
     "pages/edit/pub",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/chat/chat"
   ],
   "window": {
     "navigationBarTitleText": "师小淘",

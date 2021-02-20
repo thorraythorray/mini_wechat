@@ -3,15 +3,20 @@
   <!-- <view class="cate-title">分类列表</view> -->
   <view class="part-group">
     <view wx:for="{{cate}}" style="width:100%">
-      <navigator class="view_tupian_wenzi" url="../item/item?itemId={{item.item_id}}">
-      <image class="images" src="{{item.src}}"/>
+      <view class="view_tupian_wenzi" url="../edit/pub?itemId={{item.item_id}}">
+        <navigator url="../edit/pub?itemId={{item.item_id}}" style="width:43%;margin-right: 2%;">
+          <image class="images" src="{{item.src}}"/>
+        </navigator>
       <view class="view_wenzi2 text_small">
         <text class="title">{{item.name}}</text>
-        <text class="title" style="color:#ff0f0f" wx:if="{{item.state == 0}}">已交易</text>
-        <text class="title" style="color:#169bb9" wx:else>上架中</text>
         <text wx:for="{{item.info}}">{{item}}</text>
+        <view class="item-state">
+          <label class="title1" style="color:#5798e8" wx:if="{{item.state == 0}}">已交易</label>
+          <label class="title1" style="color:#5798e8" wx:else>上架中</label>
+          <button class="mini-btn" type="warn" size="mini" data-id="{{item.item_id}}" bindtap="delProd">删除</button>
+        </view>
       </view>
-    </navigator>
+    </view>
     </view>
   </view>
 </view>
