@@ -21,8 +21,8 @@ function getCateProducts(cate_id){
     addProds = JSON.parse(addProds)
     for (var i in addProds){
       if (addProds[i].state == 1 && addProds[i].categoryID == parseInt(cate_id)){
+        addProds[i].src = addProds[i].images[0]
         addCateProds.push(addProds[i])
-        addCateProds[i].src = addCateProds[i].images[0]
       }
     }
   }
@@ -42,7 +42,6 @@ function getOnSaleProducts(){
   if (addProds.length > 0){
     addProds = JSON.parse(addProds)
     for (var i in addProds){
-      console.log("addProdsaddProdsaddProds", addProds[i])
       if (addProds[i].state == 1){
         addProds[i].src = addProds[i].images[0]
         addCateProds.push(addProds[i])

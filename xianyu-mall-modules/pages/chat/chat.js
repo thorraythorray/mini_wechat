@@ -52,9 +52,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    initData(this);
+    var that = this;
+    initData(that);
+    var new_msg = wx.getStorageSync('chat_msg') || []
+    var new_msgList = that.data.msgList
+    if (new_msg.length > 0){
+      new_msg = JSON.parse(new_msg)
+      new_msgList = new_msgList.concat(new_msg)
+    }
+    
     this.setData({
       cusHeadIcon: app.globalData.userInfo.avatarUrl,
+      msgList: new_msgList
     });
   },
 
@@ -112,6 +121,8 @@ Page({
    * 发送点击监听
    */
   sendClick: function(e) {
+    var that = this;
+    var msgList = that.data.msgList
     msgList.push({
       speaker: 'customer',
       contentType: 'text',
@@ -122,8 +133,16 @@ Page({
       msgList,
       inputVal
     });
-
-
+    var new_msg = wx.getStorageSync('chat_msg') || []
+    if (new_msg.length > 0){
+      new_msg = JSON.parse(new_msg)
+    }
+    new_msg.push({
+      speaker: 'customer',
+      contentType: 'text',
+      content: e.detail.value
+    })
+    wx.setStorageSync('chat_msg', JSON.stringify(new_msg))
   },
 
   /**

@@ -99,6 +99,7 @@ Page({
         price: "",
         detail: [],
         categoryInd: -1,
+        categoryTitle:'',
         bannerNew: [],
         bannerAll: [],
         newLevel: "",
