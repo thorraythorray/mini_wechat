@@ -71,6 +71,6 @@ App({
   globalData:{
     userInfo:null,
     request_url: "https://localhost",
-    resource_url: "https://localhost"
+    resource_url: ""
   }
 })
