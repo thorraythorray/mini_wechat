@@ -12,9 +12,9 @@ Component({
             type:String,
             value:"https://img10.360buyimg.com/n1/s450x450_jfs/t1/86824/3/17907/80506/5e8d726eEd61ffa78/1163f194f235bd83.jpg"
         },
-        id:{
+        isd:{
             type:String,
-            value:""
+            value:"0"
         },
         cont:{
             type:String,

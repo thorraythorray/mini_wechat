@@ -50,7 +50,8 @@ Page({
     for (var i in that.data.questions){
       if (that.data.questions[i].id == parseInt(options.id)){
         that.setData({
-          title: that.data.questions[i].title
+          title: that.data.questions[i].title,
+          content: that.data.questions[i].content
         })
         break
       }

@@ -16,13 +16,13 @@
   <view class="tit">{{title}}</view>
   <view class="content">
     <view class="txt">
-      <view class="xyd"></view>让思想与身体连接。
+      <view class="xyd"></view>{{content}}。
     </view>
-    <view class="txt">
+    <!-- <view class="txt">
       <view class="xyd"></view>关注您身体的每一个部位，缓解躯体不适。
     </view>
     <view class="txt">
       <view class="xyd"></view>身体扫描是一个基本的躺卧室训练，可以在家自己联系。系统扫描引导我们去一个直接的关注身体每一个部位。
-    </view>
+    </view> -->
   </view>
 </view>

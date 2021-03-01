@@ -4,7 +4,8 @@
     <view class="text">
         <view class="cont-top ">
             <text class="title">{{title}}</text>
-            <navigator url="/pages/detail/detail?id={{id}}"><view class="gostudy">去了解<view class="go"></view></view></navigator>
+            <!-- <text class="title">{{isd}}</text> -->
+            <navigator url="/pages/detail/detail?id={{isd}}"><view class="gostudy">去了解<view class="go"></view></view></navigator>
         </view>
         <view class="cont">
             {{cont}}

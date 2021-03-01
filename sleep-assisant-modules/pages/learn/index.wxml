@@ -4,7 +4,7 @@
   </view> 
   <view wx:if="{{!is_show}}">
     <view wx:for="{{questions}}" wx:key="item" style="margin-top:10rpx" class="tr">
-        <training-cont  title="{{item.title}}" cont="{{item.content}}" id="{{item.id}}" img="/images/more/ren.png" />
+        <training-cont  title="{{item.title}}" cont="{{item.content}}" isd="{{item.id}}" img="/images/more/ren.png" />
     </view>
   </view> 
 
