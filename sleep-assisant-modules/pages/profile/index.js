@@ -17,6 +17,8 @@ Page({
   },
 
   updatePhone: function(){
+    var that = this;
+    wx.setStorageSync('phone', that.data.phone)
     wx.showToast({
       title: '绑定成功！',
       icon: 'success',
@@ -29,8 +31,20 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
-      userInfo: app.globalData.userInfo
+    var phone = wx.getStorageSync('phone') || that.data.phone
+    
+    wx.getUserInfo({
+      success: res => {
+        console.log("app.globalData.userInfo", res.userInfo)
+        app.globalData.userInfo = res.userInfo
+        this.setData({
+          userInfo: res.userInfo,
+          phone: phone
+        })
+        // wx.switchTab({
+        //   url: '../index/index'
+        // })
+      }
     })
   },
 

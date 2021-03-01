@@ -4,7 +4,7 @@
 <view class="headerView">
   <image class="picture" src="{{userInfo.avatarUrl}}"></image>
   <label class="name">姓名：{{userInfo.nickName}}</label>
-  <label class="name" wx:if="{{userInfo.gender}} == 1">性别：男</label>
+  <label class="name" wx:if="{{userInfo.gender == 1}}">性别：男</label>
   <label class="name" wx:else>性别：女</label>
   <label class="name">所在位置：{{userInfo.country}}-{{userInfo.province}}-{{userInfo.city}}</label>
   <view class="name weui-cell weui-cell_input" style="display: inline-flex; margin-left:40px; width:100%;">

@@ -234,9 +234,11 @@ Page({
 
   playMusic() {
     var that = this;
+    bgMusic.stop()
     console.log("start music play...")
     var music_id = that.data.audioSelect;
     var play_dur = that.data.music_sleep_duration || 99999 * 1000 * 60;
+    console.log("music_id", music_id)
     if (music_id){
       var music = that.data.sleep_sounds;
       var music_src = null;
@@ -245,7 +247,11 @@ Page({
           music_src = music[i].audio
         }
       }
+      console.log("1111music_src", music_src)
+      bgMusic.src = music_src;
+      bgMusic.play()
       setTimeout(function(){
+        console.log("music_src", music_src)
         bgMusic.src = music_src;
         bgMusic.play()
         bgMusic.onEnded(() => {
@@ -265,6 +271,7 @@ Page({
         duration: 2000
       })
     }else{
+      that.playMusic()
       var timestamp = Date.parse(new Date());  
       var music_end_tm = timestamp + that.data.music_sleep_duration 
       that.setData({
@@ -288,16 +295,27 @@ Page({
     var that = this;
     var timestamp = Date.parse(new Date());
     var sleep_start_tm = that.data.sleep_start_tm;
-    var min_limit_sleep_tm = 0.0001;
+    var min_limit_sleep_tm = 1;
+    bgMusic.stop()
     if (timestamp - sleep_start_tm < 1000 * 60 * min_limit_sleep_tm){
       wx.showModal({
         // title: '提示',
         content: '睡眠少于10分钟不生成睡眠日志',
         showCancel: false,
       })
+      that.setData({
+        sleepAna: false,
+        isStart: false,
+        audioSelect: null,
+        music_web_sleep_duration: null,
+        music_sleep_duration: null,
+        mood_choice: recover_mod,
+        // sleepAllTime: (timestamp - sleep_start_tm) / 1000
+      })
+      wx.removeStorageSync("sleep_setting_info")
+      return
     }
     // 结束，曲消反馈了才能散
-    bgMusic.stop()
 
     var recover_mod = that.data.mood_choice
     for (var i in recover_mod){
