@@ -20,35 +20,35 @@ Page({
     sleep_sounds: [
       {
         name: '极静琴声',
-        audio: app.globalData.resource_url + 'audio.mp3',
+        audio: app.globalData.resource_url + '1.mp3',
         pic: '../../images/more/audio1.png',
         id: 0,
         duration: 180
       },
       {
         name: '2放松大脑放松大脑放松大脑放松大脑放松大脑',
-        audio: app.globalData.resource_url + 'audio.mp3',
+        audio: app.globalData.resource_url + '2.mp3',
         pic: '../../images/more/audio2.png',
         id: 1,
         duration: 180
       },
       {
         name: '3催眠钢琴曲催眠钢琴曲催眠钢琴曲催眠钢琴曲催眠钢琴曲',
-        audio: app.globalData.resource_url + 'audio.mp3',
+        audio: app.globalData.resource_url + '3.mp3',
         pic: '../../images/more/audio2.png',
         id: 2,
         duration: 180
       },
       {
         name: '4极静琴声极静琴声极静琴声极静琴声极静琴声极静琴声',
-        audio: app.globalData.resource_url + 'audio.mp3',
+        audio: app.globalData.resource_url + '4.mp3',
         pic: '../../images/more/audio1.png',
         id: 3,
         duration: 180
       },
       {
         name: '5放松大脑',
-        audio: app.globalData.resource_url + 'audio.mp3',
+        audio: app.globalData.resource_url + '5.mp3',
         pic: '../../images/more/audio2.png',
         id: 4,
         duration: 180
@@ -239,7 +239,7 @@ Page({
     var music_id = that.data.audioSelect;
     var play_dur = that.data.music_sleep_duration || 99999 * 1000 * 60;
     console.log("music_id", music_id)
-    if (music_id){
+    if (music_id >= 0) {
       var music = that.data.sleep_sounds;
       var music_src = null;
       for (var i in music){
@@ -295,7 +295,7 @@ Page({
     var that = this;
     var timestamp = Date.parse(new Date());
     var sleep_start_tm = that.data.sleep_start_tm;
-    var min_limit_sleep_tm = 1;
+    var min_limit_sleep_tm = 10;
     bgMusic.stop()
     if (timestamp - sleep_start_tm < 1000 * 60 * min_limit_sleep_tm){
       wx.showModal({
