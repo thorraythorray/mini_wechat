@@ -21,7 +21,8 @@ Page({
     for (var j in targetCate){
       console.log("targetCatetargetCatetargetCate", targetCate[j])
       if (targetCate[j].item_id == parseInt(itemId)){
-        if (targetCate[j].images){
+        console.log("targetCate[j].images", targetCate[j].images)
+        if (targetCate[j].images.length > 0){
           var itemPics = targetCate[j].images;
         }else{
           var itemPics = [targetCate[j].src];
@@ -36,16 +37,17 @@ Page({
 
   collect_it: function(e) {
     var item_id = parseInt(e.target.dataset.id);
-    var cateInfo = app.globalData.cateInfo;
+    // var cateInfo = app.globalData.cateInfo;
+    var cateInfo = common.allProds();
     var target_item = {}
-    for (var i in cateInfo) {
-      var cate = cateInfo[i].items;
-      for (var j in cate) {
-        if (cate[j].item_id == item_id) {
-          target_item = cate[j]
-          break
-        }
+    for (var j in cateInfo) {
+      // var cate = cateInfo[i].items;
+      // for (var j in cate) {
+      if (cateInfo[j].item_id == item_id) {
+        target_item = cateInfo[j]
+        break
       }
+      // }
     }
     var collect_list = wx.getStorageSync("collect_list") || '[]'
     var _collect_list = JSON.parse(collect_list)

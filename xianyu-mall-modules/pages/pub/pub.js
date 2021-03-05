@@ -41,7 +41,7 @@ Page({
       },
       {
         title: "服装",
-        icategoryID: 3
+        categoryID: 3
       },
       {
         title: "鞋包",
@@ -183,7 +183,7 @@ Page({
  
   /**发布提交 */
   formSubmit(e) {
-    let that = this
+    var that = this;
     var priceTF = /^\d+(\.\d{1,2})?$/
     console.log("form data", e)
     if (e.detail.value.title === "") {

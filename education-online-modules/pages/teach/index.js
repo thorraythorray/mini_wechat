@@ -109,7 +109,7 @@ Page({
   watchppt: function(e) {
     var id = parseInt(e.currentTarget.dataset.id)
     var url = e.currentTarget.dataset.url;
-    console.log("that.globalData.request_url", app.globalData.request_url)
+    // console.log("that.globalData.request_url", app.globalData.request_url)
     wx.showToast({
       title: 'load',
       title: '正在打开中...',
