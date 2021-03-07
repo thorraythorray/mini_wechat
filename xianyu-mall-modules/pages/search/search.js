@@ -15,6 +15,18 @@ Page({
     rightValue: 6
 
   },
+
+  inputPriceLower: function(e){
+    this.setData({
+      priceLow: e.detail.value
+    })
+  },
+
+  inputPriceHigher: function(e){
+    this.setData({
+      priceHigh: e.detail.value
+    })
+  },
   
   inputText: function (e) {
     var that = this;
@@ -30,7 +42,14 @@ Page({
       var allProds = common.allProds();
       for (var i in allProds){
         if(allProds[i].name.indexOf(searchWord) > -1 && allProds[i].state == 1){
-          searchDetail.push(allProds[i])
+          if (that.data.priceLow && that.data.priceHigh) {
+            if (parseInt(allProds[i].price) >= parseInt(that.data.priceLow) && parseInt(allProds[i].price) < parseInt(that.data.priceHigh)){
+              searchDetail.push(allProds[i])
+            }
+          }else{
+            searchDetail.push(allProds[i])
+          }
+          
         }
       }
     }

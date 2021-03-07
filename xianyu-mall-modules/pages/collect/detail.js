@@ -21,7 +21,7 @@ Page({
     }
     console.log("display_content", display_content)
     for (var i in display_content){
-      if (display_content[i].images.length > 0){
+      if (display_content[i].images){
         display_content[i].src = display_content[i].images[0]
       }
     }

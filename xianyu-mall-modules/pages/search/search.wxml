@@ -11,9 +11,9 @@
   
     <view class='sliderView1'>
       <label for="">￥:</label>
-      <input type="number"></input>
+      <input type="number" bindinput="inputPriceLower"></input>
       <label for="">~</label>
-      <input type="number"></input>
+      <input type="number" bindinput="inputPriceHigher"></input>
     </view>
     
   <view class='search_list' wx:if="{{is_show}}">

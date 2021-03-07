@@ -21,8 +21,7 @@ Page({
     for (var j in targetCate){
       console.log("targetCatetargetCatetargetCate", targetCate[j])
       if (targetCate[j].item_id == parseInt(itemId)){
-        console.log("targetCate[j].images", targetCate[j].images)
-        if (targetCate[j].images.length > 0){
+        if (targetCate[j].images){
           var itemPics = targetCate[j].images;
         }else{
           var itemPics = [targetCate[j].src];
