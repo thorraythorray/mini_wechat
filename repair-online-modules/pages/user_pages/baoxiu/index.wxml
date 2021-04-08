@@ -1,0 +1,34 @@
+<form bindsubmit="formSubmit">
+    <view class="content">
+        <view class="head">
+            <text> 填写报修单</text>
+        </view>
+        <view class="hr"></view>
+       
+        <view class="desc">
+            <textarea name="desc" maxlength="200" placeholder="问题描述(1/200)"
+                placeholder-style="color:#D3D3D3;"></textarea>
+        </view>
+        <view class="hr"></view>
+        <view class="site">
+            <input type="text" class="siteInput" name="site" placeholder="位置：东8-505"
+                placeholder-style="color:#D3D3D3;" />
+        </view>
+        <view class="hr"></view>
+        <view class="files">
+            <view class="file-name" bindtap="localImg">
+                本地图片
+            </view>
+            <view class="img-name" bindtap="uploadImg">
+                <image src="../../static/img/camera.png"></image>
+            </view>
+        </view>
+        <view class="hr"></view>
+        <view class="remark">
+            <textarea name="remark" maxlength="100" placeholder="备注(1/100)"
+                placeholder-style="color:#D3D3D3;"></textarea>
+        </view>
+        <view class="hr"></view>
+    </view>
+    <button form-type="submit">提交</button>
+</form>

@@ -1,0 +1,70 @@
+/* pages/user/user_main.wxss */
+page {
+    background-color: ghostwhite;
+  }
+  
+  .content {
+    margin: 20rpx;
+    background-color: white;
+    font-size: 27rpx;
+  }
+  
+  .hr {
+    height: 5rpx;
+    background-color: #cccccc;
+    opacity: 0.2;
+  }
+  
+  .head {
+    line-height: 80rpx;
+    text-align: center;
+    font-size: large;
+  }
+  
+  .desc {
+    padding: 30rpx;
+    height: 300rpx;
+    font-size: 27rpx;
+  }
+  
+  .remark {
+    padding: 30rpx;
+    height: 150rpx;
+    font-size: 27rpx;
+  }
+  
+  .siteInput {
+    padding-left: 30rpx;
+    height: 100rpx;
+    font-size: 27rpx;
+  }
+  
+  button {
+    color: white;
+    background-color: cornflowerblue;
+    margin-top: 60rpx;
+    z-index: 10000;
+  }
+  
+  image {
+    height: 70rpx;
+    width: 70rpx;
+  }
+  
+  .files {
+    line-height: 100rpx;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .file-name {
+    width: 70%;
+    margin-left: 50rpx;
+    color: #D3D3D3;
+  }
+  
+  .img-name {
+    position: absolute;
+    right: 50rpx;
+    margin-top: 10rpx;
+  }

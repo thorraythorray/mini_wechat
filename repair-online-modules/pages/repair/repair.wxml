@@ -1,0 +1,28 @@
+<!--pages/user_pages/baoxiujilu/baoxiujilu.wxml-->
+<!-- <wxs module="dateUtil" src="../../common_pages/formatTime.wxs"></wxs>  -->
+<view class="content">
+  <block wx:for="{{result}}" wx:key="id">
+    <view class="list">
+      <view class="list-item">
+        <view wx:if="{{item.img_name!=='无'}}" bindtap="previewImg" data-name="{{item.img_name}}">
+          <image mode="aspectFit" src="{{'http://119.45.143.167:5001/repairapp/v1/get/imgs?img_name='+item.img_name}}">
+          </image>
+        </view>
+        <view wx:else style="color: #cccccc;">
+          <image mode="aspectFit" src="../../static/img/noimg.png"></image>
+        </view>
+        <view class="detail">
+          <view class="desc">{{item.desc}}</view>
+          <view class="remark">备注：{{item.remark}}</view>
+          <view class=" site">{{item.site}}</view>
+          <view class="sta-rep">
+            <view wx:if="{{item.status==='待处理'}}" style="color:red;">{{item.status}}</view>
+            <view wx:else style="color:green;">{{item.status}}</view>
+            <view class="repair-time">{{dateUtil.formatTime(item.repair_date)}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</view>

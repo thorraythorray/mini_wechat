@@ -1,0 +1,25 @@
+<!--pages/login/login.wxml-->
+<view class="logo">
+    <image class="img-logo" src="/images/logo.png"></image>
+</view>
+<view class='contain'>
+    <form bindsubmit="formSubmit">
+        <view class="form">
+            <view class="imgs">
+                <view class="img1">
+                    <image src="/images/user_name.png" class="img-name"></image>
+                </view>
+                <view class="img2">
+                    <image src="/images/password.png" class="img-pwd"></image>
+                </view>
+            </view>
+            <view class="inputs">
+                <input type="text" class="username" name="username" placeholder="账号"
+                       placeholder-style="color: #D3D3D3;"/>
+                <input password="true" class="pwd" name="password" placeholder="密码"
+                       placeholder-style="color: #D3D3D3;"/>
+            </view>
+        </view>
+        <button form-type="submit" class="btn_login">登录</button>
+    </form>
+</view>

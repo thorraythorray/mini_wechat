@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/user_pages/index/index",
+    
+    "pages/login/login",
+    "pages/index/index",
+    "pages/logs/logs",
+
+    "pages/admin_pages/index/index",
+    "pages/admin_pages/my/my",
+
+    
+    "pages/user_pages/my/my",
+    "pages/user_pages/guide/index",
+    "pages/user_pages/baoxiu/index",
+
+    "pages/liuyanban/index",
+    "pages/repair/repair",
+    "pages/profile/index",
+    "pages/tabbar/tabbar"
+  ],
+  
+  "tabBar": {
+    "borderStyle": "black",
+    "color": "#999999",
+    "backgroundColor": "grey",
+    "position": "bottom",
+    "list": [
+      {
+          "pagePath": "pages/user_pages/index/index",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/admin_pages/index/index",
+          "text": "首页"
+        }
+      ]
+  },
+
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "校园报修",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,50 @@
+page {
+    background-color: ghostwhite;
+}
+
+.head {
+    background-color: white;
+    margin: 0 20rpx;
+    border-radius: 20rpx;
+    padding: 30rpx 60rpx;
+}
+
+.head-line {
+    display: flex;
+    flex-direction: row;
+}
+
+.info {
+    margin: 20rpx 50rpx;
+    font-style: inherit;
+}
+
+.body {
+    margin: 300rpx 20rpx 0 20rpx;
+}
+
+.link {
+    padding-left: 30rpx;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    line-height: 100rpx;
+    border-radius: 20rpx;
+}
+
+.rrar {
+    position: absolute;
+    right: 50rpx;
+    color: #cccccc;
+}
+
+.hr {
+    height: 5rpx;
+    background-color: ghostwhite;
+    opacity: 0.2;
+}
+
+image {
+    height: 70rpx;
+    width: 70rpx;
+}

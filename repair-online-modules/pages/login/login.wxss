@@ -1,0 +1,62 @@
+/* pages/login/login.wxss */
+.blackImage {
+  height: 500rpx;
+}
+
+.btn_login {
+  background-color: cornflowerblue;
+  color: white;
+  margin-top: 100rpx;
+}
+
+.img-name {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.img-pwd {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+input {
+  border-bottom: 1rpx solid gray;
+  width: 400rpx;
+  padding-left: 30rpx;
+}
+
+.username {}
+
+.pwd {
+  margin-top: 100rpx;
+}
+
+.img2 {
+  margin-top: 90rpx;
+}
+
+.contain {
+  margin-top: 120rpx;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgs {
+  width: 25%;
+  text-align: right;
+}
+
+.inputs {
+  width: 75%;
+}
+.logo {
+  margin-top: 100rpx;
+  text-align: center;
+}
+.img-logo {
+  height: 120rpx;
+  width: 70%;
+}

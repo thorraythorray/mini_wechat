@@ -1,0 +1,55 @@
+/* pages/user_pages/baoxiujilu/baoxiujilu.wxss */
+page {
+  background-color: ghostwhite;
+}
+
+.content {
+  background-color: white;
+}
+
+.list {
+  padding: 20rpx;
+}
+
+.hr {
+  height: 5rpx;
+  background-color: #cccccc;
+  opacity: 0.2;
+  margin-top: 15rpx;
+}
+
+image {
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  line-height: 50rpx;
+  font-size: small;
+}
+
+.sta-rep {
+  display: flex;
+  flex-direction: row;
+}
+
+.remark {
+  color: #999999;
+}
+
+.site {
+  color: #999999;
+}
+
+.repair-time {
+  position: absolute;
+  right: 120rpx;
+  color: #999999;
+}

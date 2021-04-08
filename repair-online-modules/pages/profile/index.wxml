@@ -1,0 +1,26 @@
+<view class="contain">
+<scroll-view>
+<!--头部-->
+<view class="headerView">
+ <image class="picture" src="{{userInfo.avatarUrl}}"></image>
+ <label class="name">姓名：{{userInfo.nickName}}</label>
+ <label class="name" wx:if="{{userInfo.nickName}} == 1">性别：男</label>
+ <label class="name" wx:else>性别：女</label>
+ <label class="name">所在位置：{{userInfo.country}}-{{userInfo.province}}-{{userInfo.city}}</label>
+</view>
+
+<!--表格-->
+ <!-- <block wx:for-items="{{items}}" wx:key="item.id">   
+   <navigator url="{{item.url}}">
+    <view class="item">
+      <image class="icon" src="{{item.icon}}"></image>
+      <label>{{item.text}}</label>
+      <image class="arrow" src="../../image/0106arrow3x.png"></image>
+    </view>
+  </navigator>
+ </block> -->
+
+
+</scroll-view>
+
+</view>
