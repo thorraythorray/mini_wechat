@@ -35,6 +35,7 @@ Page({
       }
     });
     var userRepairList = common.getUserRepair(user)
+    console.log("userRepairList", userRepairList)
     that.setData({
       result: userRepairList
     })
