@@ -17,7 +17,7 @@ Page({
       "location": "宿舍位置"
     },
     chooseViewShowDetail: true,
-    state: "ordinary"
+    state: "普通"
   },
 
   //上传
@@ -117,7 +117,7 @@ Page({
       var t = util.formatTime(new Date)
       let repairInfo = {
         "id": Date.now().toString(36),
-        "user": app.globalData.useraccount,
+        "user": app.globalData.username,
         "username": username,
         "userphone": userphone,
         "location": location,
@@ -137,7 +137,7 @@ Page({
         wx.switchTab({
           url: '/pages/repair/repair',
         })
-        that.onLoad();
+        // that.onLoad();
       }, 1000)
     }
   },

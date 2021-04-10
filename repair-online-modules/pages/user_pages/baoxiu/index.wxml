@@ -31,10 +31,10 @@
 
         <view class="repair-type">
             <radio-group bindchange="levelChange">
-                <radio  class="radio-item" value="ordinary" checked="checked" color="#DBB975">
+                <radio  class="radio-item" value="普通" checked="checked" color="#DBB975">
                     普通
                 </radio>
-                <radio  class="radio-item" value="emergency" checked="" color="#DBB975">
+                <radio  class="radio-item" value="紧急" checked="" color="#DBB975">
                     紧急
                 </radio>
             </radio-group>

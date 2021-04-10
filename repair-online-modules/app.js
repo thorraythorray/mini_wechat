@@ -106,6 +106,6 @@ App({
   globalData: {
     userInfo: null,
     identification: "user" ,
-    username: null   
+    username: "123"   
   }
 })
