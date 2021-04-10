@@ -23,7 +23,7 @@ page {
   
   .desc {
     padding: 30rpx;
-    height: 300rpx;
+    height: 160rpx;
     font-size: 27rpx;
   }
   
@@ -68,3 +68,57 @@ page {
     right: 50rpx;
     margin-top: 10rpx;
   }
+
+   
+/*添加图片*/
+ 
+.addImv .chooseView {
+  width: 180rpx;
+  height: 180rpx;
+  margin: 20rpx 20rpx;
+  background-color: #f2f6f9;
+  border: 1px dashed lightgray;
+  text-align: center;
+  line-height: 180rpx;
+  /* padding: 0rpx 7rpx; */
+  border-radius: 5px;
+  margin-left: 40rpx;
+}
+ 
+.addImv .chooseImv {
+  width: 50rpx;
+  height: 50rpx;
+}
+ 
+/*已选择的图片*/
+ 
+.addImv .upFile {
+  width: 180rpx;
+  height: 180rpx;
+  position: relative;
+  padding: 0rpx 7rpx;
+  margin-left: 40rpx;
+  border: 1px solid #c0ccda;
+}
+ 
+.addImv .upFile .itemImv {
+  width: 180rpx;
+  height: 180rpx;
+  padding: -1rpx 7rpx;
+}
+ 
+.addImv .upFile .closeImv {
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.repair-type {
+    padding: 30rpx;
+}
+
+.radio-item {
+  width: 50%;
+}

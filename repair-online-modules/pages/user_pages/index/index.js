@@ -22,6 +22,20 @@ Page({
       url: '../logs/logs'
     })
   },
+
+  
+  xiushuinuan: function(e) {
+    wx.navigateTo({
+      url: '/pages/user_pages/baoxiu/index?t=shui',
+    })
+  },
+
+  xiudian: function(e) {
+    wx.navigateTo({
+      url: '/pages/user_pages/baoxiu/index?t=dian',
+    })
+  },
+
   onLoad() {
     //加载本页面的tabBar样式
     wx.hideTabBar({

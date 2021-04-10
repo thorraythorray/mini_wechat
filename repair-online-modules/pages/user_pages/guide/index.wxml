@@ -1,2 +1,9 @@
-<!--pages/user_pages/guide/index.wxml-->
-<text>pages/user_pages/guide/index.wxml</text>
+<view class="container">
+    <view wx:for="{{contents}}" wx:key="{{item}}" style="margin-top: -100px;">
+        <view class='content' style="background: #fff">
+        <view class='titles'>{{item.title}}</view> 
+        <view class="auther">{{item.date}}</view> 
+        <text class='desc'>{{item.content}}</text>
+        </view>
+    </view>
+</view>

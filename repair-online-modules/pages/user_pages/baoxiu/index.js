@@ -1,5 +1,7 @@
 // pages/user/user_main.js
 const app = getApp();
+const utils = require("../../../utils/util.js");
+const common = require("../../../utils/common.js");
 
 Page({
   /**
@@ -8,119 +10,119 @@ Page({
   data: {
     imgPath: null,
     token: null,
+    image_list: [],
+    repair: {
+      "username":  "联系人",
+      "userphone": "联系电话",
+      "location": "宿舍位置"
+    },
+    chooseViewShowDetail: true
   },
 
   //上传
   localImg: function () {
     let that = this;
+    let _images = that.data.image_list;
     wx.chooseImage({
       count: 1, //一张
       sizeType: ['original'], //原图
       sourceType: ['album'], //相册
       success: function (res) {
+        _images.push(res.tempFilePaths[0])
         that.setData({
-          imgPath: res.tempFilePaths[0]
+          image_list: _images
         })
       }
     })
   },
   uploadImg: function () {
     let that = this;
-    wx.chooseImage({
-      count: 1, //一张
-      sizeType: ['original'], //原图
-      sourceType: ['camera'], //相机
-      success: function (res) {
-        that.setData({
-          imgPath: res.tempFilePaths[0]
-        })
+    let _images = that.data.image_list;
+    if (_images.length > 5){
+      wx.showToast({
+        title: '不能超过5张!',
+        icon: 'error',
+        duration: 1500
+      })
+    }else{
+      wx.chooseImage({
+        count: 1, //一张
+        sizeType: ['original'], //原图
+        sourceType: ['camera'], //相机
+        success: function (res) {
+          _images.push(res.tempFilePaths[0])
+          that.setData({
+            image_list: _images
+          })
+        }
+      })
+    }
+  },
+   
+  /** 查看大图Detail */
+  showImageDetail: function(e) {
+    let that = this;
+    let detail = this.data.image_list;
+    var itemIndex = e.currentTarget.dataset.id;
+    wx.previewImage({
+      current: detail[itemIndex], // 当前显示图片的http链接
+      urls: detail // 需要预览的图片http链接列表
+    })
+  },
+
+  /** 删除图片detail */
+  deleteImvDetail: function(e) {
+    var that = this;
+    var detail = that.data.image_list;
+    var itemIndex = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '提示',
+      content: '删除不可恢复，请谨慎操作',
+      success(res) {
+        if (res.confirm) {
+          detail.splice(itemIndex, 1);
+          that.setData({
+            image_list: detail,
+            checkUp: false
+          })
+        }
       }
     })
   },
+
+  changeIdentify(e) {
+    let that = this;
+    that.setData({
+      state: e.detail.value
+    })
+  },
+
   //submit事件
   formSubmit: function (e) {
     let that = this;
+    let image_list = that.data.image_list;
+    let username = e.detail.username;
+    let userphone = e.detail.phone;
+    let location = e.detail.location;
     let desc = e.detail.value.desc;
-    let remark = e.detail.value.remark;
-    let site = e.detail.value.site;
-    if (desc === '') {
+  
+    if (!username || !userphone || !location || !desc || !image_list){
       wx.showToast({
-        title: '请填写问题描述',
+        title: '请将信息填写完整!',
         icon: 'none',
         duration: 1500
       })
-    } else if (site === '') {
-      wx.showToast({
-        title: '请填写具体位置',
-        icon: 'none',
-        duration: 1500
-      })
-    } else if (that.data.imgPath === null) {
-      wx.request({
-        url: 'http://119.45.143.167:5001/repairapp/v1/add/affairs',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'token': that.data.token
-        },
-        method: 'POST',
-        data: {
-          desc: desc,
-          remark: remark,
-          site: site,
-        },
-        success: function (res) {
-          if (res.data.code === 2000) {
-            wx.showToast({
-              title: '成功提交',
-              icon: 'success',
-              duration: 1500
-            })
-          }
-        },
-        fail: function (res) {
-          console.log('返回失败: ', res);
-          wx.showToast({
-            title: '提交失败',
-            icon: 'none',
-            duration: 1500
-          });
-        }
-      })
-      return false;
-    } else {
-      wx.uploadFile({
-        filePath: that.data.imgPath,
-        name: 'img',
-        url: 'http://119.45.143.167:5001/repairapp/v1/add/affairs',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'token': that.data.token
-        },
-        method: 'POST',
-        formData: {
-          desc: desc,
-          remark: remark,
-          site: site,
-        },
-        success: function (res) {
-          if (res.data.code === 2000) {
-            wx.showToast({
-              title: '成功提交',
-              icon: 'success',
-              duration: 1500
-            })
-          }
-
-        },
-        fail: function (res) {
-          console.log('返回失败: ', res);
-          wx.showToast({
-            title: '提交失败',
-            icon: 'none',
-            duration: 1500
-          });
-        }
-      });
+    }else{
+      let repairInfo = {
+        "username": username,
+        "userphone": userphone,
+        "location": location,
+        "desc": desc,
+        "state": that.data.state,
+        "repair_status": 0,
+        "created_time": utils.formatTime
+      }
+      console.log("repairInfo is", repairInfo)
     }
   },
 
@@ -129,18 +131,14 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    //加载本页面的tabBar样式
-    wx.hideTabBar({
-      success: function () {
-        app.onTabBar('user');
-      }
-    });
-    //获取缓存中的值
-    let info = wx.getStorageSync("info");
+    let baoxiu = options.t;
+    let title = "电工维修";
+    if (baoxiu == "shui"){
+      title = "水暖维修";
+    }
     that.setData({
-      token: info.token
+      baoxiu: title
     })
-
   },
 
 

@@ -1,34 +1,59 @@
 // pages/login/login.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   // data: {},
+
+  changeIdentify(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    let that = this;
+    that.setData({
+      auth_type: e.detail.value
+    })
+  },
+
   formSubmit: function (e) {
+    let that = this;
+    let auth_type = that.data.auth_type
+
     let username = e.detail.value.username;
     let password = e.detail.value.password;
-    if (username === '') {
+    let reg = /^1[34578]\d{9}$/;
+    let error_msg = "";
+    
+    if (auth_type == "admin"){
+      if (username != "admin"){
+        error_msg = "管理员账号是admin！"
+      }else if(password != "123456"){
+        error_msg = "初始密码是123456!"
+      }
+    }else{
+      if (!reg.test(username)) {
+        error_msg = "输入正确的手机号"
+      }else if(password != "123456"){
+        error_msg = "初始密码是123456!"
+      }
+    }
+    if (error_msg){
       wx.showToast({
-        title: '请填写账号',
+        title: error_msg,
         icon: 'none',
         duration: 1500
       })
-    } else if (password === '') {
-      wx.showToast({
-        title: '请填写密码',
-        icon: 'none',
-        duration: 1500
-      })
-    } else {
-      let permission = '0';
-      switch (permission) {
-        case '0':
+    }else{
+      app.globalData.identification = auth_type;
+      app.globalData.useraccount = username;
+      switch (auth_type) {
+        case 'user':
           wx.switchTab({
             url: '/pages/user_pages/index/index',
           });
           break;
-        case '1':
+        case 'admin':
           wx.switchTab({
             url: '/pages/admin_pages/index/index',
           });

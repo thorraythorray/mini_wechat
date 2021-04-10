@@ -12,7 +12,7 @@ App({
     for (var i = 0; i < tabBar.list.length; i++) {
       tabBar.list[i].active = false;
       if (tabBar.list[i].pagePath == _pagePath) {
-        tabBar.list[i].active = true; // 根据页面地址设置当前页面状态
+        tabBar.list[i].active = true;// 根据页面地址设置当前页面状态
       }
     }
     _curPage.setData({
@@ -104,6 +104,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    identification: null    
   }
 })

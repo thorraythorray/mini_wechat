@@ -1,7 +1,25 @@
 <form bindsubmit="formSubmit">
     <view class="content">
         <view class="head">
-            <text> 填写报修单</text>
+            <text> {{baoxiu}}报修单</text>
+        </view>
+        <view class="hr"></view>
+
+        <view class="username">
+            <input type="text" class="siteInput" name="username" placeholder="{{repair.username}}"
+                    placeholder-style="color:#D3D3D3;" />
+        </view>
+        <view class="hr"></view>
+
+        <view class="phone">
+            <input type="text" class="siteInput" name="phone" placeholder="{{repair.userphone}}"
+                    placeholder-style="color:#D3D3D3;" />
+        </view>
+        <view class="hr"></view>
+
+        <view class="location">
+            <input type="text" class="siteInput" name="location" placeholder="{{repair.location}}"
+                    placeholder-style="color:#D3D3D3;" />
         </view>
         <view class="hr"></view>
        
@@ -10,25 +28,32 @@
                 placeholder-style="color:#D3D3D3;"></textarea>
         </view>
         <view class="hr"></view>
-        <view class="site">
-            <input type="text" class="siteInput" name="site" placeholder="位置：东8-505"
-                placeholder-style="color:#D3D3D3;" />
+
+        <view class="repair-type">
+            <radio-group name="auth" bindchange="levelChange">
+                <radio  class="radio-item" value="ordinary" checked="checked" color="#DBB975">
+                    普通
+                </radio>
+                <radio  class="radio-item" value="emergency" checked="" color="#DBB975">
+                    紧急
+                </radio>
+            </radio-group>
         </view>
         <view class="hr"></view>
-        <view class="files">
-            <view class="file-name" bindtap="localImg">
-                本地图片
+
+        <view class="desc addImv">
+            <!--这个是选择图片-->
+            <view class="upFile" style="border-radius: 5px" bindtap="uploadImg" wx:if="{{chooseViewShowDetail}}">
+                <image class="chooseImv" src="/images/camera.png"></image>
             </view>
-            <view class="img-name" bindtap="uploadImg">
-                <image src="../../static/img/camera.png"></image>
+            <!--这个是已经选好的图片-->
+            <view wx:for="{{image_list}}" wx:key="key" class="upFile" bindtap="showImageDetail" style="border-radius: 5px" data-id="{{index}}">
+                <image class="itemImv" src="{{item}}"></image>
+                <image class="closeImv" src="../../images/delete.png" mode="scaleToFill" catchtap="deleteImvDetail" data-id="{{index}}"></image>
             </view>
         </view>
         <view class="hr"></view>
-        <view class="remark">
-            <textarea name="remark" maxlength="100" placeholder="备注(1/100)"
-                placeholder-style="color:#D3D3D3;"></textarea>
-        </view>
-        <view class="hr"></view>
+
     </view>
     <button form-type="submit">提交</button>
 </form>

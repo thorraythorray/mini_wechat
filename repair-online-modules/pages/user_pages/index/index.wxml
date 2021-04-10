@@ -1,8 +1,6 @@
 <import src="../../tabbar/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>
 
-
-
 <container>
     <view class="swiper-view">
         <swiper autoplay interval="2000" circular indicator-dots class="slides"> 
@@ -19,11 +17,15 @@
         </navigator>
     </view>
     <view class="repair_section" hover-class="none" hover-stop-propagation="false">
-         <view class="shuigong">
-
+         <view class="shuigong" bindtap="xiushuinuan">
+            <view class="" for="">
+                水暖维修
+            </view>
          </view>
-         <view class="diangong">
-
+         <view class="diangong" bindtap="xiudian">
+            <view class="" for="">
+                电工维修
+            </view>
          </view>
     </view>
 </container>

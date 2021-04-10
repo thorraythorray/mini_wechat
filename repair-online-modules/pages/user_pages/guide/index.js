@@ -1,18 +1,37 @@
-// pages/user_pages/guide/index.js
+
+// pages/funny/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    contents: [{
+      "title": "校园网报修指南",
+      "date": "2017-03-18",
+      "content": "PC端操作请登陆http://itss.wxc.edu.cn/进行报修，或进入网络中心（http://nic.wxc.edu.cn）主页，在导航栏点击“运维报修”。学生和教师的用户名、密码与学校“信息门户”的用户名和密码一致(学生账户是学号，教工账户是教工号，如若未修改密码，则默认为身份证后8位)。 "
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    wx.getSystemInfo({
+      success (res) {
+        console.log(res.model)
+        console.log(res.pixelRatio)
+        console.log(res.windowWidth)
+        console.log(res.windowHeight)
+        console.log(res.language)
+        console.log(res.version)
+        console.log(res.platform)
+        that.setData({
+          windowHeight: res.windowHeight
+        })
+      }
+    })
   },
 
   /**
@@ -26,7 +45,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
