@@ -32,8 +32,8 @@ Page({
         error_msg = "初始密码是123456!"
       }
     }else{
-      if (!reg.test(username)) {
-        error_msg = "输入正确的手机号"
+      if (!username) {
+        error_msg = "输入正确的学号！"
       }else if(password != "123456"){
         error_msg = "初始密码是123456!"
       }

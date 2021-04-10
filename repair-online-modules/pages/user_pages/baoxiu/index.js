@@ -1,6 +1,6 @@
 // pages/user/user_main.js
 const app = getApp();
-const utils = require("../../../utils/util.js");
+const util = require("../../../utils/util.js");
 const common = require("../../../utils/common.js");
 
 Page({
@@ -16,7 +16,8 @@ Page({
       "userphone": "联系电话",
       "location": "宿舍位置"
     },
-    chooseViewShowDetail: true
+    chooseViewShowDetail: true,
+    state: "ordinary"
   },
 
   //上传
@@ -62,7 +63,7 @@ Page({
   /** 查看大图Detail */
   showImageDetail: function(e) {
     let that = this;
-    let detail = this.data.image_list;
+    let detail = that.data.image_list;
     var itemIndex = e.currentTarget.dataset.id;
     wx.previewImage({
       current: detail[itemIndex], // 当前显示图片的http链接
@@ -90,7 +91,7 @@ Page({
     })
   },
 
-  changeIdentify(e) {
+  levelChange(e) {
     let that = this;
     that.setData({
       state: e.detail.value
@@ -101,9 +102,9 @@ Page({
   formSubmit: function (e) {
     let that = this;
     let image_list = that.data.image_list;
-    let username = e.detail.username;
-    let userphone = e.detail.phone;
-    let location = e.detail.location;
+    let username = e.detail.value.username;
+    let userphone = e.detail.value.phone;
+    let location = e.detail.value.location;
     let desc = e.detail.value.desc;
   
     if (!username || !userphone || !location || !desc || !image_list){
@@ -113,16 +114,31 @@ Page({
         duration: 1500
       })
     }else{
+      var t = util.formatTime(new Date)
       let repairInfo = {
+        "id": Date.now().toString(36),
+        "user": app.globalData.useraccount,
         "username": username,
         "userphone": userphone,
         "location": location,
         "desc": desc,
         "state": that.data.state,
         "repair_status": 0,
-        "created_time": utils.formatTime
+        "created_time": t,
+        "images": that.data.image_list
       }
       console.log("repairInfo is", repairInfo)
+      common.setNewRepair(repairInfo)
+      wx.showToast({
+        title: '发布成功！',
+        icon: 'success'
+      })
+      setTimeout(function(){
+        wx.switchTab({
+          url: '/pages/repair/repair',
+        })
+        that.onLoad();
+      }, 1000)
     }
   },
 

@@ -1,24 +1,27 @@
-<!--pages/user_pages/baoxiujilu/baoxiujilu.wxml-->
-<!-- <wxs module="dateUtil" src="../../common_pages/formatTime.wxs"></wxs>  -->
+<import src="../tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>
+
 <view class="content">
   <block wx:for="{{result}}" wx:key="id">
     <view class="list">
       <view class="list-item">
-        <view wx:if="{{item.img_name!=='无'}}" bindtap="previewImg" data-name="{{item.img_name}}">
-          <image mode="aspectFit" src="{{'http://119.45.143.167:5001/repairapp/v1/get/imgs?img_name='+item.img_name}}">
+        <view bindtap="previewImg">
+          <image mode="aspectFit" src="{{item.image}}">
           </image>
-        </view>
-        <view wx:else style="color: #cccccc;">
-          <image mode="aspectFit" src="../../static/img/noimg.png"></image>
         </view>
         <view class="detail">
           <view class="desc">{{item.desc}}</view>
-          <view class="remark">备注：{{item.remark}}</view>
-          <view class=" site">{{item.site}}</view>
+          <view wx:if="{{item.state == 'ordinary'}}" style="color:red;" class="remark">{{item.state}}</view>
+          <view wx:else class="remark" style="color:yellow;">{{item.state}}</view>
+          <view class="site">{{item.location}}</view>
+          <view class="site">{{item.username}}</view>
+          <view class="site">{{item.userphone}}</view>
           <view class="sta-rep">
-            <view wx:if="{{item.status==='待处理'}}" style="color:red;">{{item.status}}</view>
+            <view wx:if="{{item.status == 0}}" style="color:red;">{{item.status}}</view>
+            <view wx:elif="{{item.status == 1}}" style="color:yellow;">{{item.status}}</view>
             <view wx:else style="color:green;">{{item.status}}</view>
-            <view class="repair-time">{{dateUtil.formatTime(item.repair_date)}}</view>
+            <view class="repair-time">{{item.end_date}}</view>
+            <!-- <view class="repair-time">{{dateUtil.formatTime(item.repair_date)}}</view> -->
           </view>
         </view>
       </view>

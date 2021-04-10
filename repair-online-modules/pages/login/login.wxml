@@ -5,7 +5,7 @@
 <view class='contain'>
     <form bindsubmit="formSubmit">
         <view class="form">
-            <view class='view_container'>
+            <!-- <view class='view_container'>
                 <radio-group name="auth" bindchange="changeSex">
                     <radio  class="radio-item" value="user" checked="checked" color="#DBB975">
                         学生
@@ -14,7 +14,7 @@
                         管理员
                     </radio>
                 </radio-group>
-            </view>
+            </view> -->
             <view class="imgs">
                 <view class="img1">
                     <image src="/images/phone.png" class="img-name"></image>
@@ -24,7 +24,7 @@
                 </view>
             </view>
             <view class="inputs">
-                <input type="text" class="username" name="username" placeholder="手机号"
+                <input type="text" class="username" name="username" placeholder="学号"
                        placeholder-style="color: #D3D3D3;"/>
                 <input password="true" class="pwd" name="password" placeholder="密码"
                        placeholder-style="color: #D3D3D3;"/>

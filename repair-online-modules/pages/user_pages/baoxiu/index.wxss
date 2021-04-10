@@ -25,6 +25,11 @@ page {
     padding: 30rpx;
     height: 160rpx;
     font-size: 27rpx;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   
   .remark {
@@ -71,48 +76,46 @@ page {
 
    
 /*添加图片*/
- 
-.addImv .chooseView {
-  width: 180rpx;
-  height: 180rpx;
-  margin: 20rpx 20rpx;
-  background-color: #f2f6f9;
-  border: 1px dashed lightgray;
-  text-align: center;
-  line-height: 180rpx;
-  /* padding: 0rpx 7rpx; */
-  border-radius: 5px;
-  margin-left: 40rpx;
+.addImv {
+  padding: 30rpx;
+  font-size: 27rpx;
+  display: flex;
+  flex-wrap:wrap;
+  white-space: nowrap;
+  justify-content:space-between;
+}
+
+.addImv::after{
+  content:'' ;
+  width: 80px;
 }
  
 .addImv .chooseImv {
-  width: 50rpx;
-  height: 50rpx;
+  width: 160rpx;
+  height: 160rpx;
 }
  
 /*已选择的图片*/
  
 .addImv .upFile {
-  width: 180rpx;
-  height: 180rpx;
   position: relative;
-  padding: 0rpx 7rpx;
-  margin-left: 40rpx;
+  padding: 5rpx;
   border: 1px solid #c0ccda;
+  margin-top: 8px;
 }
  
 .addImv .upFile .itemImv {
-  width: 180rpx;
-  height: 180rpx;
-  padding: -1rpx 7rpx;
+  width: 160rpx;
+  height: 160rpx;
+  padding: 5rpx;
 }
  
 .addImv .upFile .closeImv {
   position: absolute;
   right: 0rpx;
   top: 0rpx;
-  width: 50rpx;
-  height: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .repair-type {

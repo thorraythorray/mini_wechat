@@ -14,6 +14,7 @@ Page({
       "/images/slider1.jpg",
       "/images/slider2.jpg",
       "/images/slider3.jpg",
+      "/images/slider4.jpg"
     ]
   },
   // 事件处理函数

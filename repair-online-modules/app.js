@@ -38,7 +38,7 @@ App({
           "active": true
         },
         {
-          "pagePath": "/pages/user_pages/notify/index",
+          "pagePath": "/pages/repair/repair",
           "text": "通知",
           "iconPath": "/images/notice.png",
           "selectedIconPath": "/images/notice_active.png",
@@ -46,7 +46,7 @@ App({
           "active": false
         },
         {
-          "pagePath": "/pages/user_pages/my/index",
+          "pagePath": "/pages/my/my",
           "text": "我的",
           "iconPath": "/images/me.png",
           "selectedIconPath": "/images/me_active.png",
@@ -105,6 +105,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    identification: null    
+    identification: "user" ,
+    username: null   
   }
 })
