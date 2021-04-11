@@ -116,6 +116,7 @@ Page({
     }else{
       var t = util.formatTime(new Date)
       let repairInfo = {
+        "type": that.data.baoxiu,
         "id": Date.now().toString(36),
         "user": app.globalData.username,
         "username": username,

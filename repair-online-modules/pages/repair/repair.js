@@ -21,6 +21,14 @@ Page({
       ]
     })
   },
+
+  clickDetail: function(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/repairInfo/index?id=' + id,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

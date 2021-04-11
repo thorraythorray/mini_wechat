@@ -1,0 +1,138 @@
+/* pages/user/user_main.wxss */
+page {
+    background-color: ghostwhite;
+  }
+  
+  .content {
+    margin: 20rpx;
+    background-color: white;
+    font-size: 27rpx;
+  }
+  
+  .hr {
+    height: 5rpx;
+    background-color: #cccccc;
+    opacity: 0.2;
+  }
+  
+  .head {
+    line-height: 80rpx;
+    text-align: center;
+    font-size: large;
+  }
+  
+  .desc {
+    padding: 30rpx;
+    height: 160rpx;
+    font-size: 27rpx;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .remark {
+    padding: 30rpx;
+    height: 150rpx;
+    font-size: 27rpx;
+  }
+  
+  .siteInput {
+    padding-left: 30rpx;
+    height: 100rpx;
+    font-size: 27rpx;
+  }
+  
+  button {
+    color: white;
+    background-color: cornflowerblue;
+    margin-top: 60rpx;
+    z-index: 10000;
+  }
+  
+  image {
+    height: 70rpx;
+    width: 70rpx;
+  }
+  
+  .files {
+    line-height: 100rpx;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .file-name {
+    width: 70%;
+    margin-left: 50rpx;
+    color: #D3D3D3;
+  }
+  
+  .img-name {
+    position: absolute;
+    right: 50rpx;
+    margin-top: 10rpx;
+  }
+
+   
+/*添加图片*/
+.addImv {
+  padding: 30rpx;
+  font-size: 27rpx;
+  display: flex;
+  flex-wrap:wrap;
+  white-space: nowrap;
+  justify-content:space-between;
+}
+
+.addImv::after{
+  content:'' ;
+  width: 80px;
+}
+ 
+.addImv .chooseImv {
+  width: 160rpx;
+  height: 160rpx;
+}
+ 
+/*已选择的图片*/
+ 
+.addImv .upFile {
+  position: relative;
+  padding: 5rpx;
+  border: 1px solid #c0ccda;
+  margin-top: 8px;
+}
+ 
+.addImv .upFile .itemImv {
+  width: 160rpx;
+  height: 160rpx;
+  padding: 5rpx;
+}
+ 
+.addImv .upFile .closeImv {
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.repair-type {
+    padding: 30rpx;
+}
+
+.radio-item {
+  width: 50%;
+}
+.time_picker {
+  width:50%;
+  font-size:14px;
+  text-align: right;
+  margin-right: 10px
+}
+
+.section {
+  display: flex;
+  flex-flow: row;
+}

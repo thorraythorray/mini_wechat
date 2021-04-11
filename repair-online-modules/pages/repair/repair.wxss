@@ -8,7 +8,7 @@ page {
 }
 
 .list {
-  padding: 20rpx;
+  padding: 10rpx 20rpx 10rpx 20rpx;
 }
 
 .hr {
@@ -18,9 +18,16 @@ page {
   margin-top: 15rpx;
 }
 
+.image-section {
+  width: 40%;
+}
+
 image {
-  height: 150rpx;
-  width: 150rpx;
+  height: 220rpx;
+  width: 240rpx;
+}
+.desc {
+  padding: 10rpx 20rpx 0rpx 20rpx;
 }
 
 .list-item {
@@ -33,6 +40,7 @@ image {
   flex-direction: column;
   line-height: 50rpx;
   font-size: small;
+  width: 60%;
 }
 
 .sta-rep {

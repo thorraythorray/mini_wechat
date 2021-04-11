@@ -1,7 +1,5 @@
 {
   "pages":[
-    
-
     "pages/user_pages/index/index",
     
     "pages/login/login",
@@ -19,6 +17,7 @@
     "pages/repair/repair",
     "pages/liuyanban/index",
     "pages/profile/index",
+    "pages/repairInfo/index",
     "pages/my/my",
     "pages/tabbar/tabbar"
   ],

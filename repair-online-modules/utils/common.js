@@ -17,29 +17,29 @@ function getUserRepair(user){
   var userList = []
   for (var i in repairList){
     if (repairList[i].user == user){
+      repairList[i]["image"] = repairList[i].images[0]
       userList.push(repairList[i])
     }
   }
   return userList
 }
 
+function getRepairObject(id){
+  var repairList = getAllRepair();
+  var targ = null;
+  for (var i in repairList){
+    if (repairList[i].id == id){
+      targ = repairList[i]
+      break
+    }
+  }
+  return targ
+}
+
 function setNewRepair(info){
   var repairList = getAllRepair();
   repairList.push(info)
   wx.setStorageSync('repair_info', JSON.stringify(repairList))
-}
-
-function setRepairStatus(id, status){
-  var repairList = getAllRepair();
-  for (var i in repairList){
-    if (repairList[i].id == id){
-      repairList[i].status = parseInt(status)
-      break
-    }
-  }
-  if (repairList){
-    wx.setStorageSync('repair_info', JSON.stringify(repairList))  
-  }
 }
 
 function delRepair(id){
@@ -54,12 +54,12 @@ function delRepair(id){
     wx.setStorageSync('repair_info', JSON.stringify(repairList))  
   }
 }
-function addRepairInfo(id, end_time, comment){
+function addRepairInfo(id, repair_status, comment){
   var repairList = getAllRepair();
   for (var i in repairList){
     if (repairList[i].id == id){
-      if (end_time){
-        repairList["end_date"] = end_time
+      if (repair_status){
+        repairList["repair_status"] = parseInt(repair_status)
       }
       if (comment){
         repairList["comment"] = end_time
@@ -77,8 +77,8 @@ module.exports = {
   getAllRepair: getAllRepair,
   getUserRepair: getUserRepair,
   setNewRepair: setNewRepair,
-  setRepairStatus: setRepairStatus,
   delRepair: delRepair,
-  addRepairInfo: addRepairInfo
+  addRepairInfo: addRepairInfo,
+  getRepairObject: getRepairObject
 
 }

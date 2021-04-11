@@ -3,18 +3,18 @@
 
 <view class="content">
   <block wx:for="{{result}}" wx:key="id">
+    <view class="desc">{{item.desc}}</view>
     <view class="list">
-      <view class="list-item">
-        <view bindtap="previewImg">
+      <view class="list-item" bindtap="clickDetail" data-id="{{item.id}}">
+        <view class="image-section">
           <image mode="aspectFit" src="{{item.image}}">
           </image>
         </view>
         <view class="detail">
-          <view class="desc">{{item.desc}}</view>
-          <view wx:if="{{item.state == 'ordinary'}}" style="color:red;" class="remark">{{item.state}}</view>
-          <view wx:else class="remark" style="color:yellow;">{{item.state}}</view>
-          <view class="site">{{item.location}}</view>
-          <view class="site">{{item.username}}-{{item.userphone}}</view>
+          <view wx:if="{{item.state == 'ordinary'}}" style="color:red;">{{item.state}}报修</view>
+          <view wx:else style="color:yellow;">{{item.state}}报修</view>
+          <view class="site">宿舍位置：{{item.location}}</view>
+          <view class="site">联系人：{{item.username}}（{{item.userphone}}）</view>
           <view class="sta-rep">
             <view wx:if="{{item.repair_status == 0}}" style="color:red;">未处理</view>
             <view wx:elif="{{item.repair_status == 1}}" style="color:yellow;">处理中</view>

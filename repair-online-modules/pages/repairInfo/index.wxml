@@ -1,0 +1,61 @@
+<form bindsubmit="formSubmit">
+    <view class="content">
+        <view class="head">
+            <text> {{repair.type}}反馈单</text>
+        </view>
+        <view class="hr"></view>
+
+        <view class="username">
+            <input disabled="true" type="text" class="siteInput" name="username" value="联系人：{{repair.username}}"
+                    placeholder-style="color:#D3D3D3;" />
+        </view>
+        <view class="hr"></view>
+
+        <view class="phone">
+            <input disabled="true" type="text" class="siteInput" name="phone" value="联系电话：{{repair.userphone}}"
+                    placeholder-style="color:#D3D3D3;" />
+        </view>
+        <view class="hr"></view>
+
+        <view class="location">
+            <input disabled="true" type="text" class="siteInput" name="location" value="宿舍位置：{{repair.location}}"
+                    placeholder-style="color:#D3D3D3;" />
+        </view>
+        <view class="hr"></view>
+       
+        <view class="desc">
+            <textarea disabled="true" name="desc" maxlength="200" placeholder=""
+                placeholder-style="color:#D3D3D3;" style="height:auto">故障描述：{{repair.desc}}</textarea>
+        </view>
+        <view class="hr"></view>
+
+        <view class="addImv">
+            <view wx:for="{{repair.images}}" wx:key="key" class="upFile" bindtap="showImageDetail" style="border-radius: 5px" data-id="{{index}}">
+                <image class="itemImv" src="{{item}}"></image>
+            </view>
+        </view>
+        <view class="hr"></view>
+        
+         <view class="repair-type">
+
+            <view class="section">
+                <view class="section_title">当前进度：</view>
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{repair_status_list}}">
+                    <view class="picker">
+                        <view wx:if="{{repair_status_name}}">{{repair_status_name}}</view>
+                        <view wx:else>请选择</view>
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class="hr"></view>
+
+        <view wx:if="{{indentify == 'admin'}}" class="desc">
+            <textarea disabled="true" name="comment" maxlength="200" placeholder=""
+                placeholder-style="color:#D3D3D3;" style="height:auto">{{repair.desc}}</textarea>
+        </view>
+        <view class="hr"></view>
+
+    </view>
+    <button form-type="submit">提交反馈</button>
+</form>
