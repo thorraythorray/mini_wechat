@@ -1,66 +1,70 @@
-// pages/my/my.js
+const app = getApp()
+
 Page({
+  
+  data:{
+    picture: "/images/user.jpg",
+    name: "Wong",
+    wx_atuhorize: true,
+    // 1.菜单栏数据
+      items:[
+          {
+            icon:'/images/Personal.png',
+            text:'个人信息',
+            url: "../profile/index"
+        },
+        {
+          icon:'/images/Personal.png',
+          text:'修改密码',
+          url: "../profile/index"
+      },
+      {
+        icon:'/images/Introduce.png',
+        text:'留言板',
+        url: "../user_pages/liuyanban/index"
+      },
+        {
+          icon:'/images/Personal.png',
+          text:'退出登录',
+          url: "../login/login"
+      },
+      ]
+    },
+  
+  onLoad: function(){
+    var that = this;
+    wx.hideTabBar({
+      success: function () {
+          app.onTabBar('user');
+      }
+    });
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+    // wx.getSetting({
+    //   success(ress) {
+    //     if (!ress.authSetting['scope.userInfo']) {
+    //       that.setData({
+    //         wx_atuhorize: false
+    //       })
+    //     }else{
+    //       app.getUserInfo(function(userInfo){
+    //         that.setData({
+    //           userInfo: userInfo,
+    //           wx_atuhorize: true
+    //         })
+    //       })
+    //     }
+    //   }
+    // })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  logining(e) {
+    var that = this
+    console.log('click login------',e);
+    app.globalData.userInfo = e.detail.userInfo
+    that.setData({
+      userInfo: e.detail.userInfo,
+      wx_atuhorize: true
+    })
 
   }
 })

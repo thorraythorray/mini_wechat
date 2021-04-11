@@ -78,7 +78,7 @@ App({
           "active": false
         },
         {
-          "pagePath": "/pages/admin_pages/my/index",
+          "pagePath": "/pages/my/my",
           "text": "我的",
           "iconPath": "/images/me.png",
           "selectedIconPath": "/images/me_active.png",

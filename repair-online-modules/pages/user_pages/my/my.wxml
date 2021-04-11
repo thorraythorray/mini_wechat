@@ -1,7 +1,6 @@
 <!--pages/users/personal/personal.wxml-->
-<import src="../../template/tabbar.wxml"/>
+<import src="../tabbar/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>
-
 
 <view class="content">
     <view class="head">

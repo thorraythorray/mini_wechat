@@ -1,8 +1,10 @@
 {
   "pages":[
+    "pages/login/login",
+    
     "pages/user_pages/index/index",
     
-    "pages/login/login",
+    
     "pages/index/index",
     "pages/logs/logs",
 
@@ -13,6 +15,7 @@
     "pages/user_pages/my/my",
     "pages/user_pages/guide/index",
     "pages/user_pages/baoxiu/index",
+    "pages/user_pages/liuyanban/index",
     
     "pages/repair/repair",
     "pages/liuyanban/index",
@@ -35,10 +38,6 @@
         {
           "pagePath": "pages/repair/repair",
           "text": "维修"
-        },
-        {
-          "pagePath": "pages/liuyanban/index",
-          "text": "留言"
         },
         {
           "pagePath": "pages/my/my",

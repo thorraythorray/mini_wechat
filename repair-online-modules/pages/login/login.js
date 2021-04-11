@@ -6,7 +6,9 @@ Page({
   /**
    * 页面的初始数据
    */
-  // data: {},
+  data: {
+    
+  },
 
   changeIdentify(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
