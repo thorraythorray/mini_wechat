@@ -8,10 +8,15 @@
 <scroll-view wx:else>
 <!--头部-->
 <view class="headerView">
+<<<<<<< HEAD
  <image wx:if="{{userInfo.image}}" class="picture" src="{{userInfo.image}}"></image>
  <image wx:else class="picture" src="/images/user.jpg"></image>
  <label class="name">{{auth_type}}</label>
  <label class="name">{{userInfo.name}}</label>
+=======
+ <image class="picture" src="{{userInfo.avatarUrl}}"></image>
+ <label class="name">{{userInfo.nickName}}</label>
+>>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
 </view>
 
 <!--表格-->

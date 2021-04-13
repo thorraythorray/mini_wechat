@@ -86,7 +86,11 @@ page{
   width: 18%;
   font-size: small;
   color: #ffff;
+<<<<<<< HEAD
   background-color: #4583f7;
+=======
+  background-color: cornflowerblue;
+>>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
  }
 
  .inputTitle{

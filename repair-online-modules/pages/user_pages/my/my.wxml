@@ -1,0 +1,32 @@
+<!--pages/users/personal/personal.wxml-->
+<import src="../tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>
+
+<view class="content">
+    <view class="head">
+        <view class="head-line">
+            <view>
+                <image src="../../static/img/name.png"></image>
+            </view>
+            <view class="info">{{username}}</view>
+        </view>
+        <view class="hr"></view>
+        <view class="head-line">
+            <view>
+                <image src="../../static/img/grade.png"></image>
+            </view>
+            <view class="info">{{permission}}</view>
+        </view>
+    </view>
+    <view class="body">
+        <view class="link" bindtap="modifyPwd">
+            <view class="mod-pwd">修改密码</view>
+            <view class="rrar">></view>
+        </view>
+        <view class="hr"></view>
+        <view class="link" bindtap="repairHistory">
+            <view class="find-log">查看报修记录</view>
+            <view class="rrar">></view>
+        </view>
+    </view>
+</view>

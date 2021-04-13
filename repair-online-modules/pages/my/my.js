@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 const app = getApp();
 const common = require("../../utils/common.js");
+=======
+const app = getApp()
+>>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
 
 Page({
   
@@ -15,17 +19,29 @@ Page({
             url: "../profile/index"
         },
         {
+<<<<<<< HEAD
           icon:'/images/reset_passwd.png',
+=======
+          icon:'/images/Personal.png',
+>>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
           text:'修改密码',
           url: "../profile/index"
       },
       {
         icon:'/images/Introduce.png',
+<<<<<<< HEAD
         text:'留言',
         url: "../user_pages/liuyanban/index"
       },
         {
           icon:'/images/logout.png',
+=======
+        text:'留言板',
+        url: "../user_pages/liuyanban/index"
+      },
+        {
+          icon:'/images/Personal.png',
+>>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
           text:'退出登录',
           url: "../login/login"
       },
@@ -34,6 +50,7 @@ Page({
   
   onLoad: function(){
     var that = this;
+<<<<<<< HEAD
     var username = app.globalData.username;
     var auth_type = app.globalData.identification;
     wx.hideTabBar({
@@ -92,6 +109,30 @@ Page({
       auth_type: ind,
       items: items
     })
+=======
+    wx.hideTabBar({
+      success: function () {
+          app.onTabBar('user');
+      }
+    });
+
+    // wx.getSetting({
+    //   success(ress) {
+    //     if (!ress.authSetting['scope.userInfo']) {
+    //       that.setData({
+    //         wx_atuhorize: false
+    //       })
+    //     }else{
+    //       app.getUserInfo(function(userInfo){
+    //         that.setData({
+    //           userInfo: userInfo,
+    //           wx_atuhorize: true
+    //         })
+    //       })
+    //     }
+    //   }
+    // })
+>>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
   },
 
   logining(e) {

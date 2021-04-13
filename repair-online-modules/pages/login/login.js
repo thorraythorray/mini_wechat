@@ -8,7 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+<<<<<<< HEAD
     auth_type: "user"
+=======
+    
+>>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
   },
 
   changeIdentify(e) {
