@@ -1,3 +1,39 @@
 <import src="../../tabbar/tabbar.wxml"/>
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>
-<view>I am a admin !</view>
+
+<container>
+    <view class="swiper-view">
+        <swiper autoplay interval="2000" circular indicator-dots class="slides"> 
+            <swiper-item wx:for="{{swiper_list}}">
+                <image src="{{item}}" mode="aspectFill"/>
+            </swiper-item>
+        </swiper>
+    </view>
+
+    <!-- <view class="guide_info" hover-class="none" hover-stop-propagation="false">
+        <navigator class="" target="" url="/pages/user_pages/guide/index" hover-class="navigator-hover" open-type="navigate">
+            <image class="" src="/images/guide.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+            </image>
+        </navigator>
+    </view> -->
+    <view class="repair_section" hover-class="none" hover-stop-propagation="false">
+         <view class="shuigong" bindtap="xiushuinuan">
+            <view class="font-guide" for="">
+                水暖维修工作单
+            </view>
+            <view  hover-class="none" hover-stop-propagation="false">
+                <image class="img-guide" src="/images/shuinuan.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                </image>
+            </view>
+         </view>
+         <view class="diangong" bindtap="xiudian">
+            <view class="font-guide" for="">
+                电工维修工作单
+            </view>
+            <view class="" hover-class="none" hover-stop-propagation="false">
+                <image class="img-guide" src="/images/diangong.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                </image>
+            </view>
+         </view>
+    </view>
+</container>

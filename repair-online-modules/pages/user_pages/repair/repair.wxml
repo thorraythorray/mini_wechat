@@ -1,0 +1,51 @@
+<import src="../../tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>
+
+<!--index.wxml-->  
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">未处理</view>  
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">处理中</view>  
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已处理</view>  
+</view>  
+  
+<!-- <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">  
+    <swiper-item>  
+      <view>未处理</view>  
+    </swiper-item>  
+
+    <swiper-item>  
+      <view>处理中</view>  
+    </swiper-item>  
+
+    <swiper-item>  
+      <view>已处理</view>  
+    </swiper-item>  
+</swiper>   -->
+
+<view class="content">
+  <block wx:for="{{result}}" wx:key="id">
+    <view class="desc">[{{item.type}}]  {{item.desc}}</view>
+    <view class="list">
+      <view class="list-item" bindtap="clickDetail" data-id="{{item.id}}">
+        <view class="image-section">
+          <image mode="aspectFit" src="{{item.image}}">
+          </image>
+        </view>
+        <view class="detail">
+          <view wx:if="{{item.state == 'ordinary'}}" style="color:red;">{{item.state}}报修</view>
+          <view wx:else style="color:yellow;">{{item.state}}报修</view>
+          <view class="site">宿舍位置：{{item.location}}</view>
+          <view class="site">联系人：{{item.username}}（{{item.userphone}}）</view>
+          <view class="sta-rep">
+            <view wx:if="{{item.repair_status == 0}}" style="color:red;">未处理</view>
+            <view wx:elif="{{item.repair_status == 1}}" style="color:yellow;">处理中</view>
+            <view wx:else style="color:green;">已处理</view>
+            <view class="repair-time">{{item.end_date}}</view>
+            <!-- <view class="repair-time">{{dateUtil.formatTime(item.repair_date)}}</view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</view>

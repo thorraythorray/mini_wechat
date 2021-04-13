@@ -18,13 +18,21 @@
     </view>
     <view class="repair_section" hover-class="none" hover-stop-propagation="false">
          <view class="shuigong" bindtap="xiushuinuan">
-            <view class="" for="">
-                水暖维修
+            <view class="font-guide" for="">
+                水暖维修申报
+            </view>
+            <view  hover-class="none" hover-stop-propagation="false">
+                <image class="img-guide" src="/images/shuinuan.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                </image>
             </view>
          </view>
          <view class="diangong" bindtap="xiudian">
-            <view class="" for="">
-                电工维修
+            <view class="font-guide" for="">
+                电工维修申报
+            </view>
+            <view class="" hover-class="none" hover-stop-propagation="false">
+                <image class="img-guide" src="/images/diangong.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                </image>
             </view>
          </view>
     </view>

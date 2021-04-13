@@ -1,6 +1,6 @@
 // pages/user_pages/baoxiujilu/baoxiujilu.js
 const app = getApp();
-const common = require("../../utils/common.js");
+const common = require("../../../utils/common.js");
 
 Page({
 
@@ -9,18 +9,10 @@ Page({
    */
   data: {
     token: null,
-    result: null
+    result: null,
+    currentTab: 0
   },
-  //预览图片
-  previewImg: function (e) {
-    let name = e.currentTarget.dataset.name;
-    wx.previewImage({
-      current: 'http://119.45.143.167:5001/repairapp/v1/get/imgs?img_name=' + name,
-      urls: [
-        'http://119.45.143.167:5001/repairapp/v1/get/imgs?img_name=' + name,
-      ]
-    })
-  },
+  
 
   clickDetail: function(e){
     let id = e.currentTarget.dataset.id;
@@ -34,21 +26,53 @@ Page({
    */
   onLoad() {
     //加载本页面的tabBar样式
-    let that = this;
+    let that = this; 
     let key = app.globalData.identification;
-    let user = app.globalData.username;
     wx.hideTabBar({
       success: function () {
           app.onTabBar(key);
       }
     });
-    var userRepairList = common.getUserRepair(user)
+    let username = app.globalData.username;
+    let userRepairList = common.sortRepairListByStatus(username, 0)
     console.log("userRepairList", userRepairList)
     that.setData({
-      result: userRepairList
+      result: userRepairList.reverse()
     })
   },
 
+  bindChange: function( e ) {  
+  
+    var that = this;  
+    var status = parseInt(e.detail.current);
+    console.log("change status", status)
+
+    var username = app.globalData.username;
+    var userRepairList = common.sortRepairListByStatus(username, status)
+    console.log("change userRepairList", userRepairList)
+    that.setData({
+      result: userRepairList.reverse()
+    })
+  
+  },  
+  /** 
+   * 点击tab切换 
+   */  
+  swichNav: function( e ) {  
+  
+    var that = this;  
+    console.log("e",e)
+    var status = parseInt(e.currentTarget.dataset.current);
+    console.log("switch status", status)
+
+    var username = app.globalData.username;
+    var userRepairList = common.sortRepairListByStatus(username, status)
+    console.log("switch userRepairList", userRepairList)
+    that.setData({
+      result: userRepairList.reverse(),
+      currentTab: status
+    })
+  } ,
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

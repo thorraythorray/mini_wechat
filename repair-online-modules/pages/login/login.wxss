@@ -15,8 +15,8 @@
 }
 
 .img-pwd {
-  height: 50rpx;
-  width: 50rpx;
+  height: 45rpx;
+  width: 45rpx;
 }
 
 input {
@@ -25,7 +25,6 @@ input {
   padding-left: 30rpx;
 }
 
-.username {}
 
 .pwd {
   margin-top: 100rpx;
@@ -36,17 +35,22 @@ input {
 }
 
 .contain {
-  margin-top: 120rpx;
+  margin-top: 80rpx;
 }
 
 .form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
+.input-section {
+  display: flex;
+  flex-direction: row;
+}
 .imgs {
   width: 25%;
   text-align: right;
+  margin-right: 5px;
 }
 
 .inputs {
@@ -57,19 +61,16 @@ input {
   text-align: center;
 }
 .img-logo {
-  height: 120rpx;
-  width: 70%;
+  height: 100rpx;
+  width: 15%;
 }
-
-
-
 
 .view_container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top:50rpx ;
-  
+  padding: 50rpx;
+  margin-bottom: 20px;
 }
 
 /* 按钮未选中 */
@@ -96,11 +97,6 @@ input {
   justify-content: center;
 }
 
-/* view未选中 */
-.normal_view {
-  
-
-}
 
 /* view选中 */
 .checked_view {

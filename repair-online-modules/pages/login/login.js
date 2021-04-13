@@ -1,12 +1,15 @@
 // pages/login/login.js
 var app = getApp();
+const common = require("../../utils/common.js");
 
 Page({
 
   /**
    * 页面的初始数据
    */
-  // data: {},
+  data: {
+    auth_type: "user"
+  },
 
   changeIdentify(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
@@ -19,34 +22,43 @@ Page({
   formSubmit: function (e) {
     let that = this;
     let auth_type = that.data.auth_type
-
+    console.log("auth_type", auth_type)
     let username = e.detail.value.username;
     let password = e.detail.value.password;
     let reg = /^1[34578]\d{9}$/;
     let error_msg = "";
     
+    let real_passwd = "123456";
+    if (!username){
+      var userObj = common.getUser(username);
+      if (userObj) {
+        real_passwd = userObj.passwd;
+      }
+    }
+    console.log("passwd is", real_passwd)
+
     if (auth_type == "admin"){
       if (username != "admin"){
         error_msg = "管理员账号是admin！"
-      }else if(password != "123456"){
-        error_msg = "初始密码是123456!"
+      }else if(password != real_passwd){
+        error_msg = "密码不正确，首次登录密码是123456!"
       }
     }else{
       if (!username) {
         error_msg = "输入正确的学号！"
-      }else if(password != "123456"){
-        error_msg = "初始密码是123456!"
+      }else if(password != real_passwd){
+        error_msg = "密码不正确，首次登录密码是123456!"
       }
     }
     if (error_msg){
       wx.showToast({
-        title: error_msg,
+        title: error_msg, 
         icon: 'none',
         duration: 1500
       })
     }else{
       app.globalData.identification = auth_type;
-      app.globalData.useraccount = username;
+      app.globalData.username = username;
       switch (auth_type) {
         case 'user':
           wx.switchTab({

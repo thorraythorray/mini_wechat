@@ -1,25 +1,26 @@
 {
   "pages":[
-    "pages/user_pages/index/index",
     
     "pages/login/login",
+
     "pages/index/index",
     "pages/logs/logs",
-
-    "pages/admin_pages/index/index",
-    "pages/admin_pages/my/my",
-
     
-    "pages/user_pages/my/my",
+    "pages/admin_pages/index/index",
+    "pages/admin_pages/repair/repair",
+    
+    "pages/user_pages/index/index",
     "pages/user_pages/guide/index",
     "pages/user_pages/baoxiu/index",
+    "pages/user_pages/liuyanban/index",
+    "pages/user_pages/repair/repair",
     
-    "pages/repair/repair",
     "pages/liuyanban/index",
     "pages/profile/index",
     "pages/repairInfo/index",
     "pages/my/my",
-    "pages/tabbar/tabbar"
+    "pages/tabbar/tabbar",
+    "pages/passwd/index"
   ],
   
   "tabBar": {
@@ -33,8 +34,12 @@
           "text": "首页"
         },
         {
-          "pagePath": "pages/repair/repair",
+          "pagePath": "pages/user_pages/repair/repair",
           "text": "维修"
+        },
+        {
+          "pagePath": "pages/admin_pages/index/index",
+          "text": "首页"
         },
         {
           "pagePath": "pages/liuyanban/index",

@@ -9,7 +9,13 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    swiper_list: [
+      "/images/slider1.jpg",
+      "/images/slider2.jpg",
+      "/images/slider3.jpg",
+      "/images/slider4.jpg"
+    ]
   },
   // 事件处理函数
   bindViewTap() {
@@ -17,6 +23,22 @@ Page({
       url: '../logs/logs'
     })
   },
+
+  
+  xiushuinuan: function(e) {
+    let url = "/pages/admin_pages/repair/repair?t=shui";
+    wx.navigateTo({
+      url: url,
+    })
+  },
+
+  xiudian: function(e) {
+    let url = "/pages/admin_pages/repair/repair?t=dian";
+    wx.navigateTo({
+      url: url,
+    })
+  },
+
   onLoad() {
     //加载本页面的tabBar样式
     wx.hideTabBar({

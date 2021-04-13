@@ -27,6 +27,7 @@
 }
 
 .desc {
+  line-height: 35px;
   font-size: 30rpx;
   display: flex;
   margin-bottom: 50rpx;

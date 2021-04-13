@@ -1,2 +1,31 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<import src="../tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>
+
+<view class="contain">
+<view wx:if="{{!wx_atuhorize}}" style="display:flex;margin-top: 200px;background: white;">
+  <button size="small" open-type="getUserInfo" bindgetuserinfo="logining" type="primary" bindtap="auth_click" class="auth_btn">获取授权</button>
+</view>
+<scroll-view wx:else>
+<!--头部-->
+<view class="headerView">
+ <image wx:if="{{userInfo.image}}" class="picture" src="{{userInfo.image}}"></image>
+ <image wx:else class="picture" src="/images/user.jpg"></image>
+ <label class="name">{{auth_type}}</label>
+ <label class="name">{{userInfo.name}}</label>
+</view>
+
+<!--表格-->
+ <block wx:for-items="{{items}}" wx:key="item.id">   
+   <navigator url="{{item.url}}">
+    <view class="item">
+      <image class="icon" src="{{item.icon}}"></image>
+      <label>{{item.text}}</label>
+      <image class="arrow" src="/images/0106arrow3x.png"></image>
+    </view>
+  </navigator>
+ </block>
+
+
+</scroll-view>
+
+</view>

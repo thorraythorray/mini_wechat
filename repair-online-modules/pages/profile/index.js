@@ -1,73 +1,79 @@
-// pages/profile/index.js
-const app = getApp()
+const app = getApp();
+const common = require("../../utils/common.js");
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+   sex: '男',
+   imageList:[]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad: function(){
     var that = this;
-    app.getUserInfo(function(userInfo){
-      console.log("userInfo", userInfo)
+    var username = app.globalData.username;
+    var auth_type = app.globalData.identification;
+
+    var userObj = common.getUser(username)
+    if (userObj){
       that.setData({
-        userInfo: userInfo
+        user: userObj,
+        auth_type: auth_type
       })
+    }
+    
+  },
+
+  switch1Change:function(e){
+    if(e.detail.value){
+      this.setData({sex:'男'})
+    }else{
+      this.setData({sex:'女'})
+    }
+  },
+  //表单提交
+  formSubmit: function (e) {
+    var that = this;
+    let user = app.globalData.username;
+    var profile = {
+      "no": user,
+      "name": e.detail.value.name,
+      "sex": that.data.sex,
+      "phone": e.detail.value.phone,
+      "institute": e.detail.value.institute,
+      "image": that.data.imageList[0]
+    }
+    common.setUserProfile(user, profile)
+    wx.showToast({
+      title: '修改成功！',
+      icon: 'success'
     })
+    setTimeout(function(){
+      wx.switchTab({
+        url: '/pages/my/my',
+      })
+    }, 1000)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+//拍照
+  chooseImage: function () {
+    var that = this;
+    if (that.imageList.length > 1){
+      wx.showToast({
+        title: '只能上传一张！',
+        icon: 'error',
+        duration: 1000
+      })
+    }else{
+      wx.chooseImage({
+        count: 1, // 默认9
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          console.log(res)
+          that.setData({
+            imageList: res.tempFilePaths
+          })
+        }
+      })
+    }
+    
   }
 })

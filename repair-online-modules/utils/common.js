@@ -72,6 +72,85 @@ function addRepairInfo(id, repair_status, comment){
   }
 }
 
+function sortRepairListByStatus(username, status){
+  var repairList = getAllRepair();
+  if (username != "admin") {
+    repairList = getUserRepair(username)
+  }
+  
+  var sortList = []
+  for (var i in repairList){
+    if (repairList[i].repair_status == status){
+      repairList[i]["image"] = repairList[i].images[0]
+      sortList.push(repairList[i])
+    }
+  }
+  return sortList
+}
+
+function sortRepairListByType(username, type, status){
+  var repairList = getAllRepair();
+  if (username != "admin") {
+    repairList = getUserRepair(user)
+  }
+  var sortList = []
+  for (var i in repairList){
+    if (repairList[i].type == type && repairList[i].repair_status == status){
+      repairList[i]["image"] = repairList[i].images[0]
+      sortList.push(repairList[i])
+    }
+  }
+  return sortList
+}
+
+function getAllUser() {
+  var user_serialize = wx.getStorageSync('user_info') || [];
+  var userList = [];
+  if (user_serialize.length > 0){
+    repairList = JSON.parse(user_serialize)
+  }
+  return userList
+}
+
+function resetUserPasswd(username, passwd) {
+  var userList = getAllUser();
+  for (var i in userList){
+    if (userList[i].no == username){
+      userList[i].passwd = passwd
+      break
+    }
+  }
+  if (userList){
+    wx.setStorageSync('user_info', JSON.stringify(userList))  
+  }
+}
+
+function setUserProfile(username, info){
+  var userList = getAllUser();
+  for (var i in userList){
+    if (userList[i].no == username){
+      for (var k in info){
+        userList[i][k] = info[k]
+      }
+      break
+    }
+  }
+  if (userList){
+    wx.setStorageSync('user_info', JSON.stringify(userList))  
+  }
+}
+
+function getUser(username){
+  var userList = getAllUser(username);
+  var userObj = null;
+  for (var i in userList){
+    if (userList[i].no == username){
+      userObj =  userList[i]
+      break
+    }
+  }
+  return userObj
+}
 
 module.exports = {
   getAllRepair: getAllRepair,
@@ -79,6 +158,12 @@ module.exports = {
   setNewRepair: setNewRepair,
   delRepair: delRepair,
   addRepairInfo: addRepairInfo,
-  getRepairObject: getRepairObject
+  getRepairObject: getRepairObject,
+  sortRepairListByStatus: sortRepairListByStatus,
+  sortRepairListByType: sortRepairListByType,
 
+  getAllUser: getAllUser,
+  resetUserPasswd: resetUserPasswd,
+  setUserProfile: setUserProfile,
+  getUser: getUser
 }

@@ -51,11 +51,13 @@
         <view class="hr"></view>
 
         <view wx:if="{{indentify == 'admin'}}" class="desc">
-            <textarea disabled="true" name="comment" maxlength="200" placeholder=""
-                placeholder-style="color:#D3D3D3;" style="height:auto">{{repair.desc}}</textarea>
+            <textarea name="comment" maxlength="200" placeholder=""
+                placeholder-style="color:#D3D3D3;" style="height:auto">{{repair.comment}}</textarea>
         </view>
         <view class="hr"></view>
 
     </view>
-    <button form-type="submit">提交反馈</button>
+    <view wx:if="{{indentify == 'admin'}}" >
+        <button form-type="submit">提交反馈</button>
+    </view>
 </form>

@@ -38,7 +38,7 @@ App({
           "active": true
         },
         {
-          "pagePath": "/pages/repair/repair",
+          "pagePath": "/pages/user_pages/repair/repair",
           "text": "通知",
           "iconPath": "/images/notice.png",
           "selectedIconPath": "/images/notice_active.png",
@@ -70,7 +70,7 @@ App({
           "active": true
         },
         {
-          "pagePath": "/pages/admin_pages/message/index",
+          "pagePath": "/pages/liuyanban/index",
           "text": "留言板",
           "iconPath": "/images/liuyanban.png",
           "selectedIconPath": "/images/liuyanban_active.png",
@@ -78,7 +78,7 @@ App({
           "active": false
         },
         {
-          "pagePath": "/pages/admin_pages/my/index",
+          "pagePath": "/pages/my/my",
           "text": "我的",
           "iconPath": "/images/me.png",
           "selectedIconPath": "/images/me_active.png",
@@ -105,7 +105,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    identification: "user" ,
-    username: "123"   
+    identification: "" ,
+    username: ""   
   }
 })

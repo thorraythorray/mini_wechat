@@ -1,8 +1,5 @@
-// pages/comment/comment.js
-// const model = require('../cityChoose/cityChoose.js')
-// const config = require('../../utils/config.js')
-// const util = require('../../utils/util.js')
-const app = getApp()
+const app = getApp();
+
 var mydata = {
   end: 0,
   replyUserName: ""
@@ -29,10 +26,16 @@ Page({
       success: function(res) {
         that.setData({
           scrollHeight: res.windowHeight,
-          userId:app.globalData.haulUserInfo.id
+          // userId:app.globalData.haulUserInfo.id
         });
       }
     });
+    wx.hideTabBar({
+      success: function () {
+          app.onTabBar('admin');
+      }
+    });
+
     mydata.page = 1;
     that.getPageInfo(mydata.page);
   },
@@ -120,7 +123,7 @@ Page({
   // 此处的回调函数在 传入新值之前执行 主要用来清除页面信息
   getPageInfo(page, callback) {
     var that = this;
-    util.showLoading();
+    // util.showLoading();
     console.log("getPageInfo");
     console.log("page" + page);
     var limited = 6;
@@ -166,7 +169,9 @@ Page({
     var that = this;
     console.log(app.globalData.haulUserInfo);
     if(form.comment == ""){
-      util.showLog('请输入评论');
+      wx.showToast({
+        title: '请输入评论',
+      })
       return;
     }
     // 提交评论

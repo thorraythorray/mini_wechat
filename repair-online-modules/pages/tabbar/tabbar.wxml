@@ -1,7 +1,7 @@
 <!--pages/template/tabbar.wxml-->
 <template name="tabBar">
   <cover-view class="tabbar"
-    style="color: {{tabBar.color}}; background: {{tabBar.backgroundColor}}; {{tabBar.position=='top'? 'top: 0' : 'bottom: 0'}}; {{tabBar.borderStyle? (tabBar.position=='top'? 'border-bottom: solid 1px '+tabBar.borderStyle + ';' : 'border-top: solid 1rpx '+tabBar.borderStyle + ';') : ''}}">
+    style="margin-bottom:20px; color: {{tabBar.color}}; background: {{tabBar.backgroundColor}}; {{tabBar.position=='top'? 'top: 0' : 'bottom: 0'}}; {{tabBar.borderStyle? (tabBar.position=='top'? 'border-bottom: solid 1px '+tabBar.borderStyle + ';' : 'border-top: solid 1rpx '+tabBar.borderStyle + ';') : ''}}">
     <block wx:for="{{tabBar.list}}" wx:key="pagePath" style="z-index: auto">
       <navigator url="{{item.pagePath}}" open-type="switchTab" class="{{item.clas}}"
         style="{{item.active? 'color: '+(item.selectedColor? item.selectedColor : tabBar.selectedColor) : ''}}">

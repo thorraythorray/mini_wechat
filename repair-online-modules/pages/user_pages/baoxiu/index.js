@@ -136,7 +136,7 @@ Page({
       })
       setTimeout(function(){
         wx.switchTab({
-          url: '/pages/repair/repair',
+          url: '/pages/user_pages/repair/repair',
         })
         // that.onLoad();
       }, 1000)

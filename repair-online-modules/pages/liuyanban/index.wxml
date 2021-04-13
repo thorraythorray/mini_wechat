@@ -1,3 +1,6 @@
+<import src="../tabbar/tabbar.wxml"/>
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>
+
 <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
   <view class="pro-con">
     <block wx:for="{{list}}" wx:key="{{index}}">

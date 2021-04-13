@@ -1,26 +1,77 @@
-<view class="contain">
-<scroll-view>
-<!--头部-->
-<view class="headerView">
- <image class="picture" src="{{userInfo.avatarUrl}}"></image>
- <label class="name">姓名：{{userInfo.nickName}}</label>
- <label class="name" wx:if="{{userInfo.nickName}} == 1">性别：男</label>
- <label class="name" wx:else>性别：女</label>
- <label class="name">所在位置：{{userInfo.country}}-{{userInfo.province}}-{{userInfo.city}}</label>
-</view>
+<!--index.wxml-->
+<form bindsubmit="formSubmit">
+<view class="weui-cell weui-cell_input">
+  <view class="weui-cell__hd">
+    <view class="weui-label">学号</view>
+   </view>
+    <view class="weui-cell__bd">
+    <input disabled="true" class="weui-input" name="no" placeholder="请输入学号" value='{{username}}'/>
+   </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+  <view class="weui-cell__hd">
+    <view class="weui-label">姓名</view>
+   </view>
+    <view class="weui-cell__bd">
+    <input class="weui-input" name="name" placeholder="请输入姓名" value='{{user.name}}'/>
+   </view>
+  </view>
 
-<!--表格-->
- <!-- <block wx:for-items="{{items}}" wx:key="item.id">   
-   <navigator url="{{item.url}}">
-    <view class="item">
-      <image class="icon" src="{{item.icon}}"></image>
-      <label>{{item.text}}</label>
-      <image class="arrow" src="../../image/0106arrow3x.png"></image>
+  <view class="weui-cell weui-cell_input">
+  <view class="weui-cell__hd">
+    <view class="weui-label">性别</view>
+   </view>
+    <view class="weui-cell__bd">
+    <input class="weui-input" name="sex" value="{{user.sex}}"/>
+   </view>
+     <view class="weui-cell__ft">
+    <switch checked bindchange="switch1Change"/>
+  </view>
+  </view>
+
+  <view class="weui-cell weui-cell_input">
+  <view class="weui-cell__hd">
+    <view class="weui-label">电话</view>
+   </view>
+    <view class="weui-cell__bd">
+    <input class="weui-input" name="phone" placeholder="请输入电话" value='{{user.phone}}'/>
+   </view>
+  </view>
+
+  <view class="weui-cell weui-cell_input">
+  <view class="weui-cell__hd">
+    <view class="weui-label">学院</view>
+   </view>
+    <view wx:if="{{auth_type == 'admin'}}" class="weui-cell__bd">
+      <input class="weui-input" name="institute" placeholder="请输入学院" value='{{user.institute}}'/>
     </view>
-  </navigator>
- </block> -->
+    <view wx:else class="weui-cell__bd">
+      <input class="weui-input" name="institute" placeholder="请输入部门" value='{{user.institute}}'/>
+    </view>
+  </view>
 
-
-</scroll-view>
-
-</view>
+  <view class="weui-cells">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__title">个人照片</view>
+                  <view class="weui-uploader__info">0/1</view>
+                </view>
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files">
+                    <block wx:for="{{imageList}}" wx:for-item="image">
+                      <view class="weui-uploader__file">
+                        <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                      </view>
+                    </block>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+     <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit">确定</button>
+     </view>   
+</form>
