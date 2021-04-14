@@ -40,7 +40,7 @@ Page({
       result: userRepairList.reverse()
     })
   },
-
+  
   bindChange: function( e ) {  
   
     var that = this;  

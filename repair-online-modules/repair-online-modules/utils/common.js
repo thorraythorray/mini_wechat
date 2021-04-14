@@ -50,7 +50,7 @@ function delRepair(id){
       break
     }
   }
-  if (repairList){
+  if (repairList.length > 0){
     wx.setStorageSync('repair_info', JSON.stringify(repairList))  
   }
 }
@@ -67,7 +67,7 @@ function addRepairInfo(id, repair_status, comment){
       break
     }
   }
-  if (repairList){
+  if (repairList.length > 0){
     wx.setStorageSync('repair_info', JSON.stringify(repairList))  
   }
 }
@@ -120,7 +120,7 @@ function resetUserPasswd(username, passwd) {
       break
     }
   }
-  if (userList){
+  if (userList.length > 0){
     wx.setStorageSync('user_info', JSON.stringify(userList))  
   }
 }
@@ -135,7 +135,7 @@ function setUserProfile(username, info){
       break
     }
   }
-  if (userList){
+  if (userList.length > 0){
     wx.setStorageSync('user_info', JSON.stringify(userList))  
   }
 }
@@ -152,6 +152,58 @@ function getUser(username){
   return userObj
 }
 
+function getAllMessages(){
+  var message_serialize = wx.getStorageSync('message_info') || [];
+  var messageList = [];
+  if (message_serialize.length > 0){
+    messageList = JSON.parse(message_serialize)
+  }
+  return messageList
+}
+
+function getUserMessages(user){
+  var messageList = getAllMessages();
+  var userMessage = []
+  for (var i in messageList){
+    if (messageList[i].user == user){
+      userMessage.push(messageList[i])
+    }
+  }
+  return userMessage
+}
+
+function addMessage(info){
+  var messageList = getAllMessages();
+  messageList.push(info)
+  wx.setStorageSync('message_info', JSON.stringify(messageList)) 
+}
+
+function addMessageComment(id, comment){
+  var messageList = getAllMessages();
+  for(var i in messageList){
+    if (messageList[i].id == id){
+      messageList["comment"] = comment
+      break
+    }
+  }
+  if (messageList.length > 0) {
+    wx.setStorageSync('message_info', JSON.stringify(messageList)) 
+  }
+}
+
+function delMessage(id){
+  var messageList = getAllMessages();
+  for(var i in messageList){
+    if (messageList[i].id == id){
+      messageList.splice(i, 1)
+      break
+    }
+  }
+  if (messageList.length > 0) {
+    wx.setStorageSync('message_info', JSON.stringify(messageList)) 
+  }
+}
+
 module.exports = {
   getAllRepair: getAllRepair,
   getUserRepair: getUserRepair,
@@ -165,5 +217,11 @@ module.exports = {
   getAllUser: getAllUser,
   resetUserPasswd: resetUserPasswd,
   setUserProfile: setUserProfile,
-  getUser: getUser
+  getUser: getUser,
+
+  getAllMessages:getAllMessages,
+  getUserMessages:getUserMessages,
+  addMessage:addMessage,
+  addMessageComment:addMessageComment,
+  delMessage:delMessage
 }

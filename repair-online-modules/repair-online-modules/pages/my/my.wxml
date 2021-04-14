@@ -9,9 +9,8 @@
 <!--头部-->
 <view class="headerView">
  <image wx:if="{{userInfo.image}}" class="picture" src="{{userInfo.image}}"></image>
- <image wx:else class="picture" src="/images/user.jpg"></image>
- <label class="name">{{auth_type}}</label>
- <label class="name">{{userInfo.name}}</label>
+ <image wx:else class="picture" src="/images/user_icon.png"></image>
+ <label class="name">{{auth_type}} {{userInfo.name}}</label>
 </view>
 
 <!--表格-->

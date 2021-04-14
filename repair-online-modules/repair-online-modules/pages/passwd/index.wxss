@@ -25,5 +25,5 @@ input{
 }
 button{
   margin: 20rpx;
-  color: #4583f7
+  background-color: cornflowerblue;
 }

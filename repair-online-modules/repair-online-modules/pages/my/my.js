@@ -42,7 +42,7 @@ Page({
       }
     });
 
-    var ind = "学生登录"
+    var ind = "学生"
     var items = [
       {
         icon:'/images/Personal.png',
@@ -66,7 +66,7 @@ Page({
       }
     ]
     if (auth_type == "admin"){
-      ind = "管理员登录"
+      ind = "管理员"
       items = [
         {
           icon:'/images/Personal.png',

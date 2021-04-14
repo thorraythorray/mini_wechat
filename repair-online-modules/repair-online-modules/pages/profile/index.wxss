@@ -1,0 +1,28 @@
+/* src/form/form.wxss */
+
+.page-body {
+    display: flex;
+    flex-direction: column;
+  
+    /* margin: 30rpx;
+    padding-right: 37rpx; */
+    padding: 30rpx;
+  }
+  
+  .input {
+    display: flex;
+    flex-direction: row;
+    background: #F9F9F9;
+    height: 55rpx;
+    align-items: center;
+    padding: 15rpx;
+    border: 5px solid #fff;
+  }
+  .scr-view{
+    height: 80%;
+    margin-bottom: 180rpx;
+  }
+  .btn-submit {
+    margin-top: 40rpx;
+  }
+  

@@ -1,4 +1,5 @@
 const app = getApp();
+const common = require("../../utils/common.js");
 
 Page( {
   data: {
@@ -12,17 +13,25 @@ Page( {
   suggestSubmit: function(e) {
     
     let that = this;
+    let user = app.globalData.username;
     let content = e.detail.value.content;
+    let newMessage = {
+      "id": Date.now().toString(36),
+      "user": user,
+      "content": content
+    }
+
+    common.addMessage(newMessage)
    
     wx.showToast({
-      title: '提交成功！',
+      title: '留言成功！',
       icon: 'success',
       duration: 2000
     })
     setTimeout(
       function () {
         wx.switchTab({
-          url: '../my/index',
+          url: '../index/index',
         })
       },
       1500

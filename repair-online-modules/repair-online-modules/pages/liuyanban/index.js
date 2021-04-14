@@ -1,8 +1,35 @@
 const app = getApp();
+const common = require("../../utils/common.js");
 
 var mydata = {
   end: 0,
-  replyUserName: ""
+  replyUserName: "",
+  list: [
+    {
+      "userPhoto": "/pages/images/account.png",
+      "userName": "学生",
+      "replyUserName": "管理员",
+      "comment": "多久啊的局面撒开聊加盟代理Skam打了卡刷卡吗",
+      "id": 1,
+      "userId": 123
+    },
+    {
+      "userPhoto": "/pages/images/account.png",
+      "userName": "学生",
+      "replyUserName": "管理员",
+      "comment": "多久啊的局面撒开聊加盟代理Skam打了卡刷卡吗",
+      "id": 2,
+      "userId": 1223
+    },
+    {
+      "userPhoto": "/pages/images/account.png",
+      "userName": "学生",
+      "replyUserName": "管理员",
+      "comment": "多久啊的局面撒开聊加盟代理Skam打了卡刷卡吗",
+      "id": 3,
+      "userId": 12232
+    }
+  ]
 }
 Page({
  
