@@ -6,19 +6,11 @@
     <form bindsubmit="formSubmit">
         <view class="form">
             <view class='view_container'>
-<<<<<<< HEAD
                 <radio-group name="auth" bindchange="changeIdentify" style="width: 72%;">
                     <radio  class="radio-item" value="user" checked="checked" color="#DBB975">
                         学生
                     </radio>
                     <radio  class="radio-item" value="admin" checked="" color="#DBB975" style="margin-left: 45%;">
-=======
-                <radio-group name="auth" bindchange="changeSex" style="width: 60%;">
-                    <radio  class="radio-item" value="user" checked="checked" color="#DBB975">
-                        学生
-                    </radio>
-                    <radio  class="radio-item" value="admin" checked="" color="#DBB975" style="margin-left: 30%;">
->>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
                         管理员
                     </radio>
                 </radio-group>

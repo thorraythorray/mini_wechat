@@ -70,11 +70,7 @@ input {
   flex-direction: row;
   justify-content: space-around;
   padding: 50rpx;
-<<<<<<< HEAD
   margin-bottom: 20px;
-=======
-  
->>>>>>> 53fc3e0ba8d17998d8100b8055be66208b707324
 }
 
 /* 按钮未选中 */
