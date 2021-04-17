@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<view class="page-body">
+  <form bindsubmit="formSubmit" catchreset="formReset">
+    <scroll-view class='scr-view'>
+      <view class="input">
+        学号：
+        <input class="weui-input" name="no" placeholder="请输入学号" />
+      </view>
+      <view class="input">
+        姓名：
+        <input class="weui-input" name="name" placeholder="请输入姓名" />
+      </view>
+      <view class="input">
+        年龄：
+        <input class="weui-input" name="age" placeholder="" value="{{age}}" placeholder="请选择生日" />
+      </view>
+      <view class="input">
+        性别：
+        <input class="weui-input" name="sex" placeholder="请输入性别" />
+      </view>
+      <view class="input">
+        电话：
+        <input class="weui-input" name="phone" placeholder="请输入电话" />
+      </view>
+      <view wx:if="{{auth_type == 'admin'}}" class="weui-cell__bd">
+        <input class="input" name="institute" placeholder="请输入学院" value='{{user.institute}}'/>
+      </view>
+      <view wx:else class="weui-cell__bd">
+        <input class="input" name="institute" placeholder="请输入部门" value='{{user.institute}}'/>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">个人照片</view>
+              <view class="weui-uploader__info">0/1</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{imageList}}" wx:for-item="image">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="btn-submit">
+        <button type="primary" formType="submit">保存</button>
+      </view>
+    </scroll-view>
+  </form>
+</view>
