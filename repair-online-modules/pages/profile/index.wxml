@@ -29,24 +29,24 @@
         <input class="input" name="institute" placeholder="请输入部门" value='{{user.institute}}'/>
       </view>
       <view class="weui-cell">
-            <view class="weui-cell__bd">
-              <view class="weui-uploader">
-                <view class="weui-uploader__hd">
-                  <view class="weui-uploader__title">个人照片</view>
-                  <view class="weui-uploader__info">0/1</view>
-                </view>
-                <view class="weui-uploader__bd">
-                  <view class="weui-uploader__files">
-                    <block wx:for="{{imageList}}" wx:for-item="image">
-                      <view class="weui-uploader__file">
-                        <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
-                      </view>
-                    </block>
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">个人照片</view>
+              <view class="weui-uploader__info">0/1</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{imageList}}" wx:for-item="image">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
                   </view>
-                </view>
+                </block>
               </view>
             </view>
-          </view
+          </view>
+        </view>
+      </view>
       
       <view class="btn-submit">
         <button type="primary" formType="submit">保存</button>

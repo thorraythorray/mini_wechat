@@ -1,5 +1,5 @@
 const app = getApp();
-const common = require("../../utils/common.js");
+const common = require("../../../utils/common.js");
 
 Page( {
   data: {
