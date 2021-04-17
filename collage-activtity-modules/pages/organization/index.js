@@ -1,10 +1,12 @@
-const app = getApp()
+const app = getApp();
+const common = require("../../utils/common.js");
+
 Page({
   data: {
-    img: [
-      'lun1.jpg',
-      'lun2.jpg',
-      'lun3.jpg'
+    img: [ 
+      "/images/slider1.jpg",
+      "/images/slider2.jpg",
+      "/images/slider3.jpg"
     ],
     test:0,
     indicatorDots:true,
@@ -17,8 +19,9 @@ Page({
     //滑动动画时长
     color:'#ffffff',
     //当前选中的指示点颜色
-    height:''
+    height:'',
     //swiper高度
+    org_list: []
   },
 
   nb:function(){
@@ -27,48 +30,14 @@ Page({
     })
   },
 
-  onShow:function(){
-    console.log("no1:"+app.globalData.youke)
-    
-    wx.request({
-      url: 'https://www.toilet-mis.cn/sh.php',
-      data:{
-        sh:1
-      },
-      success(res){
-        console.log(res.data)
-        wx.setStorageSync('hide', res.data)
-        if(res.data==1){
-          wx.hideTabBar()
-        }
-        else{
-          if(app.globalData.youke==1){
-            if(app.globalData.inform==0){
-              wx.showModal({
-                title:"警告",
-                content:'游客登录将无法使用程序中的聊天和通讯录功能，仅供您浏览学校社团信息。若要重新登录可移步“我的”界面，退回到登录页面。',
-                showCancel:false,
-                confirmText:'我知道了'
-              })
-              app.globalData.inform = 1
-            }
-            wx.setTabBarItem({
-              index: 0,
-              text: '禁用',
-              iconPath: "https://www.toilet-mis.cn/images/disabled.jpg",
-              selectedIconPath:"https://www.toilet-mis.cn/images/disabled.jpg"
-            }),
-            wx.setTabBarItem({
-              index: 1,
-              text: '禁用',
-              iconPath: "https://www.toilet-mis.cn/images/disabled.jpg",
-              selectedIconPath:"https://www.toilet-mis.cn/images/disabled.jpg"
-            })
-          }
-        }
-      }
+  onLoad:function(){
+    let that = this;
+    let org_list = common.getOrgInfo();
+    that.setData({
+      org_list: org_list
     })
-
+    
+    
   },
 
   goheight:function (e) {

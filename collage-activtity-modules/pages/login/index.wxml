@@ -6,28 +6,25 @@
     <button type="primary" style="margin-bottom:20px" bindtap="userLogin">学生登录</button>
     <button type="primary" bindtap="adminLogin">管理员登录</button>
     <form wx:if="{{isAdmin}}" bindsubmit="formSubmit">
-        <view class='title_text'>
-            
-        </view>
         <view class="form">
           <view class="input-section">
               <view class="imgs">
-                <view class="img1" style="margin-bottom: 40px;">
+                <view class="img1" style="margin-bottom: 30px;">
                     <image src="/images/institute.png" class="img-name"></image>
                 </view>
-                <view class="img1">
+                <!-- <view class="img1">
                     <image src="/images/phone.png" class="img-name"></image>
-                </view>
+                </view> -->
                 <view class="img2">
                     <image src="/images/passwd.png" class="img-pwd"></image>
                 </view>
               </view>
               <view class="inputs">
-                <picker name="category" mode="selector" range="{{category}}" range-key="title" value="{{index}}" bindchange="categoryyyyy" style="margin-bottom: 40px;margin-left: 25px;">
+                <picker name="category" mode="selector" range="{{category}}" range-key="title" value="{{index}}" bindchange="categoryyyyy" style="margin-bottom: 30px;margin-left: 25px;">
                     <input data-id='{{categoryInd}}' name="category" type='text' value='{{categoryTitle}}' disabled='true' style="color:darkblue"></input>
                 </picker>
-                <input type="text" class="login_input username" name="username" placeholder="学号"
-                    placeholder-style="color: #D3D3D3;"/>
+                <!-- <input type="text" class="login_input username" name="username" placeholder="学号"
+                    placeholder-style="color: #D3D3D3;"/> -->
                 <input password="true" class="login_input pwd" name="password" placeholder="密码"
                     placeholder-style="color: #D3D3D3;"/>
               </view>

@@ -37,9 +37,30 @@ Page({
     })
   },
 
+  formSubmit: function (e) {
+    let that = this;
+    let institute = e.detail.value.categoryTitle;
+    let password = e.detail.value.password;
+
+    if (password != "123456") {
+      wx.showToast({
+        title: "登录密码是123456!", 
+        icon: 'error',
+        duration: 1500
+      })
+    }else{
+      app.globalData.identification = "admin";
+      app.globalData.user = institute;
+      wx.navigateTo({
+        url: '../admin_index/index',
+      })
+    }
+  },
+
   userLogin: function(){
+    app.globalData.identification = "user";
     wx.navigateTo({
-      url: '../login/index',
+      url: '../index/index',
     })
   },
 

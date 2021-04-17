@@ -14,6 +14,33 @@ function getLoginItems(){
   return login_list
 }
 
+function getOrgInfo(){
+  let data = app.globalData.dataInfo;
+  let org_list = []
+  for(var i in data){
+    let org = data[i].organizition
+    for (var j in org) {
+      org_list.push(org[j])
+    }
+  }
+  return org_list
+}
+
+function getOrgByID(id) {
+  let _org = ""
+  let data = app.globalData.dataInfo;
+  for(var i in data){
+    let org = data[i].organizition
+    for (var j in org) {
+      _org = org[j]
+      _org["institute"] = data[i].name;
+    }
+  }
+  return _org
+}
+
 module.exports = {
-  getLoginItems: getLoginItems
+  getLoginItems: getLoginItems,
+  getOrgInfo: getOrgInfo,
+  getOrgByID: getOrgByID
 }
