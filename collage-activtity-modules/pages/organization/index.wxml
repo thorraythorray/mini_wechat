@@ -14,12 +14,3 @@
     <view>{{item.name}}</view>
   </navigator>
 </view>
-<!-- <navigator class="index_item" url="/packageA/pages/tw">
-  <image class="index_item_icon" src="https://www.toilet-mis.cn/images/no3.png" />
-  <view>通信学院团委</view>
-</navigator>
-
-<navigator class="index_item" url="/packageA/pages/xxjs">
-  <image class="index_item_icon" src="https://www.toilet-mis.cn/images/no2.jpg" />
-  <view>信息技术协会</view>
-</navigator> -->

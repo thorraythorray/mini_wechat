@@ -19,14 +19,16 @@
 .weui-article__h1{
   font-size:22px;
   font-weight:700;
-  margin-bottom:.9em;
   line-height:1.4;
   text-align: center;
 }
 .weui-article__h2{font-size:17px}
 .weui-article__h2,.weui-article__h3{font-weight:700;margin-bottom:.34em;line-height:1.4}
 .weui-article__h3{font-size:15px}
-.weui-article__p{margin:0 0 .8em}
+.weui-article__p{
+  margin:0 0 .8em;
+  padding: 10px;
+}
 
 .weui-article__img image{
   width: 100%;

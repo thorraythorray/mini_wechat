@@ -10,9 +10,16 @@ Page({
     let org_id = options.id;
     let that = this;
     let org = common.getOrgByID(org_id);
-    console.log("coming in ..", org)
     that.setData({
       org: org
+    })
+  },
+
+  baoming: function(){
+    let that = this;
+    let org_id = that.data.org.org_id;
+    wx.navigateTo({
+      url: '../apply/index?org_id' + org_id,
     })
   }
 })

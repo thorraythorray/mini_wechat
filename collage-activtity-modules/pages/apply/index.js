@@ -1,3 +1,6 @@
+const common = require("../../utils/common");
+const app = getApp();
+
 Page({
   data: {
     name: '',
@@ -30,50 +33,37 @@ Page({
     console.log(that.data.g)
   },
 
-  formSubmit: function(e) {
-    var that = this
-    console.log(e.detail.value)
-    console.log(that.data.g)
-    wx.request({
-      url: 'https://www.toilet-mis.cn/form3.php',
-      data:{
-        name: e.detail.value.name,
-        grade: e.detail.value.grade,
-        gender:that.data.g,
-        part:e.detail.value.part,
-        phone:e.detail.value.phone
-      },
-      success(res){
-        console.log(res.data)
-        if(res.data == 0){
-          wx.showToast({
-            title: '请完整填写表格',
-            icon:'none',
-            duration:1500
-          })
-        }
-        else if(res.data==1){
-          wx.showToast({
-            title: '已为您更新数据',
-            icon:'none',
-            duration:1500
-          })
-        }
-        else{
-          wx.showToast({
-            title: '提交成功',
-            icon:'success',
-            duration:1500
-          })
-          that.setData({
-            name:'',
-            grade:'',
-            college:'',
-            phone:''
-          })
-        }
-      }
+  onLoad: function(options){
+    let that = this;
+    let org_id = options.org_id;
+    that.setData({
+      org_id: org_id
     })
+  },
+
+  formSubmit: function(e) {
+    let that = this;
+    let userInfo = app.globalData.userInfo;
+    console.log("userInfo", userInfo)
+    let form_data = {
+      name: e.detail.value.name,
+      institute: e.detail.value.institute,
+      grade: e.detail.value.grade,
+      gender:that.data.g,
+      phone:e.detail.value.phone,
+      user: userInfo.nickName,
+      org_id: org_id
+    }
+    console.log("form data", form_data)
+
+    common.applyOrganize(form_data)
+    
+    wx.showToast({
+      title: '提交成功',
+      icon:'success',
+      duration:1500
+    })
+
   },
 
 })

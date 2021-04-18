@@ -39,6 +39,22 @@ function getOrgByID(id) {
   return _org
 }
 
+function getAllApply(apply_info) {
+  var apply_serialize = wx.getStorageSync('apply_info') || [];
+  var applyList = [];
+  if (apply_serialize.length > 0){
+    applyList = JSON.parse(apply_serialize)
+  }
+  return applyList
+}
+
+function applyOrganize(apply_info){
+  var apply_list = getAllApply()
+  apply_list.push(apply_info)
+  wx.setStorageSync('apply_list', JSON.stringify(apply_list))
+}
+
+
 module.exports = {
   getLoginItems: getLoginItems,
   getOrgInfo: getOrgInfo,
