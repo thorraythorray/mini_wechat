@@ -52,7 +52,7 @@ Page({
       gender:that.data.g,
       phone:e.detail.value.phone,
       user: userInfo.nickName,
-      org_id: org_id
+      org_id: that.data.org_id
     }
     console.log("form data", form_data)
 

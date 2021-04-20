@@ -19,7 +19,7 @@ Page({
     let that = this;
     let org_id = that.data.org.org_id;
     wx.navigateTo({
-      url: '../apply/index?org_id' + org_id,
+      url: '../apply/index?org_id=' + org_id,
     })
   }
 })

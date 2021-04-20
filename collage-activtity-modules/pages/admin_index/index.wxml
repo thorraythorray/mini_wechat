@@ -1,2 +1,10 @@
-<!--pages/admin_index/index.wxml-->
-<text>pages/admin_index/index.wxml</text>
+<!--pages/login/login.wxml-->
+<view class="logo">
+    <!-- <image class="img-logo" src="/images/logo.png"></image> -->
+</view>
+<view class='contain'>
+    <button type="primary" style="margin-bottom:20px" bindtap="org_manage">社团管理</button>
+    <button type="primary" style="margin-bottom:20px" bindtap="act_manage">活动管理</button>
+    <button type="primary" bindtap="apply_manage">入社审核管理</button>
+
+</view>

@@ -15,6 +15,24 @@ Page({
 
   },
 
+  org_manage: function(){
+    wx.navigateTo({
+      url: '../../pages/org_manage/index',
+    })
+  },
+
+  act_manage: function(){
+    wx.navigateTo({
+      url: '../../pages/act_manage/index',
+    })
+  },
+
+  apply_manage: function(){
+    wx.navigateTo({
+      url: '../../pages/apply_manage/index',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

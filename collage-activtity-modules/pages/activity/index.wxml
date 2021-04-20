@@ -1,36 +1,15 @@
 <!--index.wxml-->
 <view class="swiper-tab">
-	<view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">活动列表</view>
-	<view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">招募中</view>
-	<view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">新活动</view>
+	<view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">所有活动</view>
+	<view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">社团活动</view>
 </view>
 
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
 	<swiper-item>
-		<navigator url="/packageA/pages/act1" class="index_item">
-			<image class="index_item_icon" src="https://www.toilet-mis.cn/images/no1.jpg" />
-			<view>阳光晨跑（已结束）</view>
-		</navigator>
-		<navigator class="index_item" url="/packageA/pages/act2">
-			<image class="index_item_icon" src="https://www.toilet-mis.cn/images/no2.jpg" />
-			<view>创客大赛（已结束）</view>
+		<navigator wx:for="{{act_list}}" url="/pages/act_info/index?id={{item.act_id}}" class="index_item">
+			<!-- <image class="index_item_icon" src="https://www.toilet-mis.cn/images/no1.jpg" /> -->
+			<view>{{item.name}}</view>
 		</navigator>
 	</swiper-item>
-
-	<swiper-item>
-		<navigator class="index_item" url="/packageA/pages/act3">
-			<image class="index_item_icon" src="https://www.toilet-mis.cn/images/no3.png" />
-			<view>青年大学习（招募中）</view>
-		</navigator>
-	</swiper-item>
-
-	<swiper-item>
-	<view class="weui-article__section">
-		<text>\n</text>
-    <view class="weui-article__p " style="color: blue">
-		提示：创建新活动需要管理员权限
-		</view>
-		</view>
-    <button bindtap="create" class="press" hover-class="plain-hover">创建一个新活动</button>
-	</swiper-item>
+	
 </swiper>

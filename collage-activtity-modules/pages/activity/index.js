@@ -1,6 +1,7 @@
 //index.js  
 //获取应用实例  
 var app = getApp()  
+var common = require("../../utils/common.js");
 Page( {  
   data: {
     winWidth: 0,  
@@ -9,75 +10,34 @@ Page( {
   }, 
   onLoad: function() {  
     var that = this;  
+    var act_list = common.getAllActivity();
+    console.log("all act list", act_list)
     wx.getSystemInfo( {  
       success: function( res ) {  
         that.setData( {  
           winWidth: res.windowWidth,  
-          winHeight: res.windowHeight  
+          winHeight: res.windowHeight,
+          act_list: act_list
         });  
       }  
-    });  
+    });
   }, 
-  bindChange: function( e ) { 
-    var that = this;  
-    that.setData( { currentTab: e.detail.current });  
-  }, 
+  // bindChange: function( e ) { 
+  //   var that = this;  
+  //   that.setData( { currentTab: e.detail.current });  
+  // }, 
   swichNav: function( e ) { 
     var that = this;  
-    if( this.data.currentTab === e.target.dataset.current ) {  
-      return false;  
-    } else {  
-      that.setData( {  
-        currentTab: e.target.dataset.current  
-      })  
-    }  
-  },
-
-  create:function(){
-    wx.getStorage({
-      key: 'openid',
-      success(res){
-        wx.request({
-          url: 'https://www.toilet-mis.cn/create.php',
-          data:{
-            openid:res.data
-          },
-          success:function(res){
-            if(res.data==1){
-              wx.showToast({
-                title: '身份验证成功',
-                icon:'success',
-                duration:1500
-              })
-              setTimeout(function(){
-                wx.navigateTo({
-                  url: '/packageA/pages/form1',
-                })
-              }, 1500);
-            }
-            else{
-              wx.showToast({
-                title: '抱歉，您还没有权限新建活动，请与管理员联系。',
-                icon: 'none',
-                duration: 2000
-              })
-            }
-          }
-        })
-      },
-      fail:function(){
-        app.globalData.show = 1
-        wx.showToast({
-          title: '账号异常，正在为您解决问题',
-          icon: 'none',
-          duration: 1000
-        })
-        setTimeout(function(){
-          wx.reLaunch({
-            url: '/pages/no4/no4',
-          })
-        }, 1000);
-      }
+    var userInfo = app.globalData.userInfo;
+    var user = userInfo.nickName;
+    if (e.target.dataset.current == "0"){
+      var act_list = common.getAllActivity();
+    }else{
+      var act_list = common.getActByUser(user);
+    }
+    that.setData({
+      act_list: act_list,
+      currentTab: e.target.dataset.current
     })
   }
 

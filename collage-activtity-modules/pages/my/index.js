@@ -91,54 +91,14 @@ Page({
 
   wdst:function(){
     wx.navigateTo({
-      url: '/packageA/pages/wdst',
+      url: '../../pages/message/index',
     })
   },
 
-  grzl:function(){
-    wx.navigateTo({
-      url: '/packageA/pages/person',
-    })
-  },
-
-  us:function(){
-    wx.navigateTo({
-      url: '/packageA/pages/us',
-    })
-  },
-
+  // 我的消息
   dyxx:function(){
-    wx.requestSubscribeMessage({
-      tmplIds: [dy],
-      success (res) {
-        console.log(res)
-        if (res[dy] == 'accept') {
-          //用户同意了订阅，允许订阅消息
-          wx.showToast({
-            title: '订阅成功'
-          })
-          wx.request({
-            url: 'https://www.toilet-mis.cn/dyxx.php',
-            success(res){
-              console.log(res)
-            },
-            fail(res){
-              console.log(res)
-            }
-          })
-        } else {
-          //用户拒绝了订阅，禁用订阅消息
-          wx.showToast({
-            title: '订阅失败'
-          })
-        }
-      },
-      fail(res) {
-        console.log(res)
-      },
-      complete(res) {
-        console.log(res)
-      }
+    wx.navigateTo({
+      url: '../../pages/message/index',
     })
   },
 

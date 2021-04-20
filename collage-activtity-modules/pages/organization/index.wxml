@@ -9,7 +9,7 @@
 </swiper>
 
 <view wx:for="{{org_list}}">
-  <navigator url="/pages/org_info/index?id={{item.id}}" class="index_item">
+  <navigator url="/pages/org_info/index?id={{item.org_id}}" class="index_item">
     <image class="index_item_icon" src="../../images/team.png" />
     <view>{{item.name}}</view>
   </navigator>
