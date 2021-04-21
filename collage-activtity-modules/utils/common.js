@@ -87,7 +87,7 @@ function getActByID(id){
   return act
 }
 
-function getAllApply(apply_info) {
+function getAllApply() {
   let apply_serialize = wx.getStorageSync('apply_info') || [];
   let applyList = [];
   if (apply_serialize.length > 0){
@@ -96,23 +96,66 @@ function getAllApply(apply_info) {
   return applyList
 }
 
+function getApplyByUser(user){
+  let apply_list = getAllApply();
+  let user_apply_list = [];
+  for (let i in apply_list){
+    if (apply_list[i].user == user){
+      var apply_state = "拒绝"
+      if (apply_list[i].status == 0){
+        apply_state = "提交"
+      }else if(apply_list[i].status == 1){
+        apply_state = "通过"
+      }
+      apply_list[i].apply_state = apply_state;
+      user_apply_list.push(apply_list[i])
+    }
+  }
+  return user_apply_list
+}
+
 function applyOrganize(apply_info){
   let apply_list = getAllApply()
   apply_list.push(apply_info)
-  wx.setStorageSync('apply_list', JSON.stringify(apply_list))
+  wx.setStorageSync('apply_info', JSON.stringify(apply_list))
 }
 
+function getApplyByInst(inst){
+  let apply_list = getAllApply();
+  let user_apply_list = [];
+  for (let i in apply_list){
+    if (apply_list[i].inst_name == inst && apply_list[i].status == 0){
+      user_apply_list.push(apply_list[i])
+    }
+  }
+  return user_apply_list
+}
 
-
+function feedbackApply(id, status){
+  let apply_list = getAllApply();
+  for (let i in apply_list){
+    if (apply_list[i].id == id){
+      apply_list[i].status = parseInt(status)
+      break
+    }
+  }
+  if (apply_list.length > 0){
+    wx.setStorageSync('apply_info', JSON.stringify(apply_list))
+  }
+}
 
 
 module.exports = {
   getLoginItems: getLoginItems,
   getOrgInfo: getOrgInfo,
   getOrgByID: getOrgByID,
+
   getAllActivity: getAllActivity,
   getActByID: getActByID,
   getActByUser: getActByUser,
+
   getAllApply: getAllApply,
+  getApplyByUser: getApplyByUser,
+  getApplyByInst: getApplyByInst,
   applyOrganize: applyOrganize
 }

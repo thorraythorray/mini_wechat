@@ -1,2 +1,17 @@
-<!--pages/apply_manage/index.wxml-->
-<text>pages/apply_manage/index.wxml</text>
+<view class='container' style="margin-top:-100px;">
+<block wx:for='{{msg_list}}' wx:key='id'>
+  <navigator class='newsitem' url="../chat/chat">
+    <image src='../../images/apply.png' class='img'></image>
+   <!-- <view class='news-text' bindtap="turnToChat"> -->
+    <view class='news-text'>
+      <text class='title'>申请人：{{item.name}}</text>
+      <text class='title'>申请加入：{{item.org_name}}</text>
+      <view class= 'bottext'>  
+        <!-- <input type="text"></input> -->
+        <button class="mini-btn" type="primary" size="mini" bindtap="agree">同意</button>
+        <button class="mini-btn" type="warn" size="mini" bindtap="reject">拒绝</button>
+      </view>
+    </view>
+  </navigator>
+</block>
+</view>

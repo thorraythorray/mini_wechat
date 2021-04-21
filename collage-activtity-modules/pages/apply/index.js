@@ -44,15 +44,20 @@ Page({
   formSubmit: function(e) {
     let that = this;
     let userInfo = app.globalData.userInfo;
+    let org_obj = common.getOrgByID(that.data.org_id)
     console.log("userInfo", userInfo)
     let form_data = {
+      id: Date.now().toString(36),
       name: e.detail.value.name,
       institute: e.detail.value.institute,
       grade: e.detail.value.grade,
       gender:that.data.g,
       phone:e.detail.value.phone,
       user: userInfo.nickName,
-      org_id: that.data.org_id
+      org_id: that.data.org_id,
+      org_name: org_obj.name,
+      inst_name: org_obj.institute,
+      status: 0
     }
     console.log("form data", form_data)
 
@@ -64,6 +69,11 @@ Page({
       duration:1500
     })
 
-  },
-
+    setTimeout(function()
+    {
+      wx.navigateBack({   //然后返回上一个页面
+        delta: 1
+      })
+    },1500);
+  }
 })

@@ -1,4 +1,6 @@
-// pages/apply_manage/index.js
+const common = require("../../utils/common");
+const app = getApp();
+
 Page({
 
   /**
@@ -12,9 +14,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    let inst = app.globalData.inst;
+    console.log("inst_name", inst)
+    let msg_list = common.getApplyByInst(inst)
+    that.setData({
+      msg_list: msg_list
+    })
   },
 
+  agree:function(e){
+    var id = e.currentTarget.dataset.id;
+    common.feedbackApply(id, 1)
+  },
+
+  reject:function(){
+    var id = e.currentTarget.dataset.id;
+    common.feedbackApply(id, 2)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

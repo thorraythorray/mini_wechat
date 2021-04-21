@@ -1,1 +1,50 @@
-/* pages/message/index.wxss */
+.newsitem{
+  width: 95%;
+  height: 230rpx;
+  display: flex;
+  flex-direction: row;
+  margin: 10rpx;
+  border: 2rpx solid #eee;
+ }
+ 
+ .img{
+  width: 150rpx;
+  height: 150rpx;
+  padding: 50rpx;
+ }
+ 
+ .news-text{
+ 
+  display: flex;
+ 
+  flex-direction: column;
+ 
+  padding: 20rpx;
+ 
+ }
+ 
+ .bottext{
+ 
+  width: 100%;
+ 
+  height: 200rpx;
+ 
+  display: flex;
+ 
+  
+ 
+  align-items: flex-end;
+ 
+  font-size: 30rpx;
+ 
+  
+ 
+ }
+ 
+ .author{
+ 
+  margin-right: 30rpx;
+ 
+ }
+ 
+ 

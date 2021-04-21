@@ -1,2 +1,15 @@
-<!--pages/message/index.wxml-->
-<text>pages/message/index.wxml</text>
+<view class='container' style="margin-top:-100px;">
+<block wx:for='{{msg_list}}' wx:key='id'>
+ <navigator class='newsitem' url="../chat/chat">
+   <image src='../../images/message.png' class='img'></image>
+   <!-- <view class='news-text' bindtap="turnToChat"> -->
+   <view class='news-text'>
+     <text class='title'>申请加入：{{item.org_name}}</text>
+     <view class= 'bottext'>  
+      <text class='author'>处理进度：{{item.apply_state}}</text>  
+      <text class='date'>{{item.feedback}}</text>    
+    </view>
+   </view>
+ </navigator>
+</block>
+</view>

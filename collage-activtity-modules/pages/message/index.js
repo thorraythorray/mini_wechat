@@ -1,4 +1,7 @@
 // pages/message/index.js
+var app = getApp();
+const common = require("../../utils/common.js");
+
 Page({
 
   /**
@@ -12,6 +15,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    let userInfo = app.globalData.userInfo;
+    let msg_list = common.getApplyByUser(userInfo.nickName)
+    that.setData({
+      msg_list: msg_list
+    })
 
   },
 

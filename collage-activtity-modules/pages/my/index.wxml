@@ -24,11 +24,11 @@
     <image class="index_item_icon" mode="scaleToFill" src="/images/arrow-drop-right-line.png" />
   </button>
 
-  <button class="my_information_item" bindtap="wdst">
+  <!-- <button class="my_information_item" bindtap="wdst">
       <image class="index_item_233" mode="scaleToFill" src="/images/home1.png" />
     <view>我的社团</view>
     <image class="index_item_icon" mode="scaleToFill" src="/images/arrow-drop-right-line.png" />
-  </button>
+  </button> -->
 
 <!--
   <button class="my_information_item" bindtap="grzl">

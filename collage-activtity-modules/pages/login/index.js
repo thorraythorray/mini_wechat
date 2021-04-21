@@ -50,6 +50,7 @@ Page({
       })
     }else{
       app.globalData.identification = "admin";
+      app.globalData.inst = that.data.categoryTitle;
       app.globalData.user = institute;
       wx.navigateTo({
         url: '../admin_index/index',
@@ -78,6 +79,7 @@ Page({
 
   adminLogin: function(){
     let that = this;
+    
     that.setData({
       isAdmin: true
     })
