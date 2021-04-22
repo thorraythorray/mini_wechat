@@ -9,7 +9,79 @@ Page({
    * 页面的初始数据
    */
   data: {
+    chooseViewShowDetail: true,
+    image_list: []
+  },
 
+  //上传
+  localImg: function () {
+    let that = this;
+    let _images = that.data.image_list;
+    wx.chooseImage({
+      count: 1, //一张
+      sizeType: ['original'], //原图
+      sourceType: ['album'], //相册
+      success: function (res) {
+        _images.push(res.tempFilePaths[0])
+        that.setData({
+          image_list: _images
+        })
+      }
+    })
+  },
+  uploadImg: function () {
+    let that = this;
+    let _images = that.data.image_list;
+    if (_images.length > 5){
+      wx.showToast({
+        title: '不能超过5张!',
+        icon: 'error',
+        duration: 1500
+      })
+    }else{
+      wx.chooseImage({
+        count: 1, //一张
+        sizeType: ['original'], //原图
+        sourceType: ['camera'], //相机
+        success: function (res) {
+          _images.push(res.tempFilePaths[0])
+          that.setData({
+            image_list: _images
+          })
+        }
+      })
+    }
+  },
+   
+  /** 查看大图Detail */
+  showImageDetail: function(e) {
+    let that = this;
+    let detail = that.data.image_list;
+    var itemIndex = e.currentTarget.dataset.id;
+    wx.previewImage({
+      current: detail[itemIndex], // 当前显示图片的http链接
+      urls: detail // 需要预览的图片http链接列表
+    })
+  },
+
+  /** 删除图片detail */
+  deleteImvDetail: function(e) {
+    var that = this;
+    var detail = that.data.image_list;
+    var itemIndex = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '提示',
+      content: '删除不可恢复，请谨慎操作',
+      success(res) {
+        if (res.confirm) {
+          detail.splice(itemIndex, 1);
+          that.setData({
+            image_list: detail,
+            checkUp: false
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -22,7 +94,6 @@ Page({
   formSubmit: function(e) {
     let that = this;
     let inst = app.globalData.inst;
-    console.log("userInfo", userInfo)
     let form_data = {
       org_id: Date.now().toString(36),
       name: e.detail.value.corporation,

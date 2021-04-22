@@ -14,6 +14,18 @@
 					<textarea name='introduction' value="{{introduction}}" placeholder="请输入活动介绍" placeholder-class="activity_form_input_input_placeholder"></textarea>
 				</view>
 
+				<view class="addImv activity_form_input">
+            <!--这个是选择图片-->
+            <view class="upFile" style="border-radius: 5px" bindtap="uploadImg" wx:if="{{chooseViewShowDetail}}">
+                <image class="chooseImv" src="/images/camera.png"></image>
+            </view>
+            <!--这个是已经选好的图片-->
+            <view wx:for="{{image_list}}" wx:key="key" class="upFile" bindtap="showImageDetail" style="border-radius: 5px" data-id="{{index}}">
+                <image class="itemImv" src="{{item}}"></image>
+                <image class="closeImv" src="/images/delete.png" mode="scaleToFill" catchtap="deleteImvDetail" data-id="{{index}}"></image>
+            </view>
+        </view>
+
 
 				<view class="activity_form_button">
 					<button class="press" form-type="submit" hover-class="plain-hover">

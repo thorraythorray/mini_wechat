@@ -16,7 +16,9 @@ Page({
         checked: false
       }
     ],
-    g:''
+    g:'',
+    chooseViewShowDetail: true,
+    image_list: [],
   },
   gen:function(a){
     var that = this
@@ -57,7 +59,8 @@ Page({
       org_id: that.data.org_id,
       org_name: org_obj.name,
       inst_name: org_obj.institute,
-      status: 0
+      status: 0,
+      images: that.data.image_list
     }
     console.log("form data", form_data)
 
@@ -75,5 +78,56 @@ Page({
         delta: 1
       })
     },1500);
-  }
+  },
+
+  //上传
+  localImg: function () {
+    let that = this;
+    let _images = that.data.image_list;
+    wx.chooseImage({
+      count: 1, //一张
+      sizeType: ['original'], //原图
+      sourceType: ['album'], //相册
+      success: function (res) {
+        _images.push(res.tempFilePaths[0])
+        that.setData({
+          image_list: _images
+        })
+      }
+    })
+  },
+  uploadImg: function () {
+    let that = this;
+    let _images = that.data.image_list;
+    if (_images.length > 1){
+      wx.showToast({
+        title: '暂时支持一张照片!',
+        icon: 'error',
+        duration: 1500
+      })
+    }else{
+      wx.chooseImage({
+        count: 1, //一张
+        sizeType: ['original'], //原图
+        sourceType: ['camera'], //相机
+        success: function (res) {
+          _images.push(res.tempFilePaths[0])
+          that.setData({
+            image_list: _images
+          })
+        }
+      })
+    }
+  },
+   
+  /** 查看大图Detail */
+  showImageDetail: function(e) {
+    let that = this;
+    let detail = that.data.image_list;
+    var itemIndex = e.currentTarget.dataset.id;
+    wx.previewImage({
+      current: detail[itemIndex], // 当前显示图片的http链接
+      urls: detail // 需要预览的图片http链接列表
+    })
+  },
 })

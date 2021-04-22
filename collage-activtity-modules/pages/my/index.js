@@ -102,6 +102,12 @@ Page({
     })
   },
 
+  logout: function() {
+    wx.navigateTo({
+      url: '../../pages/login/index',
+    })
+  },
+
   userid:function(){
     wx.login({
       success (res) {

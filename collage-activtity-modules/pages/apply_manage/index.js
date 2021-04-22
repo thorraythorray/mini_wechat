@@ -24,15 +24,16 @@ Page({
   },
 
   agree:function(e){
+    console.log(".....", e)
     let that = this;
-    var id = e.currentTarget.dataset.id;
+    var id = e.target.dataset.id;
     common.feedbackApply(id, 1)
     that.onLoad()
   },
 
-  reject:function(){
+  reject:function(e){
     let that = this;
-    var id = e.currentTarget.dataset.id;
+    var id = e.target.dataset.id;
     common.feedbackApply(id, 2)
     that.onLoad()
   },

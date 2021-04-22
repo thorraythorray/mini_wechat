@@ -160,5 +160,50 @@ page {
   text-align: center;  
 }  
 
+/*添加图片*/
+.addImv {
+  padding: 30rpx;
+  font-size: 27rpx;
+  display: flex;
+  flex-wrap:wrap;
+  white-space: nowrap;
+  justify-content:space-between;
+}
 
+.addImv::after{
+  content:'' ;
+  width: 80px;
+}
+ 
+.addImv .chooseImv {
+  width: 160rpx;
+  height: 160rpx;
+}
+ 
+/*已选择的图片*/
+ 
+.addImv .upFile {
+  position: relative;
+  padding: 5rpx;
+  border: 1px solid #c0ccda;
+  margin-top: 8px;
+}
+ 
+.addImv .upFile .itemImv {
+  width: 160rpx;
+  height: 160rpx;
+  padding: 5rpx;
+}
+ 
+.addImv .upFile .closeImv {
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
 
+.section {
+  display: flex;
+  flex-flow: row;
+}

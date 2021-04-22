@@ -28,10 +28,11 @@ function getOrgsByInst(inst){
   let login_list = []
   for (var i in data){
     if (data[i].name == inst) {
-      for (let i in data[i].organizition) {
+      let org_obj = data[i].organizition
+      for (let j in org_obj) {
         let item = {
-          title: data[i].name,
-          categoryID: data[i].org_id
+          title: org_obj[j].name,
+          categoryID: org_obj[j].org_id
         }
         login_list.push(item)
       }
@@ -204,11 +205,10 @@ function feedbackApply(id, status){
     let org = data[i].organizition
     for (let j in org) {
       if (org[j].org_id == org_id){
-        let user_list = org[i].user_list;
-        if (user_list.length > 0){
-          org[i].user_list.push(tar_apply.user)
+        if (org.hasOwnProperty("user_list")){
+          org[j].user_list.push(tar_apply.user)
         }else{
-          org[i].user_list = [tar_apply.user]
+          org[j]["user_list"] = [tar_apply.user]
         }
         break
       }
