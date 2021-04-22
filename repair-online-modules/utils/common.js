@@ -179,10 +179,11 @@ function addMessage(info){
 }
 
 function addMessageComment(id, comment){
+  console.log("id", id)
   var messageList = getAllMessages();
   for(var i in messageList){
     if (messageList[i].id == id){
-      messageList["comment"] = comment
+      messageList[i]["reply"] = comment
       break
     }
   }

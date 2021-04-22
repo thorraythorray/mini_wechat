@@ -3,41 +3,25 @@
 
 <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
   <view class="pro-con">
-    <block wx:for="{{list}}" wx:key="{{index}}">
-      <view class="pro-box">
-        <view class="head">
-          <image class="img" src="{{item.userPhoto}}" mode="aspectFit"></image>
-          <view class="box">
-            <view class="shead clear">
-              <view class="names fl">{{item.userName}}
-                  <view wx:if="{{!item.replyUserName == \" \"}}">
-                  -> {{item.replyUserName}}
-                </view>
-              </view>
-            </view>
+    <block wx:for='{{list}}' wx:key='id'>
+      <navigator class='newsitem' >
+        <image src='/images/account.png' class='img'></image>
+      <!-- <view class='news-text' bindtap="turnToChat"> -->
+        <view class='news-text'>
+          <text class='title'>学号：{{item.user}}</text>
+          <text class='title' style="margin-top:20px">留言：{{item.content}}</text>
+          <text class="reply" style="color: graywhite;">{{item.reply}}</text>
+          <view class= 'bottext'>  
+            <!-- <input type="text"></input> -->
+            <button class="mini-btn" type="primary" size="mini" data-id="{{item.id}}" bindtap="reply">回复</button>
+            <!-- <button class="mini-btn" type="warn" size="mini" data-id="{{item.id}}" bindtap="reject">拒绝</button> -->
           </view>
         </view>
-        <view class="addr-info">
-          <view class="addr-text">
-            {{item.comment}}
-          </view>
-        </view>
-        <view class="info">
-          <view class="text">
-            <text decode="true">{{item.insertTime}}</text>
-          </view>
-          <view class="text">
-            <button class="sharebtn" data-commentId="{{item.id}}" data-commentUserName="{{item.userName}}" bindtap="bindReply">回复</button>
-          </view>
-              <view wx:if="{{item.userId == userId}}" class="status text fr">
-                <text class="delete" decode="true" bindtap='deleteComment' data-CommentId="{{item.id}}">删除</text>
-              </view>
-        </view>
-      </view>
+      </navigator>
     </block>
   </view>
 </scroll-view>
-<form bindsubmit="submitForm" report-submit="true">
+<form wx:if="{{canReply}}" bindsubmit="submitForm" report-submit="true">
   <view class="release">
     <view  wx:if="{{reply}}" class="replyinfo1">
       回复<text class="text">{{replyUserName}}</text>
