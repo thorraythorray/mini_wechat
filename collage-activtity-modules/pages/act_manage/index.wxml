@@ -4,11 +4,21 @@
 				<view class="activity_form">
 					<view class="activity_form_title">社团活动管理</view>
 
-          <view class="activity_form_input">
+					<view class="activity_form_input">
+						<picker name="category" mode="selector" range="{{category}}" range-key="title" value="{{index}}" bindchange="categoryyyyy" style="margin-bottom: 30px;margin-left: 25px;">
+							<input data-id='{{categoryInd}}' name="category" type='text' value='{{categoryTitle}}' disabled='true' style="color:darkblue"></input>
+						</picker>
+					</view>	
+
+          			<view class="activity_form_input">
 						<text>活动名称：</text>
 						<input name="activity" value="{{activity}}" placeholder="请输入名称" placeholder-class="activity_form_input_input_placeholder"></input>
 					</view>
-          
+
+					<view class="activity_form_input">
+						<text>负责人：</text>
+						<input name="pm" value="{{activity}}" placeholder="请输入名称" placeholder-class="activity_form_input_input_placeholder"></input>
+					</view>
 
 					<view class="activity_form_input">
 						<text>简介：</text>

@@ -1,4 +1,8 @@
 // pages/org_manage/index.js
+
+var app = getApp();
+const common = require("../../utils/common.js");
+
 Page({
 
   /**
@@ -13,6 +17,34 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+
+  formSubmit: function(e) {
+    let that = this;
+    let inst = app.globalData.inst;
+    console.log("userInfo", userInfo)
+    let form_data = {
+      org_id: Date.now().toString(36),
+      name: e.detail.value.corporation,
+      info: e.detail.value.introduction,
+      activity: []
+    }
+    console.log("form data", form_data)
+
+    common.addNewOrg(inst, form_data)
+    
+    wx.showToast({
+      title: '创建成功',
+      icon:'success',
+      duration:1500
+    })
+
+    setTimeout(function()
+    {
+      wx.navigateBack({   //然后返回上一个页面
+        delta: 1
+      })
+    },1500);
   },
 
   /**

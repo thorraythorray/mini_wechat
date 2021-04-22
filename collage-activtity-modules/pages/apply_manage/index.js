@@ -24,13 +24,17 @@ Page({
   },
 
   agree:function(e){
+    let that = this;
     var id = e.currentTarget.dataset.id;
     common.feedbackApply(id, 1)
+    that.onLoad()
   },
 
   reject:function(){
+    let that = this;
     var id = e.currentTarget.dataset.id;
     common.feedbackApply(id, 2)
+    that.onLoad()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

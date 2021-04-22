@@ -1,7 +1,16 @@
 const app = getApp();
 
+function getBaseData(){
+  let data_serialize = wx.getStorageSync('data') || [];
+  let dataList = app.globalData.dataInfo;
+  if (data_serialize.length > 0){
+    dataList = JSON.parse(data_serialize)
+  }
+  return dataList
+}
+
 function getLoginItems(){
-  let data = app.globalData.dataInfo;
+  let data = getBaseData();
   let login_list = []
   for (let i in data) {
     let item = {
@@ -14,8 +23,27 @@ function getLoginItems(){
   return login_list
 }
 
+function getOrgsByInst(inst){
+  let data = getBaseData();
+  let login_list = []
+  for (var i in data){
+    if (data[i].name == inst) {
+      for (let i in data[i].organizition) {
+        let item = {
+          title: data[i].name,
+          categoryID: data[i].org_id
+        }
+        login_list.push(item)
+      }
+      break
+    }
+  }
+  console.log("getOrgsByInst", login_list)
+  return login_list
+}
+
 function getOrgInfo(){
-  let data = app.globalData.dataInfo;
+  let data = getBaseData();
   let org_list = []
   for(let i in data){
     let org = data[i].organizition
@@ -29,7 +57,7 @@ function getOrgInfo(){
 function getOrgByID(id) {
   console.log("find org is", id)
   let _org = ""
-  let data = app.globalData.dataInfo;
+  let data = getBaseData();
   for(let i in data){
     let org = data[i].organizition
     for (let j in org) {
@@ -41,6 +69,17 @@ function getOrgByID(id) {
     }
   }
   return _org
+}
+
+function addNewOrg(inst_name, info) {
+  let data = getBaseData();
+  for (var i in data){
+    if (data[i].name == inst_name) {
+      data[i].organizition.push(info)
+      break
+    }
+  }
+  wx.setStorageSync('data', JSON.stringify(data))
 }
 
 function getAllActivity(){
@@ -69,7 +108,7 @@ function getActByUser(user) {
 
 function getActByID(id){
   let act = ""
-  let data = app.globalData.dataInfo;
+  let data = getBaseData();
   for(let i in data){
     let org = data[i].organizition
     for (let j in org) {
@@ -85,6 +124,20 @@ function getActByID(id){
     }
   }
   return act
+}
+
+function addNewAct(org_id, info) {
+  let data = getBaseData();
+  for (var i in data){
+    let org = data[i].organizition;
+    for (var j in org){
+      if (data[i].org_id == org_id) {
+        data[i].activity.push(info)
+        break
+      }
+    }
+  }
+  wx.setStorageSync('data', JSON.stringify(data))
 }
 
 function getAllApply() {
@@ -133,29 +186,54 @@ function getApplyByInst(inst){
 
 function feedbackApply(id, status){
   let apply_list = getAllApply();
+  let tar_apply = null;
   for (let i in apply_list){
     if (apply_list[i].id == id){
       apply_list[i].status = parseInt(status)
+      tar_apply = apply_list[i]
       break
     }
   }
   if (apply_list.length > 0){
     wx.setStorageSync('apply_info', JSON.stringify(apply_list))
   }
+
+  let org_id = tar_apply.org_id;
+  let data = getBaseData();
+  for(let i in data){
+    let org = data[i].organizition
+    for (let j in org) {
+      if (org[j].org_id == org_id){
+        let user_list = org[i].user_list;
+        if (user_list.length > 0){
+          org[i].user_list.push(tar_apply.user)
+        }else{
+          org[i].user_list = [tar_apply.user]
+        }
+        break
+      }
+    }
+  }
+  wx.setStorageSync('data', JSON.stringify(data))
 }
 
 
 module.exports = {
   getLoginItems: getLoginItems,
+  getOrgsByInst: getOrgsByInst,
+  
   getOrgInfo: getOrgInfo,
   getOrgByID: getOrgByID,
+  addNewOrg: addNewOrg, 
 
   getAllActivity: getAllActivity,
   getActByID: getActByID,
   getActByUser: getActByUser,
+  addNewAct: addNewAct,
 
   getAllApply: getAllApply,
   getApplyByUser: getApplyByUser,
   getApplyByInst: getApplyByInst,
-  applyOrganize: applyOrganize
+  applyOrganize: applyOrganize,
+  feedbackApply: feedbackApply
 }
