@@ -8,6 +8,7 @@
     
     "pages/admin_pages/index/index",
     "pages/admin_pages/repair/repair",
+    "pages/admin_pages/notify/index",
     
     "pages/user_pages/index/index",
     "pages/user_pages/guide/index",

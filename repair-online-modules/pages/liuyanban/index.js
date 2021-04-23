@@ -83,10 +83,7 @@ Page({
     that.setData({
       canReply: false
     })
-
     that.onLoad()
-
-
   },
  
   /**

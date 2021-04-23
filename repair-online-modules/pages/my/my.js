@@ -36,6 +36,7 @@ Page({
     var that = this;
     var username = app.globalData.username;
     var auth_type = app.globalData.identification;
+    console.log("auth_type", auth_type)
     wx.hideTabBar({
       success: function () {
           app.onTabBar(auth_type);
@@ -87,10 +88,13 @@ Page({
     }
 
     var userObj = common.getUser(username)
+    var notice = common.getNotice()
     that.setData({
       userInfo: userObj,
       auth_type: ind,
-      items: items
+      items: items,
+      username: auth_type,
+      notice: notice
     })
   },
 

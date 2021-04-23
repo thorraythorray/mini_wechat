@@ -2,16 +2,26 @@
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>
 
 <view class="contain">
-<view wx:if="{{!wx_atuhorize}}" style="display:flex;margin-top: 200px;background: white;">
-  <button size="small" open-type="getUserInfo" bindgetuserinfo="logining" type="primary" bindtap="auth_click" class="auth_btn">获取授权</button>
+<scroll-view>
+<view wx:if="{{username != 'admin'}}" class="notice">
+  <text>最新消息：{{notice}}</text>
 </view>
-<scroll-view wx:else>
 <!--头部-->
 <view class="headerView">
  <image wx:if="{{userInfo.image}}" class="picture" src="{{userInfo.image}}"></image>
  <image wx:else class="picture" src="/images/user_icon.png"></image>
  <label class="name">{{auth_type}} {{userInfo.name}}</label>
 </view>
+
+<block wx:if="{{username == 'admin'}}">
+  <navigator url="../../pages/admin_pages/notify/index">
+    <view class="item">
+      <image class="icon" src="../../images/notice.png"></image>
+      <label>发布消息</label>
+      <image class="arrow" src="/images/0106arrow3x.png"></image>
+    </view>
+  </navigator>
+ </block>
 
 <!--表格-->
  <block wx:for-items="{{items}}" wx:key="item.id">   

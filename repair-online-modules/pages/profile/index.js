@@ -11,14 +11,13 @@ Page({
     var that = this;
     var username = app.globalData.username;
     var auth_type = app.globalData.identification;
-
+    console.log("auth_type", auth_type)
     var userObj = common.getUser(username)
-    if (userObj){
-      that.setData({
-        user: userObj,
-        auth_type: auth_type
-      })
-    }
+    
+    that.setData({
+      user: userObj,
+      auth_type: auth_type,
+    })
     
   },
 

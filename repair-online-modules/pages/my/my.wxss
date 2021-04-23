@@ -68,3 +68,13 @@ border-radius:50%;
     font-size: medium;
     color: white;
 }
+
+.notice {
+    background-color: yellow;
+    height: 30px;
+    font-weight: 600;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

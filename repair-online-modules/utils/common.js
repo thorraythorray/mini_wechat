@@ -177,6 +177,15 @@ function getUserMessages(user){
   return userMessage
 }
 
+function getNotice(){
+  return wx.getStorageSync('notify_info') 
+}
+
+function addNotify(info){
+  var notifyList = info;
+  wx.setStorageSync('notify_info', notifyList) 
+}
+
 function addMessage(info){
   var messageList = getAllMessages();
   messageList.push(info)
@@ -229,5 +238,8 @@ module.exports = {
   getUserMessages:getUserMessages,
   addMessage:addMessage,
   addMessageComment:addMessageComment,
-  delMessage:delMessage
+  delMessage:delMessage,
+
+  getNotice: getNotice,
+  addNotify: addNotify
 }
