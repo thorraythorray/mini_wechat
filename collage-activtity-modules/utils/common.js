@@ -100,10 +100,15 @@ function getActByUser(user) {
   let my_act = []
   for (let i in org_list) {
     let user_list = org_list[i].user_list || [];
+    let act_list = org_list[i].activity
     if (user_list.indexOf(user) > -1){
-      my_act.concat(org_list[i].activity)
+      for (var j in act_list){
+        my_act.push(act_list[j])
+      }
+      break
     }
   }
+  console.log("my_act", my_act)
   return my_act
 }
 
@@ -128,12 +133,16 @@ function getActByID(id){
 }
 
 function addNewAct(org_id, info) {
+  console.log("org_id", org_id)
+  console.log("info", info)
   let data = getBaseData();
   for (var i in data){
     let org = data[i].organizition;
     for (var j in org){
-      if (data[i].org_id == org_id) {
-        data[i].activity.push(info)
+      if (org[j].org_id == org_id) {
+        console.log("rog", org)
+        org[j].activity.push(info)
+        data[i].organizition = org
         break
       }
     }
@@ -210,6 +219,7 @@ function feedbackApply(id, status){
         }else{
           org[j]["user_list"] = [tar_apply.user]
         }
+        data[i].organizition = org
         break
       }
     }
@@ -217,6 +227,46 @@ function feedbackApply(id, status){
   wx.setStorageSync('data', JSON.stringify(data))
 }
 
+function getAllUser() {
+  var user_serialize = wx.getStorageSync('user_info') || [];
+  var userList = [];
+  if (user_serialize.length > 0){
+    userList = JSON.parse(user_serialize)
+  }
+  return userList
+}
+
+function getUser(username){
+  var userList = getAllUser(username);
+  var userObj = null;
+  for (var i in userList){
+    if (userList[i].no == username){
+      userObj =  userList[i]
+      break
+    }
+  }
+  return userObj
+}
+
+function setUserProfile(username, info){
+  var userList = getAllUser();
+  if (userList.length > 0){
+    for (var i in userList){
+      if (userList[i].no == username){
+        for (var k in info){
+          userList[i][k] = info[k]
+        }
+        break
+      }
+    }
+  }else{
+    userList.push(info)
+  }
+  
+  if (userList.length > 0){
+    wx.setStorageSync('user_info', JSON.stringify(userList))  
+  }
+}
 
 module.exports = {
   getLoginItems: getLoginItems,
@@ -235,5 +285,9 @@ module.exports = {
   getApplyByUser: getApplyByUser,
   getApplyByInst: getApplyByInst,
   applyOrganize: applyOrganize,
-  feedbackApply: feedbackApply
+  feedbackApply: feedbackApply,
+
+  getAllUser: getAllUser,
+  setUserProfile: setUserProfile,
+  getUser: getUser,
 }

@@ -143,50 +143,9 @@ Page({
   })
   },
 
-  userid2:function(){
-    wx.login({
-      success: function (res) {
-        console.log(res)
-        var code = res.code;//发送给服务器的code
-        wx.getUserInfo({
-          success: function (res) {
-            var userNick = res.userInfo.nickName;//用户昵称
-            var avataUrl = res.userInfo.avatarUrl;//用户头像地址
-            var gender = res.userInfo.gender;//用户性别
-            console.log(res)
-            if (code) {
-              wx.request({
-                url: 'https://www.toilet-mis.cn/login2.php',
-                data: {
-                  code: code,
-                  nick: userNick,
-                  avaurl: avataUrl,
-                  sex: gender,
-                },
-                header: {
-                  'content-type': 'application/json'
-                },
-                success: function (res) {
-                  console.log(res);
-                  wx.setStorageSync('name', res.data.name);//将获取信息写入本地缓存
-                  wx.setStorageSync('openid', res.data.openid);
-                  wx.setStorageSync('imgUrl', res.data.imgurl);
-                  wx.setStorageSync('sex', res.data.sex);
-                },
-                fail:function(){
-                  console.log('error')
-                }
-              })
-            }
-            else {
-              console.log("获取用户登录态失败！");
-            }
-          }
-        })
-      },
-      fail: function (error) {
-        console.log('login failed ' + error);
-      }
+  us: function(){
+    wx.navigateTo({
+      url: '../../pages/profile/index',
     })
   },
 

@@ -107,7 +107,7 @@ function getAllUser() {
   var user_serialize = wx.getStorageSync('user_info') || [];
   var userList = [];
   if (user_serialize.length > 0){
-    repairList = JSON.parse(user_serialize)
+    userList = JSON.parse(user_serialize)
   }
   return userList
 }
@@ -127,14 +127,19 @@ function resetUserPasswd(username, passwd) {
 
 function setUserProfile(username, info){
   var userList = getAllUser();
-  for (var i in userList){
-    if (userList[i].no == username){
-      for (var k in info){
-        userList[i][k] = info[k]
+  if (userList.length > 0){
+    for (var i in userList){
+      if (userList[i].no == username){
+        for (var k in info){
+          userList[i][k] = info[k]
+        }
+        break
       }
-      break
     }
+  }else{
+    userList.push(info)
   }
+  
   if (userList.length > 0){
     wx.setStorageSync('user_info', JSON.stringify(userList))  
   }

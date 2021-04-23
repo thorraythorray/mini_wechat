@@ -9,14 +9,11 @@ Page({
 
   onLoad: function(){
     var that = this;
-    var username = app.globalData.username;
-    var auth_type = app.globalData.identification;
-
-    var userObj = common.getUser(username)
+    let user = app.globalData.userInfo.nickName;
+    var userObj = common.getUser(user)
     if (userObj){
       that.setData({
-        user: userObj,
-        auth_type: auth_type
+        user: userObj
       })
     }
     
@@ -32,15 +29,16 @@ Page({
   //表单提交
   formSubmit: function (e) {
     var that = this;
-    let user = app.globalData.username;
+    let user = app.globalData.userInfo.nickName;
     var profile = {
       "no": user,
       "name": e.detail.value.name,
+      "age": e.detail.value.age,
       "sex": that.data.sex,
       "phone": e.detail.value.phone,
       "institute": e.detail.value.institute,
-      "image": that.data.imageList[0]
     }
+    console.log("profile", profile)
     common.setUserProfile(user, profile)
     wx.showToast({
       title: '修改成功！',
@@ -48,7 +46,7 @@ Page({
     })
     setTimeout(function(){
       wx.switchTab({
-        url: '/pages/my/my',
+        url: '/pages/my/index',
       })
     }, 1000)
   },

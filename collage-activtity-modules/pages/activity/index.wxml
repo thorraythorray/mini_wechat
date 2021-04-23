@@ -4,7 +4,7 @@
 	<view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">社团活动</view>
 </view>
 
-<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+<view current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
 	<swiper-item>
 		<navigator wx:for="{{act_list}}" url="/pages/act_info/index?id={{item.act_id}}" class="index_item">
 			<!-- <image class="index_item_icon" src="https://www.toilet-mis.cn/images/no1.jpg" /> -->
@@ -12,4 +12,4 @@
 		</navigator>
 	</swiper-item>
 	
-</swiper>
+</view>

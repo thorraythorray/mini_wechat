@@ -110,7 +110,7 @@ Page({
   
   formSubmit: function(e) {
     let that = this;
-    let org_id = e.detail.value.categoryInd;
+    let org_id = that.data.categoryInd;
     let form_data = {
       act_id: Date.now().toString(36),
       pm: e.detail.value.pm,
