@@ -49,6 +49,7 @@ function getOrgInfo(){
   for(let i in data){
     let org = data[i].organizition
     for (let j in org) {
+      org[j].inst_name = data[i].name
       org_list.push(org[j])
     }
   }
@@ -83,6 +84,21 @@ function addNewOrg(inst_name, info) {
   wx.setStorageSync('data', JSON.stringify(data))
 }
 
+function delOrg(org_id) {
+  let data = getBaseData();
+  for (var i in data){
+    let org = data[i].organizition;
+    for (var j in org){
+      if (org[j].org_id == org_id){
+        org.splice(j, 1)
+        data[i].organizition = org
+        break
+      }
+    }
+  }
+  wx.setStorageSync('data', JSON.stringify(data))
+}
+
 function getAllActivity(){
   let org_list = getOrgInfo();
   let act_list = [];
@@ -94,6 +110,44 @@ function getAllActivity(){
   }
   return act_list
 }
+
+function getActByInst(inst) {
+  let data = getBaseData();
+  let login_list = []
+  for (var i in data){
+    if (data[i].name == inst) {
+      let org_obj = data[i].organizition
+      for (let j in org_obj) {
+        let act = org_obj[j].activity;
+        for (var k in act){
+          login_list.push(act[k])
+        }
+      }
+      break
+    }
+  }
+  return login_list
+}
+
+function delAct(act_id){
+  let data = getBaseData();
+  for (var i in data){
+    let org = data[i].organizition;
+    for (var j in org){
+      let act = org[j].activity;
+      for (var k in act){
+        if (act[k].act_id == act_id){
+          act.splice(k, 1)
+          org[j].activity = act
+          data[i].organizition = org
+          break
+        }
+      }
+    }
+  }
+  wx.setStorageSync('data', JSON.stringify(data))
+}
+
 
 function getActByUser(user) {
   let org_list = getOrgInfo();
@@ -268,18 +322,45 @@ function setUserProfile(username, info){
   }
 }
 
+function getAllJingcai() {
+  let apply_serialize = wx.getStorageSync('jingcai_info') || [];
+  let applyList = [];
+  if (apply_serialize.length > 0){
+    applyList = JSON.parse(apply_serialize)
+  }
+  return applyList
+}
+function addJingcai(info){
+  let jingcai = getAllJingcai();
+  jingcai.push(info)
+  wx.setStorageSync('jingcai_info', JSON.stringify(jingcai))  
+}
+
+function getJingcaiByAct(act_id){
+  let jingcai = getAllJingcai();
+  let jc_list = []
+  for (var i in jingcai){
+    if (jingcai[i].act_id == act_id){
+      jc_list.push(jingcai[i])
+    }
+  }
+  return jc_list
+}
+
 module.exports = {
   getLoginItems: getLoginItems,
   getOrgsByInst: getOrgsByInst,
+  getActByInst: getActByInst,
   
   getOrgInfo: getOrgInfo,
   getOrgByID: getOrgByID,
   addNewOrg: addNewOrg, 
-
+  delOrg: delOrg,
   getAllActivity: getAllActivity,
   getActByID: getActByID,
   getActByUser: getActByUser,
   addNewAct: addNewAct,
+  delAct: delAct, 
 
   getAllApply: getAllApply,
   getApplyByUser: getApplyByUser,
@@ -290,4 +371,8 @@ module.exports = {
   getAllUser: getAllUser,
   setUserProfile: setUserProfile,
   getUser: getUser,
+
+  getAllJingcai: getAllJingcai,
+  addJingcai: addJingcai,
+  getJingcaiByAct: getJingcaiByAct 
 }

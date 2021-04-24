@@ -26,6 +26,21 @@
     <text>\n</text>
   </view>
 </view>
+
+<view class="content" wx:if="{{!status}}">
+  <block wx:for="{{jingcai}}" wx:key="id">
+    <view class="list_jingcai">
+      <view wx:for="{{item.images}}" wx:for-item="im" class="list-item" bindtap="clickDetail" data-id="{{item.id}}">
+        <view class="image-section">
+          <image mode="aspectFit" src="{{im}}" style="height: 80px; width: 100px;">
+          </image>
+        </view>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</view>
+
 <view class="introduction_add_btn">
   <button disabled="{{status}}" class="introduction_btn" bindtap="baoming" class="press" hover-class="plain-hover">{{inform}}
   </button>

@@ -1,38 +1,17 @@
-<!--pages/form1/form1.wxml-->
-  <view class="activity">
-		<form bindsubmit="formSubmit">
-			<view class="activity_form">
-				<view class="activity_form_title">社团管理</view>
+<!--pages/no1/no1.wxml-->
+<!--index.wxml-->
 
-				<view class="activity_form_input">
-					<text>社团名称：</text>
-					<input name="corporation" value="{{corporation}}" placeholder="请输入名称" placeholder-class="activity_form_input_input_placeholder"></input>
-				</view>
+<view class="notice">
+  <text>长按删除</text>
+</view>
 
-				<view class="activity_form_input">
-					<text>简介：</text>
-					<textarea name='introduction' value="{{introduction}}" placeholder="请输入活动介绍" placeholder-class="activity_form_input_input_placeholder"></textarea>
-				</view>
+<view wx:for="{{org_list}}">
+  <view bindlongtap="del_it" bindtap="go_detail" data-id="{{item.categoryID}}" class="index_item">
+    <image class="index_item_icon" src="../../images/team.png" />
+    <view>{{item.title}}</view>
+  </view>
+</view>
 
-				<view class="addImv activity_form_input">
-            <!--这个是选择图片-->
-            <view class="upFile" style="border-radius: 5px" bindtap="uploadImg" wx:if="{{chooseViewShowDetail}}">
-                <image class="chooseImv" src="/images/camera.png"></image>
-            </view>
-            <!--这个是已经选好的图片-->
-            <view wx:for="{{image_list}}" wx:key="key" class="upFile" bindtap="showImageDetail" style="border-radius: 5px" data-id="{{index}}">
-                <image class="itemImv" src="{{item}}"></image>
-                <image class="closeImv" src="/images/delete.png" mode="scaleToFill" catchtap="deleteImvDetail" data-id="{{index}}"></image>
-            </view>
-        </view>
-
-
-				<view class="activity_form_button">
-					<button class="press" form-type="submit" hover-class="plain-hover">
-					<view>提交</view>
-					</button>
-				</view>
-				<text>\n</text>
-			</view>
-		</form>
-      </view>
+<navigator class="introduction_add_btn" url="../org_edit/index">
+  <button class="introduction_btn" bindtap="baoming" class="press" hover-class="plain-hover">添加社团</button>
+</navigator>

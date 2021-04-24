@@ -1,169 +1,74 @@
-// pages/org_manage/index.js
-
-var app = getApp();
+const app = getApp();
 const common = require("../../utils/common.js");
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    chooseViewShowDetail: true,
-    image_list: []
+    img: [ 
+      "/images/slider1.jpg",
+      "/images/slider2.jpg",
+      "/images/slider3.jpg"
+    ],
+    test:0,
+    indicatorDots:true,
+    //是否显示面板指示点
+    autoplay:true,
+    //是否自动切换
+    interval: 5000,
+    //自动切换时间间隔
+    duration: 500,
+    //滑动动画时长
+    color:'#ffffff',
+    //当前选中的指示点颜色
+    height:'',
+    //swiper高度
+    org_list: []
   },
 
-  //上传
-  localImg: function () {
-    let that = this;
-    let _images = that.data.image_list;
-    wx.chooseImage({
-      count: 1, //一张
-      sizeType: ['original'], //原图
-      sourceType: ['album'], //相册
-      success: function (res) {
-        _images.push(res.tempFilePaths[0])
-        that.setData({
-          image_list: _images
-        })
-      }
-    })
-  },
-  uploadImg: function () {
-    let that = this;
-    let _images = that.data.image_list;
-    if (_images.length > 5){
-      wx.showToast({
-        title: '不能超过5张!',
-        icon: 'error',
-        duration: 1500
-      })
-    }else{
-      wx.chooseImage({
-        count: 1, //一张
-        sizeType: ['original'], //原图
-        sourceType: ['camera'], //相机
-        success: function (res) {
-          _images.push(res.tempFilePaths[0])
-          that.setData({
-            image_list: _images
-          })
-        }
-      })
-    }
-  },
-   
-  /** 查看大图Detail */
-  showImageDetail: function(e) {
-    let that = this;
-    let detail = that.data.image_list;
-    var itemIndex = e.currentTarget.dataset.id;
-    wx.previewImage({
-      current: detail[itemIndex], // 当前显示图片的http链接
-      urls: detail // 需要预览的图片http链接列表
+  nb:function(){
+    this.setData({
+      test:1
     })
   },
 
-  /** 删除图片detail */
-  deleteImvDetail: function(e) {
-    var that = this;
-    var detail = that.data.image_list;
-    var itemIndex = e.currentTarget.dataset.id;
-    wx.showModal({
-      title: '提示',
-      content: '删除不可恢复，请谨慎操作',
-      success(res) {
-        if (res.confirm) {
-          detail.splice(itemIndex, 1);
-          that.setData({
-            image_list: detail,
-            checkUp: false
-          })
-        }
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  formSubmit: function(e) {
+  onLoad:function(){
     let that = this;
+    // let org_list = common.getOrgInfo();
     let inst = app.globalData.inst;
-    let form_data = {
-      org_id: Date.now().toString(36),
-      name: e.detail.value.corporation,
-      info: e.detail.value.introduction,
-      activity: []
-    }
-    console.log("form data", form_data)
-
-    common.addNewOrg(inst, form_data)
-    
-    wx.showToast({
-      title: '创建成功',
-      icon:'success',
-      duration:1500
+    let data = common.getOrgsByInst(inst)
+    that.setData({
+      org_list: data
     })
-
-    setTimeout(function()
-    {
-      wx.navigateBack({   //然后返回上一个页面
-        delta: 1
-      })
-    },1500);
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  goheight:function (e) {
+    var width = wx.getSystemInfoSync().windowWidth
+    //获取可使用窗口宽度
+    var imgheight = e.detail.height
+    //获取图片实际高度
+    var imgwidth = e.detail.width
+    //获取图片实际宽度
+    var height = width * imgheight / imgwidth +"px"
+    //计算等比swiper高度
+    this.setData({
+      height: height
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  del_it: function(e){
+    let that = this; 
+    console.log("e", e)
+    let org_id = e.target.dataset.id;
+    wx.showModal({
+      content: '确认删除？',
+      success (res) {
+        if (res.confirm) {
+          common.delOrg(org_id)
+          that.onLoad()
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   }
+
 })

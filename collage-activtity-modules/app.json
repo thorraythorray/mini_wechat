@@ -13,6 +13,7 @@
     "pages/reset/index",
     "pages/message/index",
     "pages/apply/index",
+    "pages/jingcai/index",
 
     "pages/admin_index/index",
     "pages/org_manage/index",
