@@ -17,6 +17,15 @@
         </navigator>
     </view> -->
     <view class="repair_section" hover-class="none" hover-stop-propagation="false">
+        <view class="shuigong" bindtap="notice">
+            <view class="font-guide" for="">
+                发布公告
+            </view>
+            <view  hover-class="none" hover-stop-propagation="false">
+                <image class="img-guide" src="/images/notice.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                </image>
+            </view>
+         </view>
          <view class="shuigong" bindtap="xiushuinuan">
             <view class="font-guide" for="">
                 水暖维修工作单

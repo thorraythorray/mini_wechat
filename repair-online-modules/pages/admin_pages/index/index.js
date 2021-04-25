@@ -39,6 +39,12 @@ Page({
     })
   },
 
+  notice: function() {
+    wx.navigateTo({
+      url: '../../pages/admin_pages/notify/index',
+    })
+  },
+
   onLoad() {
     //加载本页面的tabBar样式
     wx.hideTabBar({

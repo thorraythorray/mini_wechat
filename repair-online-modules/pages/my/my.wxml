@@ -13,16 +13,6 @@
  <label class="name">{{auth_type}} {{userInfo.name}}</label>
 </view>
 
-<block wx:if="{{username == 'admin'}}">
-  <navigator url="../../pages/admin_pages/notify/index">
-    <view class="item">
-      <image class="icon" src="../../images/notice.png"></image>
-      <label>发布消息</label>
-      <image class="arrow" src="/images/0106arrow3x.png"></image>
-    </view>
-  </navigator>
- </block>
-
 <!--表格-->
  <block wx:for-items="{{items}}" wx:key="item.id">   
    <navigator url="{{item.url}}">

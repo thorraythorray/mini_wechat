@@ -11,7 +11,7 @@
                         学生
                     </radio>
                     <radio  class="radio-item" value="admin" checked="" color="#DBB975" style="margin-left: 45%;">
-                        管理员
+                        维修端
                     </radio>
                 </radio-group>
             </view>
@@ -25,7 +25,7 @@
                     </view>
                 </view>
                 <view class="inputs">
-                    <input type="text" class="username" name="username" placeholder="学号"
+                    <input type="text" class="username" name="username" placeholder="账号"
                         placeholder-style="color: #D3D3D3;"/>
                     <input password="true" class="pwd" name="password" placeholder="密码"
                         placeholder-style="color: #D3D3D3;"/>
