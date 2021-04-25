@@ -16,9 +16,17 @@ Page({
 
   clickDetail: function(e){
     let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/repairInfo/index?id=' + id,
-    })
+    let res = common.getRepairObject(id)
+    if (res.repair_status == 1 || res.repair_status == 3){
+      wx.navigateTo({
+        url: '/pages/repairInfo/index?id=' + id,
+      })
+    }else{
+      wx.showModal({
+        content: '已经提交中，请等待审核。',
+      })
+    }
+    
   },
 
   /**

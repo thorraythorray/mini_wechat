@@ -44,7 +44,7 @@ Page({
         error_msg = "密码不正确，首次登录密码是123456!"
       }
     }else{
-      if (!username) {
+      if (!username || username.indexOf("admin") > -1) {
         error_msg = "输入正确的学号！"
       }else if(password != real_passwd){
         error_msg = "密码不正确，首次登录密码是123456!"
