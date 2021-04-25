@@ -16,9 +16,23 @@ Page({
 
   clickDetail: function(e){
     let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/repairInfo/index?id=' + id,
-    })
+    let rep = common.getRepairObject(id);
+    let username = app.globalData.username;
+    if (rep.repair_status > 0 || username == "admin"){
+      wx.navigateTo({
+        url: '/pages/repairInfo/index?id=' + id,
+      })
+    }else{
+      wx.showModal({
+        content: '等待管理员审阅！',
+        title: '提示'
+      })
+    }
+    
+  },
+
+  onShow() {
+    this.onLoad();
   },
 
   /**
@@ -34,16 +48,32 @@ Page({
     }
 
     let key = app.globalData.identification;
+    let username = app.globalData.username;
     wx.hideTabBar({
       success: function () {
           app.onTabBar(key);
       }
     });
-    let userRepairList = common.sortRepairListByType("admin", title, 0)
+    
+    var replay_type = true
+    var reply_content = "接收"
+    var currentTab = 3;
+    if (username == "admin"){
+      replay_type = true
+      reply_content = "确认"
+      currentTab = 0
+    }
+    let userRepairList = common.sortRepairListByType("admin", title, currentTab)
     console.log("userRepairList", userRepairList)
+
+
     that.setData({
       result: userRepairList.reverse(),
-      baoxiu: title
+      baoxiu: title,
+      reply_content: reply_content,
+      replay_type: replay_type,
+      username: username,
+      currentTab: currentTab
     })
   },
 
@@ -68,12 +98,12 @@ Page({
   swichNav: function( e ) {  
   
     var that = this;  
-    var title = that.data.title;
+    var title = that.data.baoxiu;
     var status = parseInt(e.currentTarget.dataset.current);
     console.log("switch status", status)
 
     var username = app.globalData.username;
-    var userRepairList = common.sortRepairListByType(username, title, 0);
+    var userRepairList = common.sortRepairListByType(username, title, status);
     console.log("switch userRepairList", userRepairList)
     that.setData({
       result: userRepairList.reverse(),

@@ -54,15 +54,16 @@ function delRepair(id){
     wx.setStorageSync('repair_info', JSON.stringify(repairList))  
   }
 }
-function addRepairInfo(id, repair_status, comment){
+function addRepairInfo(id, repair_status, comment, pingjia){
   var repairList = getAllRepair();
   for (var i in repairList){
     if (repairList[i].id == id){
-      if (repair_status){
-        repairList["repair_status"] = parseInt(repair_status)
-      }
+      repairList[i]["repair_status"] = parseInt(repair_status)
       if (comment){
-        repairList["comment"] = end_time
+        repairList[i]["comment"] = comment
+      }
+      if (pingjia) {
+        repairList[i]["pingjia"] = pingjia
       }
       break
     }
@@ -74,7 +75,7 @@ function addRepairInfo(id, repair_status, comment){
 
 function sortRepairListByStatus(username, status){
   var repairList = getAllRepair();
-  if (username != "admin") {
+  if (username.indexOf("admin") == -1) {
     repairList = getUserRepair(username)
   }
   
@@ -89,12 +90,14 @@ function sortRepairListByStatus(username, status){
 }
 
 function sortRepairListByType(username, type, status){
+  console.log("username", username)
   var repairList = getAllRepair();
-  if (username != "admin") {
-    repairList = getUserRepair(user)
+  if (username.indexOf("admin") == -1) {
+    repairList = getUserRepair(username)
   }
   var sortList = []
   for (var i in repairList){
+    console.log("type", type)
     if (repairList[i].type == type && repairList[i].repair_status == status){
       repairList[i]["image"] = repairList[i].images[0]
       sortList.push(repairList[i])

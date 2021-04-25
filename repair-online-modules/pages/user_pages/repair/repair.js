@@ -10,7 +10,7 @@ Page({
   data: {
     token: null,
     result: null,
-    currentTab: 0
+    currentTab: 3
   },
   
 

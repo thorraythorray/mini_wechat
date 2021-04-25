@@ -18,21 +18,80 @@ Page({
     },
     chooseViewShowDetail: true,
     state: "普通",
-    repair_status_list:[
-      '未处理',
-      '处理中',
-      '处理完成'
-    ],
+    repair_status_dict:{
+      '接收报修': 1,
+      '修理完成': 2,
+      '已提交': 0,
+      '已阅': 3
+    },
     repair_status_name:null
   },
 
-  bindPickerChange(e) {
+    /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
     let that = this;
-    let repair_status_name = that.data.repair_status_list[e.detail.value]
+    let id = options.id;
+    let targ = common.getRepairObject(id);
+    let indentify = app.globalData.identification;
+    let username = app.globalData.username;
+    let repair_status_name = 0;
+    let commnet_canUse = false
+    let pingjia_canUse = true
+    let status_canUse = false
+    let repair_status_list = ['已提交']
+    if (username == "admins" || username == "admind"){
+      commnet_canUse = true
+      pingjia_canUse = false
+      status_canUse = true
+      repair_status_list = [
+        '接收报修',
+        '修理完成'
+      ]
+    }else if (username == "admin"){
+      commnet_canUse = false
+      pingjia_canUse = false
+      status_canUse = true
+      repair_status_list = [
+        '已阅'
+      ]
+    }
+
+    for (var i in that.data.repair_status_dict){
+      if (that.data.repair_status_dict[i] == targ.repair_status){
+        repair_status_name = i
+      }
+    }
     that.setData({
-      repair_status: e.detail.value,
-      repair_status_name: repair_status_name
+      id: id,
+      repair: targ,
+      indentify: indentify,
+      repair_status_name: repair_status_name,
+      username: username,
+      commnet_canUse: commnet_canUse,
+      pingjia_canUse: pingjia_canUse,
+      status_canUse: status_canUse,
+      repair_status_list: repair_status_list
     })
+  },
+
+  bindPickerChange(e) {
+    console.log("e", e)
+    let that = this;
+    let key = parseInt(e.detail.value);
+    let repair_status_name = that.data.repair_status_list[key]
+    let res = that.data.repair_status_dict;
+    for (var i in res){
+      if (i == repair_status_name){
+        that.setData({
+          repair_status: res[i],
+          repair_status_name: repair_status_name
+        })
+      }
+    } 
+    
+    
   },
    
   /** 查看大图Detail */
@@ -49,38 +108,24 @@ Page({
   //submit事件
   formSubmit: function (e) {
     let that = this;
-    let id = that.data.id;
+    let id = parseInt(that.data.id);
     let comment = e.detail.value.comment;
-    let repair_status = that.data.repair_status;
-    common.addRepairInfo(id, repair_status, comment)
+    let pingjia = e.detail.value.pingjia;    
+    
+    // let repair_status = that.data.repair_status;
+    let res = common.getRepairObject(id)
+    common.addRepairInfo(id, res.repair_status, comment, pingjia)
     wx.showToast({
       title: '反馈成功！',
       icon: 'success'
     })
     setTimeout(function(){
-      wx.switchTab({
-        url: '/pages/repair/repair',
+      wx.navigateBack({
+        delta: 1,
       })
       // that.onLoad();
     }, 1000)
       
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    let that = this;
-    let id = options.id;
-    let targ = common.getRepairObject(id);
-    let indentify = app.globalData.identification;
-    let repair_status_name = that.data.repair_status_list[targ.repair_status]
-    that.setData({
-      id: id,
-      repair: targ,
-      indentify: indentify,
-      repair_status_name: repair_status_name
-    })
   },
 
 

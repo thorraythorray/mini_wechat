@@ -10,12 +10,6 @@
         </swiper>
     </view>
 
-    <!-- <view class="guide_info" hover-class="none" hover-stop-propagation="false">
-        <navigator class="" target="" url="/pages/user_pages/guide/index" hover-class="navigator-hover" open-type="navigate">
-            <image class="" src="/images/guide.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
-            </image>
-        </navigator>
-    </view> -->
     <view class="repair_section" hover-class="none" hover-stop-propagation="false">
         <view class="shuigong" bindtap="notice">
             <view class="font-guide" for="">
@@ -26,7 +20,7 @@
                 </image>
             </view>
          </view>
-         <view class="shuigong" bindtap="xiushuinuan">
+         <view wx:if="{{ username == 'admin' || username == 'admins' }}" class="shuigong" bindtap="xiushuinuan">
             <view class="font-guide" for="">
                 水暖维修工作单
             </view>
@@ -35,7 +29,7 @@
                 </image>
             </view>
          </view>
-         <view class="diangong" bindtap="xiudian">
+         <view wx:if="{{ username == 'admin' || username == 'admind' }}"  class="diangong" bindtap="xiudian">
             <view class="font-guide" for="">
                 电工维修工作单
             </view>

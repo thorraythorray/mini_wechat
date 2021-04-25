@@ -38,8 +38,8 @@ Page({
     console.log("passwd is", real_passwd)
 
     if (auth_type == "admin"){
-      if (username != "admin" || username != "admins" || username != "admind！"){
-        error_msg = "管理员账号是admin admins admind！"
+      if (username != "admin" && username != "admins" && username != "admind"){
+        error_msg = "管理员账号是admin,admins,admind！"
       }else if(password != real_passwd){
         error_msg = "密码不正确，首次登录密码是123456!"
       }

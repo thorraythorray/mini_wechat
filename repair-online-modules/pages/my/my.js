@@ -32,7 +32,7 @@ Page({
       ]
     },
   
-  onLoad: function(){
+  onShow: function(){
     var that = this;
     var username = app.globalData.username;
     var auth_type = app.globalData.identification;
@@ -42,6 +42,10 @@ Page({
           app.onTabBar(auth_type);
       }
     });
+    let canNotify = true;
+    if (username.indexOf("admin") > -1){
+      canNotify = false
+    }
 
     var ind = "学生"
     var items = [
@@ -94,7 +98,8 @@ Page({
       auth_type: ind,
       items: items,
       username: auth_type,
-      notice: notice
+      notice: notice,
+      canNotify: canNotify
     })
   },
 

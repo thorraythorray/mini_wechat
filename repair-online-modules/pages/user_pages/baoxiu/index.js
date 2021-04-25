@@ -107,7 +107,7 @@ Page({
     let location = e.detail.value.location;
     let desc = e.detail.value.desc;
   
-    if (!username || !userphone || !location || !desc || !image_list){
+    if (!username && !userphone && !location && !desc && !image_list){
       wx.showToast({
         title: '请将信息填写完整!',
         icon: 'none',

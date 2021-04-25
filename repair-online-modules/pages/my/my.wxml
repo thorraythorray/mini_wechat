@@ -3,7 +3,7 @@
 
 <view class="contain">
 <scroll-view>
-<view wx:if="{{username != 'admin'}}" class="notice">
+<view wx:if="{{canNotify && notice}}" class="notice">
   <text>最新消息：{{notice}}</text>
 </view>
 <!--头部-->

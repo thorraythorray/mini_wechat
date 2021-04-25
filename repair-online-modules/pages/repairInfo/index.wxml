@@ -36,13 +36,14 @@
         </view>
         <view class="hr"></view>
         
-         <view class="repair-type">
+         <view wx:if="{{status_canUse}}" class="repair-type">
 
             <view class="section">
                 <view class="section_title">当前进度：</view>
-                <picker bindchange="bindPickerChange" value="{{index}}" range="{{repair_status_list}}">
+                
+                <picker bindchange="bindPickerChange" value="{{item}}" range="{{repair_status_list}}">
                     <view class="picker">
-                        <view wx:if="{{repair_status_name}}">{{repair_status_name}}</view>
+                        <view wx:if="{{repair_status_name}}" style="color:darkblue">{{repair_status_name}}</view>
                         <view wx:else>请选择</view>
                     </view>
                 </picker>
@@ -50,14 +51,21 @@
         </view>
         <view class="hr"></view>
 
-        <view wx:if="{{indentify == 'admin'}}" class="desc">
+        <view wx:if="{{commnet_canUse}}" class="desc">
+            <view class="section_title">维修反馈:</view>
             <textarea name="comment" maxlength="200" placeholder=""
                 placeholder-style="color:#D3D3D3;" style="height:auto">{{repair.comment}}</textarea>
+        </view>
+
+        <view wx:if="{{pingjia_canUse}}" class="desc">
+            <view class="section_title">评价:</view>
+            <textarea name="comment" maxlength="200" placeholder=""
+                placeholder-style="color:#D3D3D3;" style="height:auto">{{repair.pingjia}}</textarea>
         </view>
         <view class="hr"></view>
 
     </view>
-    <view wx:if="{{indentify == 'admin'}}" >
+    <view>
         <button form-type="submit">提交反馈</button>
     </view>
 </form>
