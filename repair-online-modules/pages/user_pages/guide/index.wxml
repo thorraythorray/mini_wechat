@@ -1,9 +1,9 @@
 <view class="container">
-    <view wx:for="{{contents}}" wx:key="{{item}}" style="margin-top: -100px;">
+    <view style="margin-top: -100px;">
         <view class='content' style="background: #fff">
-        <view class='titles'>{{item.title}}</view> 
-        <view class="auther">{{item.date}}</view> 
-        <text class='desc'>{{item.content}}</text>
+        <view class='titles'>维修通告：</view> 
+        <!-- <view class="auther">{{item.date}}</view>  -->
+        <text class='desc'>{{notice}}</text>
         </view>
     </view>
 </view>

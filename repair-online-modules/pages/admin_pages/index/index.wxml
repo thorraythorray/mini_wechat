@@ -11,7 +11,7 @@
     </view>
 
     <view class="repair_section" hover-class="none" hover-stop-propagation="false">
-        <view class="shuigong" bindtap="notice">
+        <view wx:if="{{ username == 'admin'}}" class="shuigong" bindtap="notice">
             <view class="font-guide" for="">
                 发布公告
             </view>

@@ -3,9 +3,9 @@
 
 <view class="contain">
 <scroll-view>
-<view wx:if="{{canNotify && notice}}" class="notice">
+<!-- <view wx:if="{{canNotify && notice}}" class="notice">
   <text>最新消息：{{notice}}</text>
-</view>
+</view> -->
 <!--头部-->
 <view class="headerView">
  <image wx:if="{{userInfo.image}}" class="picture" src="{{userInfo.image}}"></image>
