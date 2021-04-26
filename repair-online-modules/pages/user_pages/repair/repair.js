@@ -17,7 +17,7 @@ Page({
   clickDetail: function(e){
     let id = e.currentTarget.dataset.id;
     let res = common.getRepairObject(id)
-    if (res.repair_status == 1 || res.repair_status == 3){
+    if (res.repair_status == 2 || res.repair_status == 3){
       wx.navigateTo({
         url: '/pages/repairInfo/index?id=' + id,
       })

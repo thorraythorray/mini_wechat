@@ -41,7 +41,7 @@ Page({
 
   notice: function() {
     wx.navigateTo({
-      url: '../../pages/admin_pages/notify/index',
+      url: '/pages/admin_pages/notify/index',
     })
   },
 

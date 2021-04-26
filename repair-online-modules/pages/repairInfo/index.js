@@ -67,6 +67,7 @@ Page({
       id: id,
       repair: targ,
       indentify: indentify,
+      repair_status: targ.repair_status,
       repair_status_name: repair_status_name,
       username: username,
       commnet_canUse: commnet_canUse,
@@ -108,13 +109,12 @@ Page({
   //submit事件
   formSubmit: function (e) {
     let that = this;
-    let id = parseInt(that.data.id);
+    let id = that.data.id;
     let comment = e.detail.value.comment;
     let pingjia = e.detail.value.pingjia;    
     
-    // let repair_status = that.data.repair_status;
-    let res = common.getRepairObject(id)
-    common.addRepairInfo(id, res.repair_status, comment, pingjia)
+    let repair_status = that.data.repair_status;
+    common.addRepairInfo(id, repair_status, comment, pingjia)
     wx.showToast({
       title: '反馈成功！',
       icon: 'success'
