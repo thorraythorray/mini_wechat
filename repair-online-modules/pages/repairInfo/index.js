@@ -121,7 +121,7 @@ Page({
     })
     setTimeout(function(){
       wx.navigateBack({
-        delta: 1,
+        delta: 2,
       })
       // that.onLoad();
     }, 1000)
